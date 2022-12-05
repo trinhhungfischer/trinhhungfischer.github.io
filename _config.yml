@@ -18,17 +18,17 @@ avatar: https://raw.githubusercontent.com/trinhhungfischer/trinhhungfischer.gith
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email:
-  facebook: facebook.com/trinhhungfischer
+  email: trinhhungfischer@gmail.com
+  facebook: trinhhungfischer
   flickr:
-  github: github.com/trinhhungfischer
+  github: trinhhungfischer
   instagram:
-  linkedin: linkedin.com/in/trinhhungfischer/
+  linkedin: trinhhungfischer
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: trinhhungfisch
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
-  youtube: https://www.youtube.com/@roguelikor
+  youtube: /@roguelikor
   googleplus: # anything in your profile username that comes after plus.google.com/
 
 
