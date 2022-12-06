@@ -1,9 +1,9 @@
 ---
 layout: post
-title: You're up and running!
+title: Hello there, I'm Game Designer!
 ---
 
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
+Hung is an IT student who loves games and spends a lot of time playing games, and studying about Games. For me, the game is like how I show my personality and my perspective on everything. Although experienced a number of jobs as well as learned a variety of fields, Developing Games is my eventual favorite to stick with this field for a long time (shown below).
 
 ![_config.yml]({{ site.baseurl }}/images/config.png)
 
