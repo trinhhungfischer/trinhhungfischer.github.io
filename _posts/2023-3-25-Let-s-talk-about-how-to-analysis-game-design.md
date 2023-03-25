@@ -3,7 +3,7 @@ layout: post
 title: Phân tích Game Design bằng gì?
 ---
 
-# Tại sao lại có bài viết này?
+**Tại sao lại có bài viết này?**
 
 Nay tôi đọc được một luồng quan điểm về cách phân tích Game Design trên trang blog của Lost Garden do Daniel Cook (Danc). 
 Một ý tưởng thật thú vị và độc đáo về cách phân tích về game và cách nó vận hành như thế nào? 
