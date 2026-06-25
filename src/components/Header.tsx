@@ -1,14 +1,16 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 import './Header.css';
 
 const Header = () => {
   const location = useLocation();
+  const { t } = useLanguage();
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'About', path: '/about' },
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.projects'), path: '/projects' },
+    { name: t('nav.blog'), path: '/blog' },
+    { name: t('nav.about'), path: '/about' },
   ];
 
   return (
@@ -23,7 +25,7 @@ const Header = () => {
             <Link 
               key={link.name} 
               to={link.path}
-              className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+              className={`nav-link ${location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === link.path ? 'active' : ''}`}
             >
               {link.name}
             </Link>

@@ -1,6 +1,9 @@
+import { useLanguage } from '../contexts/LanguageContext';
 import './Home.css';
 
 const Home = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="home-page animate-fade-up">
       <div className="container" style={{ padding: '60px 24px' }}>
@@ -10,24 +13,24 @@ const Home = () => {
           <div className="bento-item bento-hero">
             <div className="info-header">
               <h1 className="hero-title">Trinh Hung</h1>
-              <div className="status-badge">Available for Work</div>
+              <div className="status-badge">{t('home.status')}</div>
             </div>
             
             <p className="hero-subtitle text-secondary">
-              Game Designer & Gamification Expert. I specialize in crafting meaningful mechanics and engaging player journeys.
+              {t('home.description')}
             </p>
             
             <div className="personal-details">
               <div className="detail-row">
-                <span className="detail-label">Location:</span>
-                <span className="detail-value">Vietnam</span>
+                <span className="detail-label">{t('home.location_label')}:</span>
+                <span className="detail-value">{t('home.location_value')}</span>
               </div>
               <div className="detail-row">
-                <span className="detail-label">Focus:</span>
-                <span className="detail-value">Mechanics & Systems</span>
+                <span className="detail-label">{t('home.focus_label')}:</span>
+                <span className="detail-value">{t('home.focus_value')}</span>
               </div>
               <div className="detail-row">
-                <span className="detail-label">Email:</span>
+                <span className="detail-label">{t('home.email_label')}:</span>
                 <span className="detail-value">trinhhungfischer@gmail.com</span>
               </div>
             </div>
@@ -62,7 +65,7 @@ const Home = () => {
           {/* Download CV Block */}
           <a href="#" className="bento-item bento-project-2 hover-lift" style={{ alignItems: 'center', textAlign: 'center', textDecoration: 'none', color: 'inherit' }}>
             <h2 style={{ fontSize: '3rem', marginBottom: '8px', lineHeight: 1 }}>CV</h2>
-            <p className="text-secondary" style={{ fontWeight: 700, textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '1px' }}>Download My Resume</p>
+            <p className="text-secondary" style={{ fontWeight: 700, textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '1px' }}>{t('home.download_cv')}</p>
             <div className="icon-btn" style={{ marginTop: '24px', background: 'var(--text-primary)', color: 'var(--bg-primary)' }}>↓</div>
           </a>
 
