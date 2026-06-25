@@ -10,7 +10,7 @@ const allPosts = Object.entries(modules).map(([path, rawContent]) => {
   // @ts-ignore
   const { attributes, body } = fm(rawContent.default || rawContent);
   const slug = path.split('/').pop()?.replace('.md', '') || '';
-  return { ...attributes, body, slug } as any;
+  return { ...(attributes as any), body, slug } as any;
 });
 
 const BlogPost = () => {

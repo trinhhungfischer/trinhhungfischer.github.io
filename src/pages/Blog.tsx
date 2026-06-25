@@ -17,7 +17,7 @@ const posts: BlogMeta[] = Object.entries(modules).map(([path, rawContent]) => {
   // @ts-ignore
   const { attributes } = fm(rawContent.default || rawContent);
   const slug = path.split('/').pop()?.replace('.md', '') || '';
-  return { ...attributes, slug } as BlogMeta;
+  return { ...(attributes as any), slug } as BlogMeta;
 }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const Blog = () => {
