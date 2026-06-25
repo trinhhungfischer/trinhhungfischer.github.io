@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import fm from 'front-matter';
 import './Blog.css';
 import './Projects.css'; // Reuse page-header
 
@@ -12,12 +11,31 @@ interface BlogMeta {
   slug: string;
 }
 
+function parseFrontmatter(markdown: string) {
+  const match = markdown.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+  if (!match) return { attributes: {} };
+  const yaml = match[1];
+  const attributes: any = {};
+  yaml.split('\n').forEach(line => {
+    const splitIdx = line.indexOf(':');
+    if (splitIdx > -1) {
+      const key = line.slice(0, splitIdx).trim();
+      let val = line.slice(splitIdx + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      attributes[key] = val;
+    }
+  });
+  return { attributes };
+}
+
 const modules = import.meta.glob('../content/blogs/*.md', { query: '?raw', eager: true });
 const posts: BlogMeta[] = Object.entries(modules).map(([path, rawContent]) => {
-  // @ts-ignore
-  const { attributes } = fm(rawContent.default || rawContent);
+  const rawStr = typeof rawContent === 'string' ? rawContent : (rawContent as any).default;
+  const { attributes } = parseFrontmatter(rawStr);
   const slug = path.split('/').pop()?.replace('.md', '') || '';
-  return { ...(attributes as any), slug } as BlogMeta;
+  return { ...attributes, slug } as BlogMeta;
 }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const Blog = () => {
