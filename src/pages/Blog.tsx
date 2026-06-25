@@ -1,10 +1,26 @@
 import { Link } from 'react-router-dom';
+import fm from 'front-matter';
 import './Blog.css';
 import './Projects.css'; // Reuse page-header
-import blogsData from '../data/blogs.json';
+
+interface BlogMeta {
+  title: string;
+  date: string;
+  category: string;
+  excerpt: string;
+  color: string;
+  slug: string;
+}
+
+const modules = import.meta.glob('../content/blogs/*.md', { query: '?raw', eager: true });
+const posts: BlogMeta[] = Object.entries(modules).map(([path, rawContent]) => {
+  // @ts-ignore
+  const { attributes } = fm(rawContent.default || rawContent);
+  const slug = path.split('/').pop()?.replace('.md', '') || '';
+  return { ...attributes, slug } as BlogMeta;
+}).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const Blog = () => {
-  const posts = blogsData;
 
   return (
     <div className="container animate-fade-up" style={{ padding: '60px 24px' }}>

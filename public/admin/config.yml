@@ -1,0 +1,36 @@
+local_backend: true
+backend:
+  name: git-gateway
+  branch: master # Branch to update
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    files:
+      - file: "src/data/projects.json"
+        label: "Projects List"
+        name: "projects_list"
+        widget: "list"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Slug, name: slug, widget: string}
+          - {label: Description, name: description, widget: text}
+          - {label: Tags, name: tags, widget: list}
+          - {label: Color, name: colorClass, widget: select, options: ["color-block-1", "color-block-2", "color-block-3", "color-block-4"]}
+          - {label: Image Text, name: imagePlaceholder, widget: string}
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blogs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Color", name: "color", widget: "select", options: ["var(--pale-blue)", "var(--pale-yellow)", "var(--pale-green)", "var(--pale-pink)", "var(--pale-orange)"]}
+      - {label: "Body", name: "body", widget: "markdown"}

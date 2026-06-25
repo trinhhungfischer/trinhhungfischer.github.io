@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Projects.css';
 import projectsData from '../data/projects.json';
 
@@ -27,7 +28,7 @@ const Projects = () => {
               <p className="text-secondary">{project.description}</p>
               
               <div className="card-footer">
-                <button className="btn-primary" style={{ padding: '10px 20px', width: '100%' }}>View Details</button>
+                <Link to={`/projects/${project.slug}`} className="btn-primary" style={{ display: 'block', textAlign: 'center', padding: '10px 20px', width: '100%', textDecoration: 'none' }}>View Details</Link>
               </div>
             </div>
           </div>

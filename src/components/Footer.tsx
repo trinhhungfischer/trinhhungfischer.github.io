@@ -1,4 +1,4 @@
-
+import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
@@ -11,17 +11,17 @@ const Footer = () => {
         </div>
         
         <div className="social-links">
-          <a href="https://github.com/trinhhungfischer" target="_blank" rel="noreferrer" className="social-icon hover-lift">
-            GH
+          <a href="https://github.com/trinhhungfischer" target="_blank" rel="noreferrer" className="social-icon hover-lift" aria-label="GitHub">
+            <FaGithub size={24} />
           </a>
-          <a href="https://twitter.com/trinhhungfisch" target="_blank" rel="noreferrer" className="social-icon hover-lift">
-            TW
+          <a href="https://twitter.com/trinhhungfisch" target="_blank" rel="noreferrer" className="social-icon hover-lift" aria-label="Twitter">
+            <FaTwitter size={24} />
           </a>
-          <a href="https://linkedin.com/in/trinhhungfischer" target="_blank" rel="noreferrer" className="social-icon hover-lift">
-            IN
+          <a href="https://linkedin.com/in/trinhhungfischer" target="_blank" rel="noreferrer" className="social-icon hover-lift" aria-label="LinkedIn">
+            <FaLinkedin size={24} />
           </a>
-          <a href="mailto:trinhhungfischer@gmail.com" className="social-icon hover-lift">
-            EM
+          <a href="mailto:trinhhungfischer@gmail.com" className="social-icon hover-lift" aria-label="Email">
+            <FaEnvelope size={24} />
           </a>
         </div>
       </div>

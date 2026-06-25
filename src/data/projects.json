@@ -1,6 +1,7 @@
 [
   {
     "title": "Gamification Engine",
+    "slug": "gamification-engine",
     "description": "A modular framework for applying game mechanics to non-game contexts. Features user progression, badges, and dynamic leaderboards.",
     "tags": ["React", "Node.js", "Systems Design"],
     "colorClass": "color-block-1",
@@ -8,6 +9,7 @@
   },
   {
     "title": "Rogue-like Prototype",
+    "slug": "rogue-like-prototype",
     "description": "Exploring procedural generation and tight combat loops in Unity. Built as an exercise in balancing enemy encounters.",
     "tags": ["Unity", "C#", "Game Design"],
     "colorClass": "color-block-2",
@@ -15,6 +17,7 @@
   },
   {
     "title": "Educational App Journey",
+    "slug": "educational-app-journey",
     "description": "Redesigned the onboarding and daily active user flow for a language learning app using behavioral psychology.",
     "tags": ["UX/UI", "Gamification"],
     "colorClass": "color-block-3",
@@ -22,6 +25,7 @@
   },
   {
     "title": "Economy Simulator",
+    "slug": "economy-simulator",
     "description": "A web-based simulator visualizing virtual economies, resource sinks, and inflation control in MMO environments.",
     "tags": ["TypeScript", "Math"],
     "colorClass": "color-block-4",
