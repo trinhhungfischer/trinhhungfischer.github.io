@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Phân tích Game Design bằng gì?",
+    "slug": "Let-s-talk-about-how-to-analysis-game-design",
+    "date": "2023-03-25",
+    "category": "Archive",
+    "excerpt": "Tại sao lại có bài viết này? Nay tôi đọc được một luồng quan điểm về cách phân tích Game Design trên trang blog của Lost Garden do Daniel Cook (Da...",
+    "color": "var(--pale-green)"
+  },
+  {
+    "title": "Lazy Level Design for Connecting Game!",
+    "slug": "How-I-write-Connect-2-LvL-Maker",
+    "date": "2022-01-15",
+    "category": "Archive",
+    "excerpt": "Are you tired of spending countless hours designing levels for your connecting game? Look no further! In our blog, \"How I Made a Lazy Level Design Too...",
+    "color": "var(--pale-yellow)"
+  },
+  {
+    "title": "Hello there, I'm Game Designer!",
+    "slug": "Hello-World",
+    "date": "2014-03-03",
+    "category": "Archive",
+    "excerpt": "Hung is an IT student who loves games and spends a lot of time playing games, and studying about Games. For me, the game is like how I show my persona...",
+    "color": "var(--pale-blue)"
+  }
+]
