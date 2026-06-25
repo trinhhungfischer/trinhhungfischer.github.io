@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Gamification Engine",
+    "description": "A modular framework for applying game mechanics to non-game contexts. Features user progression, badges, and dynamic leaderboards.",
+    "tags": ["React", "Node.js", "Systems Design"],
+    "colorClass": "color-block-1",
+    "imagePlaceholder": "ENGINE"
+  },
+  {
+    "title": "Rogue-like Prototype",
+    "description": "Exploring procedural generation and tight combat loops in Unity. Built as an exercise in balancing enemy encounters.",
+    "tags": ["Unity", "C#", "Game Design"],
+    "colorClass": "color-block-2",
+    "imagePlaceholder": "ROGUE"
+  },
+  {
+    "title": "Educational App Journey",
+    "description": "Redesigned the onboarding and daily active user flow for a language learning app using behavioral psychology.",
+    "tags": ["UX/UI", "Gamification"],
+    "colorClass": "color-block-3",
+    "imagePlaceholder": "JOURNEY"
+  },
+  {
+    "title": "Economy Simulator",
+    "description": "A web-based simulator visualizing virtual economies, resource sinks, and inflation control in MMO environments.",
+    "tags": ["TypeScript", "Math"],
+    "colorClass": "color-block-4",
+    "imagePlaceholder": "ECONOMY"
+  }
+]

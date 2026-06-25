@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #f8f6f0; /* Màu giấy / tường gallery */
+  --bg-secondary: #f0eade;
+  
+  --text-primary: #111111;
+  --text-secondary: #444444;
+  
+  /* Các màu nhợt (Muted Pastels) dạng Gallery */
+  --pale-blue: #cce0e5;
+  --pale-yellow: #f4ebd0;
+  --pale-green: #d5e5d3;
+  --pale-pink: #ebd5d8;
+  --pale-orange: #f2dbce;
+  --pale-gray: #e6e4de;
+  
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Inter', sans-serif;
+  
+  --border-color: #111111;
+  --border-radius: 0px; /* Khối hình vuông vắn sắc nét */
+  --border-width: 2px;
+  --transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --shadow-sm: 4px 4px 0px rgba(17, 17, 17, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--text-secondary);
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* Utilities */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.text-gradient {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--border-radius);
+}
+
+/* Base Layout elements */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 100px; /* Space for fixed header */
+}
+
+/* Micro-animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s var(--transition) forwards;
+}
+
+.hover-lift {
+  transition: var(--transition);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
