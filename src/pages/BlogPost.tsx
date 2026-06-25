@@ -1,39 +1,24 @@
-import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import blogsData from '../data/blogs.json';
+import fm from 'front-matter';
 import './BlogPost.css';
 import './Projects.css'; // For page-header
 
+const modules = import.meta.glob('../content/blogs/*.md', { query: '?raw', eager: true });
+const allPosts = Object.entries(modules).map(([path, rawContent]) => {
+  // @ts-ignore
+  const { attributes, body } = fm(rawContent.default || rawContent);
+  const slug = path.split('/').pop()?.replace('.md', '') || '';
+  return { ...attributes, body, slug } as any;
+});
+
 const BlogPost = () => {
   const { slug } = useParams();
-  const [content, setContent] = useState('');
-  const [loading, setLoading] = useState(true);
   
-  const postMeta = blogsData.find(b => b.slug === slug);
+  const post = allPosts.find(b => b.slug === slug);
 
-  useEffect(() => {
-    if (slug) {
-      // Fetch the markdown file from public/content/blogs
-      fetch(`/content/blogs/${slug}.md`)
-        .then(res => {
-          if (!res.ok) throw new Error('Not found');
-          return res.text();
-        })
-        .then(text => {
-          setContent(text);
-          setLoading(false);
-        })
-        .catch(err => {
-          console.error(err);
-          setContent('# Article not found.');
-          setLoading(false);
-        });
-    }
-  }, [slug]);
-
-  if (!postMeta) {
+  if (!post) {
     return (
       <div className="container" style={{ padding: '60px 24px' }}>
         <h1>Post not found</h1>
@@ -48,21 +33,17 @@ const BlogPost = () => {
       
       <div className="page-header" style={{ marginTop: '24px' }}>
         <div className="blog-meta" style={{ marginBottom: '16px' }}>
-          <span>{postMeta.date}</span>
+          <span>{post.date}</span>
           <span>//</span>
-          <span>{postMeta.category}</span>
+          <span>{post.category}</span>
         </div>
-        <h1 className="page-title" style={{ fontSize: '3.5rem' }}>{postMeta.title}</h1>
+        <h1 className="page-title" style={{ fontSize: '3.5rem' }}>{post.title}</h1>
       </div>
 
       <div className="markdown-content">
-        {loading ? (
-          <p>Loading content...</p>
-        ) : (
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {content}
-          </ReactMarkdown>
-        )}
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {post.body}
+        </ReactMarkdown>
       </div>
     </div>
   );
