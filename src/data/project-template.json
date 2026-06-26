@@ -1,0 +1,8 @@
+{
+  "title": "Tên Project Của Bạn",
+  "slug": "ten-project-cua-ban",
+  "description": "Mô tả ngắn gọn về project (khoảng 1-2 câu).",
+  "tags": ["Tag1", "Tag2", "Tag3"],
+  "colorClass": "color-block-1",
+  "imagePlaceholder": "PLACEHOLDER_TEXT_OR_IMAGE_URL"
+}
