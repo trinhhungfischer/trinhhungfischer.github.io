@@ -4,6 +4,7 @@ date: "YYYY-MM-DD"
 category: "CATEGORY_NAME (e.g., Game Design, Product Management, Dev Log)"
 excerpt: "A short 1-2 sentence description of what this blog post is about."
 color: "var(--pale-blue)"
+draft: true
 ---
 
 Thêm nội dung blog của bạn vào đây. Hỗ trợ Markdown:
