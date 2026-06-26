@@ -1,4 +1,5 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { Globe } from 'lucide-react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -15,27 +16,28 @@ const LanguageToggleButton = () => {
   return (
     <button 
       onClick={toggleLanguage}
+      className="hover-lift"
       style={{
         position: 'fixed',
         bottom: '24px',
         right: '24px',
         zIndex: 1000,
-        width: '48px',
-        height: '48px',
-        borderRadius: '50%',
-        backgroundColor: 'var(--text-primary)',
-        color: 'var(--bg-color)',
-        border: 'none',
+        padding: '10px 16px',
+        borderRadius: '30px',
+        backgroundColor: 'var(--bg-primary)',
+        color: 'var(--text-primary)',
+        border: '2px solid var(--text-primary)',
         cursor: 'pointer',
-        fontSize: '1rem',
+        fontSize: '0.95rem',
         fontWeight: 'bold',
-        boxShadow: 'var(--shadow)',
+        boxShadow: '4px 4px 0px rgba(17, 17, 17, 1)',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        gap: '8px'
       }}
     >
-      {language.toUpperCase()}
+      <Globe size={18} />
+      {language === 'vi' ? 'VI' : 'EN'}
     </button>
   );
 };

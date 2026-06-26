@@ -29,8 +29,13 @@ const allPosts = Object.entries(modules).map(([path, rawContent]) => {
   const rawStr = typeof rawContent === 'string' ? rawContent : (rawContent as any).default;
   const { attributes, body } = parseFrontmatter(rawStr);
   const slug = path.split('/').pop()?.replace('.md', '') || '';
-  return { ...attributes, body, slug } as any;
-});
+  return { 
+    ...attributes, 
+    draft: attributes.draft === 'true' || attributes.draft === true,
+    body, 
+    slug 
+  } as any;
+}).filter(p => !p.draft || import.meta.env.DEV);
 
 const BlogPost = () => {
   const { slug } = useParams();
