@@ -42,7 +42,7 @@ const posts: BlogMeta[] = Object.entries(modules).map(([path, rawContent]) => {
     draft: attributes.draft === 'true' || attributes.draft === true,
     slug 
   } as BlogMeta;
-}).filter(p => !p.draft || import.meta.env.DEV).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}).filter(p => !p.draft || import.meta.env.DEV).sort((a, b) => new Date(b.date || Date.now()).getTime() - new Date(a.date || Date.now()).getTime());
 
 const MultiSelectDropdown = ({ options, selected, onChange, placeholder }: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -133,14 +133,14 @@ const Blog = () => {
   const [selectedYear, setSelectedYear] = useState<string>('All');
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
 
-  const categories = Array.from(new Set(posts.map(p => p.category)));
-  const years = ['All', ...Array.from(new Set(posts.map(p => new Date(p.date).getFullYear().toString())))].sort((a, b) => b.localeCompare(a));
+  const categories = Array.from(new Set(posts.map(p => p.category).filter(Boolean)));
+  const years = ['All', ...Array.from(new Set(posts.map(p => new Date(p.date || Date.now()).getFullYear().toString())))].sort((a, b) => b.localeCompare(a));
 
   const filteredPosts = posts.filter(p => {
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(p.category);
-    const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          p.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    const postYear = new Date(p.date).getFullYear().toString();
+    const matchesSearch = (p.title || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          (p.excerpt || '').toLowerCase().includes(searchQuery.toLowerCase());
+    const postYear = new Date(p.date || Date.now()).getFullYear().toString();
     const matchesYear = selectedYear === 'All' || postYear === selectedYear;
     
     return matchesCategory && matchesSearch && matchesYear;
