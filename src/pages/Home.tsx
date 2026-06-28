@@ -1,9 +1,13 @@
 import { useLanguage } from '../contexts/LanguageContext';
+import projectsEn from '../data/projects_en.json';
+import projectsVi from '../data/projects_vi.json';
 import './Home.css';
 
 const Home = () => {
   const { t, language } = useLanguage();
   const cvPath = language === 'vi' ? '/cv/Trinh_Quang_Hung_CV_VI.pdf' : '/cv/Trinh_Quang_Hung_CV_EN.pdf';
+  const projectsData = language === 'vi' ? projectsVi : projectsEn;
+  const featuredProject = projectsData[0];
 
   return (
     <div className="home-page animate-fade-up">
@@ -59,8 +63,8 @@ const Home = () => {
           {/* Project 1 */}
           <div className="bento-item bento-project-1">
             <div className="project-tag">Featured</div>
-            <h3>Gamification Engine</h3>
-            <p className="text-secondary" style={{ marginTop: '8px' }}>A modular framework.</p>
+            <h3>{featuredProject.title}</h3>
+            <p className="text-secondary" style={{ marginTop: '8px' }}>{featuredProject.description.substring(0, 50)}...</p>
           </div>
 
           {/* Download CV Block */}

@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { useLanguage } from '../contexts/LanguageContext';
 import './BlogPost.css';
 import './Projects.css'; // For page-header
 
@@ -28,32 +29,40 @@ const modules = import.meta.glob('../content/blogs/*.md', { query: '?raw', eager
 const allPosts = Object.entries(modules).map(([path, rawContent]) => {
   const rawStr = typeof rawContent === 'string' ? rawContent : (rawContent as any).default;
   const { attributes, body } = parseFrontmatter(rawStr);
-  const slug = path.split('/').pop()?.replace('.md', '') || '';
+  const filename = path.split('/').pop()?.replace('.md', '') || '';
+  const parts = filename.split('.');
+  const lang = parts.length > 1 ? parts.pop() : 'en';
+  const slug = parts.join('.');
+  
   return { 
     ...attributes, 
     draft: attributes.draft === 'true' || attributes.draft === true,
     body, 
-    slug 
+    slug,
+    lang
   } as any;
 }).filter(p => !p.draft || import.meta.env.DEV);
 
 const BlogPost = () => {
   const { slug } = useParams();
+  const { language } = useLanguage();
   
-  const post = allPosts.find(b => b.slug === slug);
+  // Lọc bài theo slug và ngôn ngữ
+  const post = allPosts.find(b => b.slug === slug && b.lang === language) 
+            || allPosts.find(b => b.slug === slug && b.lang === 'en'); // fallback tiếng anh nếu chưa có bản dịch
 
   if (!post) {
     return (
       <div className="container" style={{ padding: '60px 24px' }}>
-        <h1>Post not found</h1>
-        <Link to="/blog">← Back to Blog</Link>
+        <h1>{language === 'vi' ? 'Không tìm thấy bài viết' : 'Post not found'}</h1>
+        <Link to="/blog">← {language === 'vi' ? 'Quay lại Blog' : 'Back to Blog'}</Link>
       </div>
     );
   }
 
   return (
     <div className="container animate-fade-up" style={{ padding: '60px 24px' }}>
-      <Link to="/blog" className="back-link">← Back to Journal</Link>
+      <Link to="/blog" className="back-link">← {language === 'vi' ? 'Quay lại Nhật ký' : 'Back to Journal'}</Link>
       
       <div className="page-header" style={{ marginTop: '24px' }}>
         <div className="blog-meta" style={{ marginBottom: '16px' }}>

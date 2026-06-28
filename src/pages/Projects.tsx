@@ -1,15 +1,20 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 import './Projects.css';
-import projectsData from '../data/projects.json';
+import projectsEn from '../data/projects_en.json';
+import projectsVi from '../data/projects_vi.json';
 
 const Projects = () => {
-  const projects = projectsData;
+  const { t, language } = useLanguage();
+  const projects = language === 'vi' ? projectsVi : projectsEn;
 
   return (
     <div className="container animate-fade-up" style={{ padding: '60px 24px' }}>
       <div className="page-header">
-        <h1 className="page-title">Exhibition</h1>
-        <p className="text-secondary" style={{ marginTop: '16px', fontSize: '1.25rem' }}>A gallery of my selected works, experiments, and systems.</p>
+        <h1 className="page-title">{t('projects.title')}</h1>
+        <p className="text-secondary" style={{ marginTop: '16px', fontSize: '1.25rem' }}>
+          {language === 'vi' ? 'Bộ sưu tập các dự án, thử nghiệm và hệ thống của mình.' : 'A gallery of my selected works, experiments, and systems.'}
+        </p>
       </div>
 
       <div className="gallery-grid">
@@ -28,7 +33,7 @@ const Projects = () => {
               <p className="text-secondary">{project.description}</p>
               
               <div className="card-footer">
-                <Link to={`/projects/${project.slug}`} className="btn-primary" style={{ display: 'block', textAlign: 'center', padding: '10px 20px', width: '100%', textDecoration: 'none' }}>View Details</Link>
+                <Link to={`/projects/${project.slug}`} className="btn-primary" style={{ display: 'block', textAlign: 'center', padding: '10px 20px', width: '100%', textDecoration: 'none' }}>{t('projects.view_details')}</Link>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 import './Blog.css';
 import './Projects.css'; // Reuse page-header
 
@@ -11,6 +12,7 @@ interface BlogMeta {
   color: string;
   slug: string;
   draft?: boolean;
+  lang?: string;
 }
 
 function parseFrontmatter(markdown: string) {
@@ -33,14 +35,19 @@ function parseFrontmatter(markdown: string) {
 }
 
 const modules = import.meta.glob('../content/blogs/*.md', { query: '?raw', eager: true });
-const posts: BlogMeta[] = Object.entries(modules).map(([path, rawContent]) => {
+const allPosts: BlogMeta[] = Object.entries(modules).map(([path, rawContent]) => {
   const rawStr = typeof rawContent === 'string' ? rawContent : (rawContent as any).default;
   const { attributes } = parseFrontmatter(rawStr);
-  const slug = path.split('/').pop()?.replace('.md', '') || '';
+  const filename = path.split('/').pop()?.replace('.md', '') || '';
+  const parts = filename.split('.');
+  const lang = parts.length > 1 ? parts.pop() : 'en';
+  const slug = parts.join('.');
+
   return { 
     ...attributes, 
     draft: attributes.draft === 'true' || attributes.draft === true,
-    slug 
+    slug,
+    lang
   } as BlogMeta;
 }).filter(p => !p.draft || import.meta.env.DEV).sort((a, b) => new Date(b.date || Date.now()).getTime() - new Date(a.date || Date.now()).getTime());
 
@@ -128,6 +135,9 @@ const SingleSelectDropdown = ({ options, selected, onChange, placeholder }: any)
 };
 
 const Blog = () => {
+  const { t, language } = useLanguage();
+  const posts = allPosts.filter(p => p.lang === language);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedYear, setSelectedYear] = useState<string>('All');
@@ -153,14 +163,16 @@ const Blog = () => {
   return (
     <div className="container animate-fade-up" style={{ padding: '60px 24px' }}>
       <div className="page-header">
-        <h1 className="page-title">Journal</h1>
-        <p className="text-secondary" style={{ marginTop: '16px', fontSize: '1.25rem' }}>Thoughts on game design, psychology, and systems.</p>
+        <h1 className="page-title">{t('blog.title') || 'Journal'}</h1>
+        <p className="text-secondary" style={{ marginTop: '16px', fontSize: '1.25rem' }}>
+          {language === 'vi' ? 'Những suy nghĩ về thiết kế game, tâm lý học và hệ thống.' : 'Thoughts on game design, psychology, and systems.'}
+        </p>
       </div>
 
       <div className="blog-controls">
         <input 
           type="text" 
-          placeholder="Search articles..." 
+          placeholder={language === 'vi' ? 'Tìm bài viết...' : 'Search articles...'}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="blog-search"
@@ -170,19 +182,19 @@ const Blog = () => {
             options={categories} 
             selected={selectedCategories} 
             onChange={setSelectedCategories} 
-            placeholder="Categories"
+            placeholder={language === 'vi' ? 'Danh mục' : 'Categories'}
           />
           <SingleSelectDropdown 
             options={years} 
             selected={selectedYear} 
             onChange={setSelectedYear} 
-            placeholder="Year"
+            placeholder={language === 'vi' ? 'Năm' : 'Year'}
           />
           <SingleSelectDropdown 
-            options={['Newest First', 'Oldest First']} 
-            selected={sortOrder === 'newest' ? 'Newest First' : 'Oldest First'} 
-            onChange={(val: string) => setSortOrder(val === 'Newest First' ? 'newest' : 'oldest')} 
-            placeholder="Sort"
+            options={language === 'vi' ? ['Mới nhất', 'Cũ nhất'] : ['Newest First', 'Oldest First']} 
+            selected={sortOrder === 'newest' ? (language === 'vi' ? 'Mới nhất' : 'Newest First') : (language === 'vi' ? 'Cũ nhất' : 'Oldest First')} 
+            onChange={(val: string) => setSortOrder((val === 'Newest First' || val === 'Mới nhất') ? 'newest' : 'oldest')} 
+            placeholder={language === 'vi' ? 'Sắp xếp' : 'Sort'}
           />
         </div>
       </div>
@@ -198,14 +210,14 @@ const Blog = () => {
               </div>
               <h2 className="blog-title">{post.title}</h2>
               <p className="blog-excerpt">{post.excerpt}</p>
-              <Link to={`/blog/${post.slug}`} className="read-more" style={{ textDecoration: 'none', color: 'inherit' }}>Read Article →</Link>
+              <Link to={`/blog/${post.slug}`} className="read-more" style={{ textDecoration: 'none', color: 'inherit' }}>{language === 'vi' ? 'Đọc bài viết →' : 'Read Article →'}</Link>
             </div>
           ))
         ) : (
           <div className="blog-empty">
-            <p>No articles found matching your criteria.</p>
+            <p>{language === 'vi' ? 'Không tìm thấy bài viết nào phù hợp.' : 'No articles found matching your criteria.'}</p>
             <button onClick={() => { setSearchQuery(''); setSelectedCategories([]); setSelectedYear('All'); setSortOrder('newest'); }} className="clear-filters-btn">
-              Clear Filters
+              {language === 'vi' ? 'Xóa bộ lọc' : 'Clear Filters'}
             </button>
           </div>
         )}

@@ -55,17 +55,33 @@ const translations: Record<Language, Record<string, string>> = {
   }
 };
 
+const getLangFromURL = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  let lang = urlParams.get('lang');
+  if (!lang && window.location.hash.includes('?')) {
+    const hashParams = new URLSearchParams(window.location.hash.split('?')[1]);
+    lang = hashParams.get('lang');
+  }
+  return lang === 'vi' || lang === 'en' ? lang : null;
+};
+
+const getInitialLang = (): Language => {
+  const urlLang = getLangFromURL();
+  if (urlLang) {
+    localStorage.setItem('lang', urlLang);
+    return urlLang as Language;
+  }
+  const saved = localStorage.getItem('lang') as Language;
+  if (saved && (saved === 'en' || saved === 'vi')) {
+    return saved;
+  }
+  return 'en'; // default
+};
+
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
-
-  useEffect(() => {
-    const saved = localStorage.getItem('lang') as Language;
-    if (saved && (saved === 'en' || saved === 'vi')) {
-      setLanguage(saved);
-    }
-  }, []);
+  const [language, setLanguage] = useState<Language>(getInitialLang);
 
   const toggleLanguage = () => {
     setLanguage(prev => {

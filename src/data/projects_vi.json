@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Hệ thống Gamification",
+    "slug": "gamification-engine",
+    "description": "Một framework theo module dùng để áp dụng cơ chế game vào các môi trường phi trò chơi. Bao gồm hệ thống tiến trình, huy hiệu và bảng xếp hạng động.",
+    "tags": ["React", "Node.js", "Hệ thống"],
+    "colorClass": "color-block-1",
+    "imagePlaceholder": "ENGINE"
+  },
+  {
+    "title": "Nguyên mẫu Rogue-like",
+    "slug": "rogue-like-prototype",
+    "description": "Khám phá thuật toán tạo màn chơi ngẫu nhiên và vòng lặp chiến đấu chặt chẽ trong Unity. Được xây dựng như một bài tập cân bằng các màn chạm trán.",
+    "tags": ["Unity", "C#", "Thiết kế Game"],
+    "colorClass": "color-block-2",
+    "imagePlaceholder": "ROGUE"
+  },
+  {
+    "title": "Hành trình Ứng dụng Giáo dục",
+    "slug": "educational-app-journey",
+    "description": "Thiết kế lại luồng hướng dẫn người dùng mới (onboarding) và luồng người dùng hoạt động hàng ngày cho một ứng dụng học ngoại ngữ sử dụng tâm lý học hành vi.",
+    "tags": ["UX/UI", "Gamification"],
+    "colorClass": "color-block-3",
+    "imagePlaceholder": "JOURNEY"
+  },
+  {
+    "title": "Mô phỏng Kinh tế",
+    "slug": "economy-simulator",
+    "description": "Một trình mô phỏng trên web giúp trực quan hóa kinh tế ảo, điểm tiêu thụ tài nguyên và kiểm soát lạm phát trong môi trường game MMO.",
+    "tags": ["TypeScript", "Toán học"],
+    "colorClass": "color-block-4",
+    "imagePlaceholder": "ECONOMY"
+  }
+]

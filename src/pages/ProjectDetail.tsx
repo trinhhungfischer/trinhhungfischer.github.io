@@ -1,22 +1,26 @@
 import { useParams, Link } from 'react-router-dom';
-import projectsData from '../data/projects.json';
+import { useLanguage } from '../contexts/LanguageContext';
+import projectsEn from '../data/projects_en.json';
+import projectsVi from '../data/projects_vi.json';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
+  const { language } = useLanguage();
+  const projectsData = language === 'vi' ? projectsVi : projectsEn;
   const project = projectsData.find(p => p.slug === slug);
 
   if (!project) {
     return (
       <div className="container" style={{ padding: '60px 24px' }}>
-        <h1>Project not found</h1>
-        <Link to="/projects" className="back-link">← Back to Exhibition</Link>
+        <h1>{language === 'vi' ? 'Không tìm thấy dự án' : 'Project not found'}</h1>
+        <Link to="/projects" className="back-link">← {language === 'vi' ? 'Quay lại Bộ sưu tập' : 'Back to Exhibition'}</Link>
       </div>
     );
   }
 
   return (
     <div className="container animate-fade-up" style={{ padding: '60px 24px' }}>
-      <Link to="/projects" className="back-link">← Back to Exhibition</Link>
+      <Link to="/projects" className="back-link">← {language === 'vi' ? 'Quay lại Bộ sưu tập' : 'Back to Exhibition'}</Link>
       
       <div className="page-header" style={{ marginTop: '24px' }}>
         <h1 className="page-title" style={{ fontSize: '3.5rem' }}>{project.title}</h1>
