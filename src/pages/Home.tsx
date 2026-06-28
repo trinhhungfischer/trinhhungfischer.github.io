@@ -2,7 +2,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 import './Home.css';
 
 const Home = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const cvPath = language === 'vi' ? '/cv/Trinh_Quang_Hung_CV_VI.pdf' : '/cv/Trinh_Quang_Hung_CV_EN.pdf';
 
   return (
     <div className="home-page animate-fade-up">
@@ -63,7 +64,7 @@ const Home = () => {
           </div>
 
           {/* Download CV Block */}
-          <a href="#" className="bento-item bento-project-2 hover-lift" style={{ alignItems: 'center', textAlign: 'center', textDecoration: 'none', color: 'inherit' }}>
+          <a href={cvPath} target="_blank" rel="noopener noreferrer" className="bento-item bento-project-2 hover-lift" style={{ alignItems: 'center', textAlign: 'center', textDecoration: 'none', color: 'inherit' }}>
             <h2 style={{ fontSize: '3rem', marginBottom: '8px', lineHeight: 1 }}>CV</h2>
             <p className="text-secondary" style={{ fontWeight: 700, textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '1px' }}>{t('home.download_cv')}</p>
             <div className="icon-btn" style={{ marginTop: '24px', background: 'var(--text-primary)', color: 'var(--bg-primary)' }}>↓</div>
