@@ -36,10 +36,23 @@ const ProjectDetail = () => {
       <div className="markdown-content">
         <p style={{ fontSize: '1.25rem', fontWeight: 600 }}>{project.description}</p>
         
-        <h2>Technologies & Systems</h2>
+        {project.startDate && project.endDate && (
+          <p className="text-secondary" style={{ marginBottom: '24px' }}>
+            <strong>Timeline:</strong> {project.startDate} — {project.endDate}
+          </p>
+        )}
+        
+        <h2>{language === 'vi' ? 'Dòng game & Thể loại' : 'Genres'}</h2>
         <ul>
-          {project.tags.map((tag, i) => (
-            <li key={i}>{tag}</li>
+          {project.genres && project.genres.map((genre: string, i: number) => (
+            <li key={i}>{genre}</li>
+          ))}
+        </ul>
+
+        <h2>{language === 'vi' ? 'Công cụ & Nền tảng' : 'Tools & Platforms'}</h2>
+        <ul>
+          {project.tools && project.tools.map((tool: string, i: number) => (
+            <li key={i}>{tool}</li>
           ))}
         </ul>
 

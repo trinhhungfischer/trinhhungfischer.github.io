@@ -18,7 +18,11 @@ collections:
           - {label: Title, name: title, widget: string}
           - {label: Slug, name: slug, widget: string}
           - {label: Description, name: description, widget: text}
-          - {label: Tags, name: tags, widget: list}
+          - {label: Genres, name: genres, widget: list}
+          - {label: Tools, name: tools, widget: list}
+          - {label: Start Date, name: startDate, widget: string, required: false}
+          - {label: End Date, name: endDate, widget: string, required: false, hint: "Use 'present' or YYYY-MM"}
+          - {label: Pinned, name: pinned, widget: boolean, default: false, required: false}
           - {label: Color, name: colorClass, widget: select, options: ["color-block-1", "color-block-2", "color-block-3", "color-block-4"]}
           - {label: Type, name: type, widget: select, options: ["company", "personal"], default: "company"}
           - {label: Image Text, name: imagePlaceholder, widget: string, required: false}

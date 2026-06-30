@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { MultiSelectDropdown } from '../components/Dropdowns';
+import { GroupedMultiSelectDropdown } from '../components/Dropdowns';
 import './Projects.css';
 import projectsEn from '../data/projects_en.json';
 import projectsVi from '../data/projects_vi.json';
@@ -10,62 +10,59 @@ const Projects = () => {
   const { t, language } = useLanguage();
   const allProjects = language === 'vi' ? projectsVi : projectsEn;
 
-  const companyProjects = allProjects.filter(p => p.type === 'company');
-  const personalProjects = allProjects.filter(p => p.type === 'personal');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-  const [selectedCompanyTags, setSelectedCompanyTags] = useState<string[]>([]);
-  const [selectedPersonalTags, setSelectedPersonalTags] = useState<string[]>([]);
+  // Calculate unique options for groups
+  const types = Array.from(new Set(allProjects.map(p => p.type)));
+  const genres = Array.from(new Set(allProjects.flatMap(p => p.genres || [])));
+  const tools = Array.from(new Set(allProjects.flatMap(p => p.tools || [])));
 
-  const companyTags = Array.from(new Set(companyProjects.flatMap(p => p.tags)));
-  const personalTags = Array.from(new Set(personalProjects.flatMap(p => p.tags)));
+  const filterGroups = [
+    { label: language === 'vi' ? 'Loại dự án' : 'Project Type', options: types },
+    { label: language === 'vi' ? 'Dòng game' : 'Genres', options: genres },
+    { label: language === 'vi' ? 'Công cụ' : 'Tools', options: tools },
+  ];
 
-  const filteredCompanyProjects = companyProjects.filter(p => {
-    if (selectedCompanyTags.length === 0) return true;
-    return selectedCompanyTags.some(tag => p.tags.includes(tag));
+  const filteredProjects = allProjects.filter(p => {
+    if (selectedTags.length === 0) return true;
+    
+    // Check if the project matches ANY of the selected tags (OR logic across all tags)
+    // You can adjust this to AND logic between groups if desired
+    const matchesType = selectedTags.includes(p.type);
+    const matchesGenre = p.genres && p.genres.some(g => selectedTags.includes(g));
+    const matchesTool = p.tools && p.tools.some(t => selectedTags.includes(t));
+    
+    return matchesType || matchesGenre || matchesTool;
   });
 
-  const filteredPersonalProjects = personalProjects.filter(p => {
-    if (selectedPersonalTags.length === 0) return true;
-    return selectedPersonalTags.some(tag => p.tags.includes(tag));
+  // Sorting Logic: 
+  // 1. Pinned (true first)
+  // 2. endDate desc (present is considered Infinity)
+  // 3. startDate desc
+  filteredProjects.sort((a, b) => {
+    if (a.pinned && !b.pinned) return -1;
+    if (!a.pinned && b.pinned) return 1;
+
+    const getEndDateVal = (dateStr: string | undefined) => {
+      if (!dateStr) return 0;
+      if (dateStr.toLowerCase() === 'present') return Infinity;
+      return new Date(dateStr).getTime();
+    };
+    
+    const getStartDateVal = (dateStr: string | undefined) => {
+      if (!dateStr) return 0;
+      return new Date(dateStr).getTime();
+    };
+
+    const endA = getEndDateVal(a.endDate);
+    const endB = getEndDateVal(b.endDate);
+
+    if (endA !== endB) return endB - endA;
+
+    const startA = getStartDateVal(a.startDate);
+    const startB = getStartDateVal(b.startDate);
+    return startB - startA;
   });
-
-  const renderProjectGrid = (projectsToRender: typeof allProjects) => {
-    if (projectsToRender.length === 0) {
-      return (
-        <div className="blog-empty" style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '40px 0' }}>
-          <p>{language === 'vi' ? 'Không tìm thấy dự án nào phù hợp.' : 'No projects found matching your criteria.'}</p>
-        </div>
-      );
-    }
-
-    return (
-      <div className="gallery-grid">
-        {projectsToRender.map((project, index) => (
-          <div className="project-card" key={index}>
-            <div 
-              className={`card-image-box ${project.colorClass}`} 
-              style={project.imageUrl ? { backgroundImage: `url(${project.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: 'transparent' } : {}}
-            >
-              {project.imageUrl ? null : project.imagePlaceholder}
-            </div>
-            <div className="card-content">
-              <div className="tags-row">
-                {project.tags.map((tag, i) => (
-                  <span key={i} className="project-tag">{tag}</span>
-                ))}
-              </div>
-              <h3>{project.title}</h3>
-              <p className="text-secondary">{project.description}</p>
-              
-              <div className="card-footer">
-                <Link to={`/projects/${project.slug}`} className="btn-primary" style={{ display: 'block', textAlign: 'center', padding: '10px 20px', width: '100%', textDecoration: 'none' }}>{t('projects.view_details')}</Link>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  };
 
   return (
     <div className="container animate-fade-up" style={{ padding: '60px 24px' }}>
@@ -76,31 +73,62 @@ const Projects = () => {
         </p>
       </div>
 
-      <section style={{ marginBottom: '60px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '16px' }}>
-          <h2 style={{ fontSize: '2rem', margin: 0 }}>{language === 'vi' ? 'Dự án Công ty' : 'Company Projects'}</h2>
-          <MultiSelectDropdown 
-            options={companyTags} 
-            selected={selectedCompanyTags} 
-            onChange={setSelectedCompanyTags} 
-            placeholder={language === 'vi' ? 'Lọc theo Tag' : 'Filter by Tag'}
-          />
-        </div>
-        {renderProjectGrid(filteredCompanyProjects)}
-      </section>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '32px' }}>
+        <GroupedMultiSelectDropdown 
+          groups={filterGroups} 
+          selected={selectedTags} 
+          onChange={setSelectedTags} 
+          placeholder={language === 'vi' ? 'Lọc dự án' : 'Filter Projects'}
+        />
+      </div>
 
-      <section>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '16px' }}>
-          <h2 style={{ fontSize: '2rem', margin: 0 }}>{language === 'vi' ? 'Dự án Cá nhân' : 'Personal Projects'}</h2>
-          <MultiSelectDropdown 
-            options={personalTags} 
-            selected={selectedPersonalTags} 
-            onChange={setSelectedPersonalTags} 
-            placeholder={language === 'vi' ? 'Lọc theo Tag' : 'Filter by Tag'}
-          />
+      {filteredProjects.length === 0 ? (
+        <div className="blog-empty" style={{ textAlign: 'center', padding: '40px 0' }}>
+          <p>{language === 'vi' ? 'Không tìm thấy dự án nào phù hợp.' : 'No projects found matching your criteria.'}</p>
         </div>
-        {renderProjectGrid(filteredPersonalProjects)}
-      </section>
+      ) : (
+        <div className="gallery-grid">
+          {filteredProjects.map((project, index) => (
+            <div className="project-card" key={index} style={{ position: 'relative' }}>
+              
+              {project.pinned && (
+                <div style={{ position: 'absolute', top: 12, right: 12, zIndex: 10, background: 'var(--bg-primary)', padding: '6px', borderRadius: '50%', boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="Pinned">
+                  📌
+                </div>
+              )}
+
+              <div 
+                className={`card-image-box ${project.colorClass}`} 
+                style={project.imageUrl ? { backgroundImage: `url(${project.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: 'transparent' } : {}}
+              >
+                {project.imageUrl ? null : project.imagePlaceholder}
+              </div>
+              <div className="card-content">
+                <div className="tags-row">
+                  {/* Combine genres and tools for display */}
+                  {project.type === 'personal' && <span className="project-tag" style={{ backgroundColor: 'var(--pale-blue)' }}>Personal</span>}
+                  {[...(project.genres || []), ...(project.tools || [])].map((tag, i) => (
+                    <span key={i} className="project-tag">{tag}</span>
+                  ))}
+                </div>
+                <h3>{project.title}</h3>
+                
+                {project.startDate && project.endDate && (
+                  <p className="text-secondary" style={{ fontSize: '0.85rem', marginBottom: '12px', fontWeight: 600 }}>
+                    {project.startDate} — {project.endDate}
+                  </p>
+                )}
+
+                <p className="text-secondary">{project.description}</p>
+                
+                <div className="card-footer">
+                  <Link to={`/projects/${project.slug}`} className="btn-primary" style={{ display: 'block', textAlign: 'center', padding: '10px 20px', width: '100%', textDecoration: 'none' }}>{t('projects.view_details')}</Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
