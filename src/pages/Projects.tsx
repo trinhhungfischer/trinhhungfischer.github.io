@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { GroupedMultiSelectDropdown } from '../components/Dropdowns';
+import { GroupedMultiSelectDropdown, SingleSelectDropdown } from '../components/Dropdowns';
 import './Projects.css';
 import projectsEn from '../data/projects_en.json';
 import projectsVi from '../data/projects_vi.json';
@@ -11,6 +11,7 @@ const Projects = () => {
   const allProjects = language === 'vi' ? projectsVi : projectsEn;
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
 
   // Calculate unique options for groups
   const types = Array.from(new Set(allProjects.map(p => p.type)));
@@ -27,7 +28,6 @@ const Projects = () => {
     if (selectedTags.length === 0) return true;
     
     // Check if the project matches ANY of the selected tags (OR logic across all tags)
-    // You can adjust this to AND logic between groups if desired
     const matchesType = selectedTags.includes(p.type);
     const matchesGenre = p.genres && p.genres.some(g => selectedTags.includes(g));
     const matchesTool = p.tools && p.tools.some(t => selectedTags.includes(t));
@@ -37,8 +37,7 @@ const Projects = () => {
 
   // Sorting Logic: 
   // 1. Pinned (true first)
-  // 2. endDate desc (present is considered Infinity)
-  // 3. startDate desc
+  // 2. endDate & startDate based on sortOrder
   filteredProjects.sort((a, b) => {
     if (a.pinned && !b.pinned) return -1;
     if (!a.pinned && b.pinned) return 1;
@@ -57,12 +56,17 @@ const Projects = () => {
     const endA = getEndDateVal(a.endDate);
     const endB = getEndDateVal(b.endDate);
 
-    if (endA !== endB) return endB - endA;
+    const sortMultiplier = sortOrder === 'newest' ? 1 : -1;
+
+    if (endA !== endB) return (endB - endA) * sortMultiplier;
 
     const startA = getStartDateVal(a.startDate);
     const startB = getStartDateVal(b.startDate);
-    return startB - startA;
+    return (startB - startA) * sortMultiplier;
   });
+
+  const sortOptions = language === 'vi' ? ['Mới nhất', 'Cũ nhất'] : ['Newest', 'Oldest'];
+  const currentSortOption = sortOrder === 'newest' ? sortOptions[0] : sortOptions[1];
 
   return (
     <div className="container animate-fade-up" style={{ padding: '60px 24px' }}>
@@ -73,7 +77,13 @@ const Projects = () => {
         </p>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '32px' }}>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '32px', gap: '16px', flexWrap: 'wrap' }}>
+        <SingleSelectDropdown 
+          options={sortOptions} 
+          selected={currentSortOption} 
+          onChange={(val: string) => setSortOrder(val === sortOptions[0] ? 'newest' : 'oldest')} 
+          placeholder={language === 'vi' ? 'Sắp xếp' : 'Sort by'}
+        />
         <GroupedMultiSelectDropdown 
           groups={filterGroups} 
           selected={selectedTags} 
@@ -92,8 +102,19 @@ const Projects = () => {
             <div className="project-card" key={index} style={{ position: 'relative' }}>
               
               {project.pinned && (
-                <div style={{ position: 'absolute', top: 12, right: 12, zIndex: 10, background: 'var(--bg-primary)', padding: '6px', borderRadius: '50%', boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="Pinned">
-                  📌
+                <div style={{ 
+                  position: 'absolute', top: 12, right: 12, zIndex: 10, 
+                  background: 'var(--bg-primary)', 
+                  width: '36px', height: '36px', 
+                  borderRadius: '50%', 
+                  border: 'var(--border-width) solid var(--border-color)',
+                  boxShadow: 'var(--shadow-sm)', 
+                  display: 'flex', alignItems: 'center', justifyContent: 'center' 
+                }} title="Pinned">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--text-primary)" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 17v5" />
+                    <path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z" />
+                  </svg>
                 </div>
               )}
 
@@ -105,7 +126,6 @@ const Projects = () => {
               </div>
               <div className="card-content">
                 <div className="tags-row">
-                  {/* Combine genres and tools for display */}
                   {project.type === 'personal' && <span className="project-tag" style={{ backgroundColor: 'var(--pale-blue)' }}>Personal</span>}
                   {[...(project.genres || []), ...(project.tools || [])].map((tag, i) => (
                     <span key={i} className="project-tag">{tag}</span>
