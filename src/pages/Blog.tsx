@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { MultiSelectDropdown, SingleSelectDropdown } from '../components/Dropdowns';
+import { GroupedMultiSelectDropdown, SingleSelectDropdown } from '../components/Dropdowns';
 import './Blog.css';
 import './Projects.css'; // Reuse page-header
 
@@ -58,21 +58,32 @@ const Blog = () => {
   const posts = allPosts.filter(p => p.lang === language);
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedYear, setSelectedYear] = useState<string>('All');
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
 
   const categories = Array.from(new Set(posts.map(p => p.category).filter(Boolean)));
   const years = ['All', ...Array.from(new Set(posts.map(p => new Date(p.date || Date.now()).getFullYear().toString())))].sort((a, b) => b.localeCompare(a));
+  
+  const filterGroups = [
+    { label: language === 'vi' ? 'Danh mục' : 'Categories', options: categories },
+    { label: language === 'vi' ? 'Năm' : 'Year', options: years.filter(y => y !== 'All') }
+  ];
 
   const filteredPosts = posts.filter(p => {
-    const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(p.category);
+    const postYear = new Date(p.date || Date.now()).getFullYear().toString();
+    
+    // Check if category passes
+    const hasCategorySelected = categories.some(c => selectedFilters.includes(c));
+    const passCategory = hasCategorySelected ? selectedFilters.includes(p.category) : true;
+    
+    // Check if year passes
+    const hasYearSelected = years.some(y => selectedFilters.includes(y));
+    const passYear = hasYearSelected ? selectedFilters.includes(postYear) : true;
+
     const matchesSearch = (p.title || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
                           (p.excerpt || '').toLowerCase().includes(searchQuery.toLowerCase());
-    const postYear = new Date(p.date || Date.now()).getFullYear().toString();
-    const matchesYear = selectedYear === 'All' || postYear === selectedYear;
     
-    return matchesCategory && matchesSearch && matchesYear;
+    return passCategory && passYear && matchesSearch;
   }).sort((a, b) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
@@ -97,17 +108,11 @@ const Blog = () => {
           className="blog-search"
         />
         <div className="blog-filters">
-          <MultiSelectDropdown 
-            options={categories} 
-            selected={selectedCategories} 
-            onChange={setSelectedCategories} 
-            placeholder={language === 'vi' ? 'Danh mục' : 'Categories'}
-          />
-          <SingleSelectDropdown 
-            options={years} 
-            selected={selectedYear} 
-            onChange={setSelectedYear} 
-            placeholder={language === 'vi' ? 'Năm' : 'Year'}
+          <GroupedMultiSelectDropdown 
+            groups={filterGroups} 
+            selected={selectedFilters} 
+            onChange={setSelectedFilters} 
+            placeholder={language === 'vi' ? 'Lọc bài viết' : 'Filter Articles'}
           />
           <SingleSelectDropdown 
             options={language === 'vi' ? ['Mới nhất', 'Cũ nhất'] : ['Newest First', 'Oldest First']} 
@@ -122,12 +127,11 @@ const Blog = () => {
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, index) => (
             <div className="blog-card" key={index} style={post.color ? { borderLeft: `12px solid ${post.color.replace('var(', '').replace(')', '')}` } : {}}>
-              <div className="blog-meta">
-                <span>{post.date}</span>
-                <span>//</span>
-                <span>{post.category}</span>
+              <div className="blog-meta" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                <span className="project-tag" style={{ margin: 0 }}>{post.category}</span>
+                <span className="text-secondary" style={{ fontSize: '0.85rem', fontWeight: 600 }}>{post.date}</span>
               </div>
-              <h2 className="blog-title">{post.title}</h2>
+              <h2 className="blog-title" style={{ marginTop: '0' }}>{post.title}</h2>
               <p className="blog-excerpt">{post.excerpt}</p>
               <Link to={`/blog/${post.slug}`} className="read-more" style={{ textDecoration: 'none', color: 'inherit' }}>{language === 'vi' ? 'Đọc bài viết →' : 'Read Article →'}</Link>
             </div>
@@ -135,7 +139,7 @@ const Blog = () => {
         ) : (
           <div className="blog-empty">
             <p>{language === 'vi' ? 'Không tìm thấy bài viết nào phù hợp.' : 'No articles found matching your criteria.'}</p>
-            <button onClick={() => { setSearchQuery(''); setSelectedCategories([]); setSelectedYear('All'); setSortOrder('newest'); }} className="clear-filters-btn">
+            <button onClick={() => { setSearchQuery(''); setSelectedFilters([]); setSortOrder('newest'); }} className="clear-filters-btn">
               {language === 'vi' ? 'Xóa bộ lọc' : 'Clear Filters'}
             </button>
           </div>
