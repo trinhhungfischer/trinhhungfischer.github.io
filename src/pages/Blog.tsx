@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import { MultiSelectDropdown, SingleSelectDropdown } from '../components/Dropdowns';
 import './Blog.css';
 import './Projects.css'; // Reuse page-header
 
@@ -51,88 +52,6 @@ const allPosts: BlogMeta[] = Object.entries(modules).map(([path, rawContent]) =>
   } as BlogMeta;
 }).filter(p => !p.draft || import.meta.env.DEV).sort((a, b) => new Date(b.date || Date.now()).getTime() - new Date(a.date || Date.now()).getTime());
 
-const MultiSelectDropdown = ({ options, selected, onChange, placeholder }: any) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const toggleOption = (option: string) => {
-    if (selected.includes(option)) {
-      onChange(selected.filter((item: string) => item !== option));
-    } else {
-      onChange([...selected, option]);
-    }
-  };
-
-  return (
-    <div className="custom-dropdown" ref={dropdownRef}>
-      <button className="dropdown-toggle" onClick={() => setIsOpen(!isOpen)}>
-        {selected.length > 0 ? `${placeholder} (${selected.length})` : placeholder}
-        <span className="dropdown-arrow">▼</span>
-      </button>
-      {isOpen && (
-        <div className="dropdown-menu">
-          {options.map((option: string) => (
-            <label key={option} className="dropdown-item">
-              <input
-                type="checkbox"
-                checked={selected.includes(option)}
-                onChange={() => toggleOption(option)}
-              />
-              {option}
-            </label>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
-const SingleSelectDropdown = ({ options, selected, onChange, placeholder }: any) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  return (
-    <div className="custom-dropdown" ref={dropdownRef}>
-      <button className="dropdown-toggle" onClick={() => setIsOpen(!isOpen)}>
-        {selected === 'All' ? placeholder : `${placeholder}: ${selected}`}
-        <span className="dropdown-arrow">▼</span>
-      </button>
-      {isOpen && (
-        <div className="dropdown-menu">
-          {options.map((option: string) => (
-            <div 
-              key={option} 
-              className={`dropdown-item ${selected === option ? 'selected' : ''}`}
-              onClick={() => { onChange(option); setIsOpen(false); }}
-            >
-              {option}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
 
 const Blog = () => {
   const { t, language } = useLanguage();

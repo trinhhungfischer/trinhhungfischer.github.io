@@ -2,6 +2,7 @@
   {
     "title": "Stickman Defense: Survival TD",
     "slug": "stickman-defense",
+    "type": "company",
     "description": "Lead Game Designer. Built all game metrics, progression curves, and balance sheets. Designed character systems, progression, economy, and UX flow. 300K+ downloads, 7K DAU, Rating 4.7★.",
     "tags": ["Midcore Strategy", "RPG", "Mobile", "Unity"],
     "colorClass": "color-block-1",
@@ -11,6 +12,7 @@
   {
     "title": "Guardian War: RPG Pixel Hero",
     "slug": "guardian-war",
+    "type": "company",
     "description": "Designed core metrics framework and user progression system. Balanced hero stats, economy, PvP/PvE and seasonal events. 1M+ downloads, 29K DAU, Rating 4.6★.",
     "tags": ["Midcore Strategy", "RPG", "Mobile", "Unity"],
     "colorClass": "color-block-2",
@@ -20,6 +22,7 @@
   {
     "title": "Block Jam Away: Color Slide",
     "slug": "block-jam",
+    "type": "company",
     "description": "Lead Game Designer. Designed progression system, level design, and economy. Automated level design process and built automated difficulty testing tool. 100K+ downloads, Rating 4.4★.",
     "tags": ["Casual Puzzle", "Mobile", "Unity"],
     "colorClass": "color-block-3",
@@ -29,10 +32,20 @@
   {
     "title": "Sinh Tử Môn ZingPlay",
     "slug": "sinh-tu-mon",
+    "type": "company",
     "description": "Client interface programming, gameplay mechanics implementation, and client-server synchronization.",
     "tags": ["Casual Tower Defense", "Mobile", "Cocos2D"],
     "colorClass": "color-block-4",
     "imagePlaceholder": "ZING",
     "imageUrl": "/images/projects/sinh-tu-mon.png"
+  },
+  {
+    "title": "Personal Prototype: Gamification Framework",
+    "slug": "personal-gamification",
+    "type": "personal",
+    "description": "A modular framework for applying game mechanics to non-game contexts. Features user progression, badges, and dynamic leaderboards.",
+    "tags": ["React", "Node.js", "Systems Design"],
+    "colorClass": "color-block-1",
+    "imagePlaceholder": "PROTO"
   }
 ]
