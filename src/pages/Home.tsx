@@ -71,8 +71,21 @@ const Home = () => {
             }}
           >
             <div className="project-tag" style={{ marginBottom: '16px' }}>Featured</div>
-            <h3 style={{ margin: 0 }}>{featuredProject.title}</h3>
-            <p className={featuredProject.imageUrl ? "" : "text-secondary"} style={{ marginTop: '8px', color: featuredProject.imageUrl ? '#e2e8f0' : undefined }}>{featuredProject.description.substring(0, 100)}...</p>
+            <h3 style={{ 
+              margin: 0,
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden'
+            }}>{featuredProject.title}</h3>
+            <p className={featuredProject.imageUrl ? "" : "text-secondary"} style={{ 
+              marginTop: '8px', 
+              color: featuredProject.imageUrl ? '#e2e8f0' : undefined,
+              display: '-webkit-box',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden'
+            }}>{featuredProject.description}</p>
           </Link>
 
           {/* Download CV Block */}

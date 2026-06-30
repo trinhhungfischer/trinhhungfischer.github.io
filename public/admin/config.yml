@@ -1,10 +1,16 @@
 local_backend: true
 backend:
-  name: git-gateway
+  name: github
+  repo: trinhhungfischer/trinhhungfischer.github.io
   branch: master # Branch to update
 
 media_folder: "public/images"
 public_folder: "/images"
+
+i18n:
+  structure: multiple_files
+  locales: [vi, en]
+  default_locale: vi
 
 collections:
   - name: "projects"
@@ -33,10 +39,11 @@ collections:
     folder: "src/content/blogs"
     create: true
     slug: "{{slug}}"
+    i18n: true
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
-      - {label: "Category", name: "category", widget: "string"}
-      - {label: "Excerpt", name: "excerpt", widget: "text"}
-      - {label: "Color", name: "color", widget: "select", options: ["var(--pale-blue)", "var(--pale-yellow)", "var(--pale-green)", "var(--pale-pink)", "var(--pale-orange)"]}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Title", name: "title", widget: "string", i18n: true}
+      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, i18n: duplicate}
+      - {label: "Category", name: "category", widget: "string", i18n: true}
+      - {label: "Excerpt", name: "excerpt", widget: "text", i18n: true}
+      - {label: "Color", name: "color", widget: "select", options: ["var(--pale-blue)", "var(--pale-yellow)", "var(--pale-green)", "var(--pale-pink)", "var(--pale-orange)"], i18n: duplicate}
+      - {label: "Body", name: "body", widget: "markdown", i18n: true}
