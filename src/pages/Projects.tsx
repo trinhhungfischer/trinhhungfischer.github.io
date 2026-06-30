@@ -20,8 +20,11 @@ const Projects = () => {
       <div className="gallery-grid">
         {projects.map((project, index) => (
           <div className="project-card" key={index}>
-            <div className={`card-image-box ${project.colorClass}`}>
-              {project.imagePlaceholder}
+            <div 
+              className={`card-image-box ${project.colorClass}`} 
+              style={project.imageUrl ? { backgroundImage: `url(${project.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: 'transparent' } : {}}
+            >
+              {project.imageUrl ? null : project.imagePlaceholder}
             </div>
             <div className="card-content">
               <div className="tags-row">

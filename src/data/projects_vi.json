@@ -1,34 +1,38 @@
 [
   {
-    "title": "Hệ thống Gamification",
-    "slug": "gamification-engine",
-    "description": "Một framework theo module dùng để áp dụng cơ chế game vào các môi trường phi trò chơi. Bao gồm hệ thống tiến trình, huy hiệu và bảng xếp hạng động.",
-    "tags": ["React", "Node.js", "Hệ thống"],
+    "title": "Stickman Defense: Survival TD",
+    "slug": "stickman-defense",
+    "description": "Lead Game Designer. Xây dựng toàn bộ hệ thống chỉ số game, progression curve, balance sheet. Thiết kế hệ thống nhân vật, progression, economy, guild, sự kiện và UX flow. 300K+ downloads, 7K DAU, Rating 4.7★.",
+    "tags": ["Midcore Strategy", "RPG", "Mobile", "Unity"],
     "colorClass": "color-block-1",
-    "imagePlaceholder": "ENGINE"
+    "imagePlaceholder": "STICKMAN",
+    "imageUrl": "/images/projects/stickman-defense.png"
   },
   {
-    "title": "Nguyên mẫu Rogue-like",
-    "slug": "rogue-like-prototype",
-    "description": "Khám phá thuật toán tạo màn chơi ngẫu nhiên và vòng lặp chiến đấu chặt chẽ trong Unity. Được xây dựng như một bài tập cân bằng các màn chạm trán.",
-    "tags": ["Unity", "C#", "Thiết kế Game"],
+    "title": "Guardian War: RPG Pixel Hero",
+    "slug": "guardian-war",
+    "description": "Xây dựng core metrics framework và user progression system. Thiết kế và cân bằng các hệ thống hero stats, economy, PvP/PvE và sự kiện. 1M+ downloads, 29K DAU, Rating 4.6★.",
+    "tags": ["Midcore Strategy", "RPG", "Mobile", "Unity"],
     "colorClass": "color-block-2",
-    "imagePlaceholder": "ROGUE"
+    "imagePlaceholder": "GUARDIAN",
+    "imageUrl": "/images/projects/guardian-war.png"
   },
   {
-    "title": "Hành trình Ứng dụng Giáo dục",
-    "slug": "educational-app-journey",
-    "description": "Thiết kế lại luồng hướng dẫn người dùng mới (onboarding) và luồng người dùng hoạt động hàng ngày cho một ứng dụng học ngoại ngữ sử dụng tâm lý học hành vi.",
-    "tags": ["UX/UI", "Gamification"],
+    "title": "Block Jam Away: Color Slide",
+    "slug": "block-jam",
+    "description": "Lead Game Designer. Thiết kế hệ thống progression, level design và economy. Tự động hóa quy trình thiết kế màn chơi và xây dựng công cụ kiểm thử độ khó tự động. 100K+ downloads, Rating 4.4★.",
+    "tags": ["Casual Puzzle", "Mobile", "Unity"],
     "colorClass": "color-block-3",
-    "imagePlaceholder": "JOURNEY"
+    "imagePlaceholder": "JAM",
+    "imageUrl": "/images/projects/block-jam.png"
   },
   {
-    "title": "Mô phỏng Kinh tế",
-    "slug": "economy-simulator",
-    "description": "Một trình mô phỏng trên web giúp trực quan hóa kinh tế ảo, điểm tiêu thụ tài nguyên và kiểm soát lạm phát trong môi trường game MMO.",
-    "tags": ["TypeScript", "Toán học"],
+    "title": "Sinh Tử Môn ZingPlay",
+    "slug": "sinh-tu-mon",
+    "description": "Lập trình giao diện client, các cơ chế gameplay và một số hệ thống server đồng bộ với client.",
+    "tags": ["Casual Tower Defense", "Mobile", "Cocos2D"],
     "colorClass": "color-block-4",
-    "imagePlaceholder": "ECONOMY"
+    "imagePlaceholder": "ZING",
+    "imageUrl": "/images/projects/sinh-tu-mon.png"
   }
 ]

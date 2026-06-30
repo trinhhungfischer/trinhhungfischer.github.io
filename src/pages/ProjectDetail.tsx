@@ -26,8 +26,11 @@ const ProjectDetail = () => {
         <h1 className="page-title" style={{ fontSize: '3.5rem' }}>{project.title}</h1>
       </div>
 
-      <div className={`card-image-box ${project.colorClass}`} style={{ width: '100%', height: '300px', marginBottom: '40px', border: '2px solid #111' }}>
-        {project.imagePlaceholder}
+      <div 
+        className={`card-image-box ${project.colorClass}`} 
+        style={project.imageUrl ? { width: '100%', height: '300px', marginBottom: '40px', border: '2px solid #111', backgroundImage: `url(${project.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: 'transparent' } : { width: '100%', height: '300px', marginBottom: '40px', border: '2px solid #111' }}
+      >
+        {project.imageUrl ? null : project.imagePlaceholder}
       </div>
 
       <div className="markdown-content">

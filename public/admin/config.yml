@@ -20,7 +20,8 @@ collections:
           - {label: Description, name: description, widget: text}
           - {label: Tags, name: tags, widget: list}
           - {label: Color, name: colorClass, widget: select, options: ["color-block-1", "color-block-2", "color-block-3", "color-block-4"]}
-          - {label: Image Text, name: imagePlaceholder, widget: string}
+          - {label: Image Text, name: imagePlaceholder, widget: string, required: false}
+          - {label: Image, name: imageUrl, widget: image, required: false}
 
   - name: "blog"
     label: "Blog Posts"

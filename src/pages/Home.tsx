@@ -61,10 +61,13 @@ const Home = () => {
           </div>
 
           {/* Project 1 */}
-          <div className="bento-item bento-project-1">
+          <div 
+            className="bento-item bento-project-1" 
+            style={featuredProject.imageUrl ? { backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(${featuredProject.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' } : {}}
+          >
             <div className="project-tag">Featured</div>
             <h3>{featuredProject.title}</h3>
-            <p className="text-secondary" style={{ marginTop: '8px' }}>{featuredProject.description.substring(0, 50)}...</p>
+            <p className={featuredProject.imageUrl ? "" : "text-secondary"} style={{ marginTop: '8px', color: featuredProject.imageUrl ? '#e2e8f0' : undefined }}>{featuredProject.description.substring(0, 100)}...</p>
           </div>
 
           {/* Download CV Block */}

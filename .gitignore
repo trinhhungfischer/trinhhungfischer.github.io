@@ -26,3 +26,8 @@ dist-ssr
 # Private
 .env
 private
+
+# Temporary scripts
+download_images.mjs
+extract_guardian_war.mjs
+fetch_apkpure.mjs

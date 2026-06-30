@@ -1,34 +1,38 @@
 [
   {
-    "title": "Gamification Engine",
-    "slug": "gamification-engine",
-    "description": "A modular framework for applying game mechanics to non-game contexts. Features user progression, badges, and dynamic leaderboards.",
-    "tags": ["React", "Node.js", "Systems Design"],
+    "title": "Stickman Defense: Survival TD",
+    "slug": "stickman-defense",
+    "description": "Lead Game Designer. Built all game metrics, progression curves, and balance sheets. Designed character systems, progression, economy, and UX flow. 300K+ downloads, 7K DAU, Rating 4.7★.",
+    "tags": ["Midcore Strategy", "RPG", "Mobile", "Unity"],
     "colorClass": "color-block-1",
-    "imagePlaceholder": "ENGINE"
+    "imagePlaceholder": "STICKMAN",
+    "imageUrl": "/images/projects/stickman-defense.png"
   },
   {
-    "title": "Rogue-like Prototype",
-    "slug": "rogue-like-prototype",
-    "description": "Exploring procedural generation and tight combat loops in Unity. Built as an exercise in balancing enemy encounters.",
-    "tags": ["Unity", "C#", "Game Design"],
+    "title": "Guardian War: RPG Pixel Hero",
+    "slug": "guardian-war",
+    "description": "Designed core metrics framework and user progression system. Balanced hero stats, economy, PvP/PvE and seasonal events. 1M+ downloads, 29K DAU, Rating 4.6★.",
+    "tags": ["Midcore Strategy", "RPG", "Mobile", "Unity"],
     "colorClass": "color-block-2",
-    "imagePlaceholder": "ROGUE"
+    "imagePlaceholder": "GUARDIAN",
+    "imageUrl": "/images/projects/guardian-war.png"
   },
   {
-    "title": "Educational App Journey",
-    "slug": "educational-app-journey",
-    "description": "Redesigned the onboarding and daily active user flow for a language learning app using behavioral psychology.",
-    "tags": ["UX/UI", "Gamification"],
+    "title": "Block Jam Away: Color Slide",
+    "slug": "block-jam",
+    "description": "Lead Game Designer. Designed progression system, level design, and economy. Automated level design process and built automated difficulty testing tool. 100K+ downloads, Rating 4.4★.",
+    "tags": ["Casual Puzzle", "Mobile", "Unity"],
     "colorClass": "color-block-3",
-    "imagePlaceholder": "JOURNEY"
+    "imagePlaceholder": "JAM",
+    "imageUrl": "/images/projects/block-jam.png"
   },
   {
-    "title": "Economy Simulator",
-    "slug": "economy-simulator",
-    "description": "A web-based simulator visualizing virtual economies, resource sinks, and inflation control in MMO environments.",
-    "tags": ["TypeScript", "Math"],
+    "title": "Sinh Tử Môn ZingPlay",
+    "slug": "sinh-tu-mon",
+    "description": "Client interface programming, gameplay mechanics implementation, and client-server synchronization.",
+    "tags": ["Casual Tower Defense", "Mobile", "Cocos2D"],
     "colorClass": "color-block-4",
-    "imagePlaceholder": "ECONOMY"
+    "imagePlaceholder": "ZING",
+    "imageUrl": "/images/projects/sinh-tu-mon.png"
   }
 ]
