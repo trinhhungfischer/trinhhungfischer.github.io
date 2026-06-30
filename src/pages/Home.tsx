@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import projectsEn from '../data/projects_en.json';
 import projectsVi from '../data/projects_vi.json';
@@ -61,14 +62,18 @@ const Home = () => {
           </div>
 
           {/* Project 1 */}
-          <div 
-            className="bento-item bento-project-1" 
-            style={featuredProject.imageUrl ? { backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(${featuredProject.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' } : {}}
+          <Link 
+            to={`/projects/${featuredProject.slug}`}
+            className="bento-item bento-project-1 hover-lift" 
+            style={{ 
+              textDecoration: 'none',
+              ...(featuredProject.imageUrl ? { backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(${featuredProject.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff' } : {}) 
+            }}
           >
             <div className="project-tag">Featured</div>
             <h3>{featuredProject.title}</h3>
             <p className={featuredProject.imageUrl ? "" : "text-secondary"} style={{ marginTop: '8px', color: featuredProject.imageUrl ? '#e2e8f0' : undefined }}>{featuredProject.description.substring(0, 100)}...</p>
-          </div>
+          </Link>
 
           {/* Download CV Block */}
           <a href={cvPath} target="_blank" rel="noopener noreferrer" className="bento-item bento-project-2 hover-lift" style={{ alignItems: 'center', textAlign: 'center', textDecoration: 'none', color: 'inherit' }}>
@@ -78,15 +83,15 @@ const Home = () => {
           </a>
 
           {/* Blog Teaser */}
-          <div className="bento-item bento-blog">
+          <Link to="/blog" className="bento-item bento-blog hover-lift" style={{ textDecoration: 'none', color: 'inherit' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
               <div>
                 <h3>Latest Thoughts</h3>
                 <p className="text-secondary" style={{ marginTop: '8px' }}>Read my latest articles on game design theory.</p>
               </div>
-              <button className="icon-btn">→</button>
+              <button className="icon-btn" style={{ pointerEvents: 'none' }}>→</button>
             </div>
-          </div>
+          </Link>
 
         </div>
       </div>
