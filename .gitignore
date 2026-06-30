@@ -31,3 +31,4 @@ private
 download_images.mjs
 extract_guardian_war.mjs
 fetch_apkpure.mjs
+get_guardian_icon.mjs
