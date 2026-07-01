@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Venn Diagram - Inclusion Exclusion</title>
+
+<style>
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width:700px;
+    margin:0 auto;
+    text-align:center;
+}
+
+svg{
+    background:white;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,0,0,.15);
+}
+
+circle{
+    fill-opacity:.35;
+    stroke-width:3;
+}
+
+.label{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.region{
+    font-size:16px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Inclusion - Exclusion</h2>
+
+<svg width="600" height="450">
+
+<!-- Circles -->
+<circle cx="250" cy="170" r="120"
+        fill="#ff5555"
+        stroke="#cc0000"/>
+
+<circle cx="350" cy="170" r="120"
+        fill="#55aa55"
+        stroke="#228822"/>
+
+<circle cx="300" cy="270" r="120"
+        fill="#5599ff"
+        stroke="#0044cc"/>
+
+<!-- Labels -->
+<text x="200" y="70" class="label">E1</text>
+<text x="390" y="70" class="label">E2</text>
+<text x="295" y="415" class="label">E3</text>
+
+<!-- Individual regions -->
+<text x="165" y="170" class="region">+E1</text>
+<text x="405" y="170" class="region">+E2</text>
+<text x="300" y="335" class="region">+E3</text>
+
+<!-- Pair intersections -->
+<text x="300" y="155" class="region">−E1E2</text>
+<text x="235" y="245" class="region">−E1E3</text>
+<text x="345" y="245" class="region">−E2E3</text>
+
+<!-- Triple intersection -->
+<circle cx="300" cy="205" r="5" fill="black"/>
+<text x="315" y="210" class="region">+E1E2E3</text>
+
+</svg>
+
+</div>
+
+</body>
+</html>

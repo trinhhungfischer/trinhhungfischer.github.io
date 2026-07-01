@@ -1,7 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeRaw from 'rehype-raw';
+import rehypeKatex from 'rehype-katex';
+import rehypeSlug from 'rehype-slug';
+import GithubSlugger from 'github-slugger';
 import { useLanguage } from '../contexts/LanguageContext';
+import InteractiveVenn from '../components/InteractiveVenn';
 import './BlogPost.css';
 import './Projects.css'; // For page-header
 
@@ -60,6 +66,23 @@ const BlogPost = () => {
     );
   }
 
+  // Generate Table of Contents
+  const slugger = new GithubSlugger();
+  const headings: { level: number; text: string; id: string }[] = [];
+  const headingRegex = /^(#{1,3})\s+(.+)$/gm;
+  let match;
+  while ((match = headingRegex.exec(post.body)) !== null) {
+    const level = match[1].length;
+    const rawText = match[2].trim();
+    // Xóa các ký tự markdown cho text hiển thị (giữ nguyên cho ID)
+    const text = rawText.replace(/\[(.*?)\]\(.*?\)/g, '$1').replace(/[*`_]/g, '');
+    headings.push({
+      level,
+      text,
+      id: slugger.slug(rawText)
+    });
+  }
+
   return (
     <div className="container animate-fade-up" style={{ padding: '60px 24px' }}>
       <Link to="/blog" className="back-link">← {language === 'vi' ? 'Quay lại Nhật ký' : 'Back to Journal'}</Link>
@@ -73,10 +96,33 @@ const BlogPost = () => {
         <h1 className="page-title" style={{ fontSize: '3.5rem' }}>{post.title}</h1>
       </div>
 
-      <div className="markdown-content">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {post.body}
-        </ReactMarkdown>
+      <div className="blog-layout">
+        <div className="markdown-content">
+          <ReactMarkdown 
+            remarkPlugins={[remarkGfm, remarkMath]} 
+            rehypePlugins={[rehypeRaw, rehypeKatex, rehypeSlug]}
+            components={{
+              'interactive-venn': InteractiveVenn
+            } as any}
+          >
+            {post.body}
+          </ReactMarkdown>
+        </div>
+        
+        {headings.length > 0 && (
+          <aside className="blog-toc-sidebar">
+            <div className="blog-toc-sticky">
+              <h3>{language === 'vi' ? 'Mục lục' : 'Table of Contents'}</h3>
+              <ul>
+                {headings.map((h, i) => (
+                  <li key={i} className={`toc-level-${h.level}`}>
+                    <a href={`#${h.id}`}>{h.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+        )}
       </div>
     </div>
   );

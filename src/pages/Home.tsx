@@ -46,7 +46,7 @@ const Home = () => {
           <div className="bento-item bento-photo">
             <div className="avatar-wrapper square-shape">
               <img 
-                src="/images/my-logo.png" 
+                src="/images/profile.png" 
                 alt="Trinh Hung" 
                 className="profile-img"
               />

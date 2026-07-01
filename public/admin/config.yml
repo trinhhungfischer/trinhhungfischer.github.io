@@ -39,6 +39,8 @@ collections:
     folder: "src/content/blogs"
     create: true
     slug: "{{slug}}"
+    media_folder: "{{media_folder}}/blogs/{{slug}}"
+    public_folder: "{{public_folder}}/blogs/{{slug}}"
     i18n: true
     fields:
       - {label: "Title", name: "title", widget: "string", i18n: true}

@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { GroupedMultiSelectDropdown, SingleSelectDropdown } from '../components/Dropdowns';
 import './Projects.css';
@@ -10,8 +9,24 @@ const Projects = () => {
   const { t, language } = useLanguage();
   const allProjects = language === 'vi' ? projectsVi : projectsEn;
 
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  const selectedTags = searchParams.get('tags')?.split(',').filter(Boolean) || [];
+  const sortOrder = (searchParams.get('sort') as 'newest' | 'oldest') || 'newest';
+
+  const setSelectedTags = (tags: string[]) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (tags.length > 0) newParams.set('tags', tags.join(','));
+    else newParams.delete('tags');
+    setSearchParams(newParams, { replace: true });
+  };
+
+  const setSortOrder = (sort: 'newest' | 'oldest') => {
+    const newParams = new URLSearchParams(searchParams);
+    if (sort === 'newest') newParams.delete('sort');
+    else newParams.set('sort', sort);
+    setSearchParams(newParams, { replace: true });
+  };
 
   // Calculate unique options for groups
   const types = Array.from(new Set(allProjects.map(p => p.type)));

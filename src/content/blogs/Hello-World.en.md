@@ -9,7 +9,7 @@ draft: false
 
 # Round Up
 
-![Header image](/images/about-me-header.png)
+![Header image](/images/blogs/Hello-World/about-me-header.png)
 
 Perhaps this is the longest article and took the most time to write by me, a Game Designer who has been trying to work in the industry for the past 3 years. It's not long enough but definitely not a short period either. There is really very little time to sit down and summarize my working journey over the past 3 years, from the stage of being a stumbling apprentice with almost no knowledge, treating what senior Nhat said as a bible, to someone who has experienced more, gradually trying to find good answers and a solid foothold, understanding a little bit more.
 
@@ -44,7 +44,7 @@ I often tell the story of the coincidental event of why I became a Game Designer
 > - First, people might ask if the choice above was interesting. According to game theory, I'm having a very fun game because I got a gacha result, a very real-life gacha game. I think no matter which choice I fell into, I would still be very happy with it, and choice one is still very fun now and will be for a few more years.
 > - Second, perhaps in an alternate timeline, the dice landed on a different face. I strongly believe in the multiverse theory haha, so if anyone asks, try building a multiverse travel machine and ask.
 
-![Dice Roll](/images/about-me-dice.png)
+![Dice Roll](/images/blogs/Hello-World/about-me-dice.png)
 
 ## The Very Beginning 2
 

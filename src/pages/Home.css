@@ -4,6 +4,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(200px, auto);
   gap: 24px;
+  grid-auto-flow: dense;
 }
 
 /* Các khối hình học cơ bản */
@@ -35,10 +36,10 @@
 
 .bento-photo {
   grid-column: span 1;
-  grid-row: span 2;
+  grid-row: span 1;
   background-color: var(--pale-yellow);
   align-items: center;
-  padding: 32px;
+  padding: 16px;
 }
 
 .avatar-wrapper {
@@ -67,7 +68,7 @@
 }
 
 .bento-project-1 {
-  grid-column: span 1;
+  grid-column: span 2;
   background-color: var(--pale-pink);
 }
 
@@ -214,6 +215,9 @@
     max-width: 300px;
   }
   .bento-blog {
+    grid-column: span 2;
+  }
+  .bento-project-1, .bento-project-2 {
     grid-column: span 2;
   }
 }

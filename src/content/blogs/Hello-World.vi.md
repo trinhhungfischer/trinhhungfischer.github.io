@@ -9,7 +9,7 @@ draft: false
 
 # Round Up
 
-![Header image](/images/about-me-header.png)
+![Header image](/images/blogs/Hello-World/about-me-header.png)
 
 Có lẽ đây là bài viết dài nhất mà lâu nhất để thực hiện bởi Mình một Game Designer đã cố gắng làm việc trong 3 năm qua. Chưa đủ dài nhưng cũng không phải thời gian thật sự quá ngắn. Thật sự có rất ít thời gian để ngồi tổng hợp lại hành trình làm việc trong 3 năm qua của bản thân từ giai đoạn là một tập sự chập chững gần như không hiểu biết nhiều, coi những điều anh Nhật nói như kinh thánh đến một đứa từng trải dần dần đang cố tìm lời giải và chỗ đứng tốt, hiểu một chút hơn.
 
@@ -44,7 +44,7 @@ Tớ hay kể về sự kiện tình cờ tại sao tôi lại là Game Designer
 > - First, mọi người có thể hỏi lựa chọn trên có thú vị không? Theo lý thuyết trò chơi, tớ đang có một trò chơi rất vui vì đã được một kết quả gacha đấy chứ, một trò chơi gacha rất đời. Tớ nghĩ dù vào lựa chọn nào thì tôi sẽ vẫn rất vui vì nó thôi, và lựa chọn một tới giờ và ít năm nữa nó vẫn rất vui.
 > - Second, có lẽ ở dòng thời gian khác con xúc xắc ở mặt khác rồi, tớ rất tin vào thuyết đa vũ trụ nha haha nên có lẽ nếu ai hỏi thì cố làm cỗ máy di chuyển đa vũ trụ đi mà hỏi.
 
-![Dice Roll](/images/about-me-dice.png)
+![Dice Roll](/images/blogs/Hello-World/about-me-dice.png)
 
 ## Rất khởi đầu 2
 

@@ -2,6 +2,7 @@
 title: "Phân tích Game Design bằng gì?"
 date: "2023-03-25"
 category: "Archive"
+tags: "Psychology"
 excerpt: "Tại sao lại có bài viết này? Nay tôi đọc được một luồng quan điểm về cách phân tích Game Design trên trang blog của Lost Garden do Daniel Cook (Da..."
 color: "var(--pale-green)"
 ---

@@ -97,3 +97,107 @@
   background: transparent;
   padding: 0;
 }
+
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 4px 4px 0px rgba(17,17,17,1);
+  background: white;
+}
+
+.markdown-content th,
+.markdown-content td {
+  border: var(--border-width) solid var(--border-color);
+  padding: 12px 16px;
+}
+
+.markdown-content th {
+  background-color: var(--text-primary);
+  color: white;
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+.markdown-content tr:nth-child(even) {
+  background-color: rgba(0,0,0,0.03);
+}
+
+/* Blog Layout & TOC */
+.blog-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 40px;
+  flex-direction: column-reverse; /* On small screens, TOC will appear above content */
+}
+
+.markdown-content {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.blog-toc-sidebar {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.blog-toc-sticky {
+  padding: 24px;
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 4px 4px 0px rgba(17,17,17,1);
+  background: white;
+  border-radius: var(--border-radius);
+}
+
+@media (min-width: 1024px) {
+  .blog-layout {
+    flex-direction: row;
+  }
+  .blog-toc-sidebar {
+    width: 250px;
+  }
+  .blog-toc-sticky {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+.blog-toc-sticky h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.blog-toc-sticky ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-toc-sticky li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.blog-toc-sticky a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s, font-weight 0.2s;
+  display: block;
+}
+
+.blog-toc-sticky a:hover {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.toc-level-1 { margin-left: 0; font-weight: 600; margin-top: 12px; }
+.toc-level-1:first-child { margin-top: 0; }
+.toc-level-2 { margin-left: 12px; }
+.toc-level-3 { margin-left: 24px; font-size: 0.9rem; }

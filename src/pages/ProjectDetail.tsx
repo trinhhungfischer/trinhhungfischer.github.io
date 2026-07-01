@@ -1,13 +1,34 @@
 import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeRaw from 'rehype-raw';
+import rehypeKatex from 'rehype-katex';
 import projectsEn from '../data/projects_en.json';
 import projectsVi from '../data/projects_vi.json';
+
+interface Project {
+  title: string;
+  slug: string;
+  type: string;
+  startDate?: string;
+  endDate?: string;
+  pinned?: boolean;
+  description: string;
+  genres?: string[];
+  tools?: string[];
+  colorClass?: string;
+  imagePlaceholder?: string;
+  imageUrl?: string;
+  content?: string;
+}
 
 const ProjectDetail = () => {
   const { slug } = useParams();
   const { language } = useLanguage();
   const projectsData = language === 'vi' ? projectsVi : projectsEn;
-  const project = projectsData.find(p => p.slug === slug);
+  const project = projectsData.find(p => p.slug === slug) as Project | undefined;
 
   if (!project) {
     return (
@@ -56,10 +77,18 @@ const ProjectDetail = () => {
           ))}
         </ul>
 
-        <h2>About the Project</h2>
-        <p>
-          (This is a detailed description of the project. You can edit <code>src/pages/ProjectDetail.tsx</code> or add a new field in <code>projects.json</code> to display full case studies here.)
-        </p>
+        {project.content ? (
+          <div className="project-markdown-content" style={{ marginTop: '32px' }}>
+            <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>{project.content}</ReactMarkdown>
+          </div>
+        ) : (
+          <>
+            <h2>About the Project</h2>
+            <p>
+              (This is a detailed description of the project. You can edit <code>src/pages/ProjectDetail.tsx</code> or add a new field in <code>projects.json</code> to display full case studies here.)
+            </p>
+          </>
+        )}
 
       </div>
     </div>

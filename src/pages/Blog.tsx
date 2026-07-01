@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { GroupedMultiSelectDropdown, SingleSelectDropdown } from '../components/Dropdowns';
 import './Blog.css';
@@ -14,6 +13,7 @@ interface BlogMeta {
   slug: string;
   draft?: boolean;
   lang?: string;
+  tags?: string;
 }
 
 function parseFrontmatter(markdown: string) {
@@ -57,15 +57,40 @@ const Blog = () => {
   const { t, language } = useLanguage();
   const posts = allPosts.filter(p => p.lang === language);
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-  const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  const searchQuery = searchParams.get('q') || '';
+  const selectedFilters = searchParams.get('filters')?.split(',').filter(Boolean) || [];
+  const sortOrder = (searchParams.get('sort') as 'newest' | 'oldest') || 'newest';
+
+  const setSearchQuery = (q: string) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (q) newParams.set('q', q);
+    else newParams.delete('q');
+    setSearchParams(newParams, { replace: true });
+  };
+
+  const setSelectedFilters = (filters: string[]) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (filters.length > 0) newParams.set('filters', filters.join(','));
+    else newParams.delete('filters');
+    setSearchParams(newParams, { replace: true });
+  };
+
+  const setSortOrder = (sort: 'newest' | 'oldest') => {
+    const newParams = new URLSearchParams(searchParams);
+    if (sort === 'newest') newParams.delete('sort');
+    else newParams.set('sort', sort);
+    setSearchParams(newParams, { replace: true });
+  };
 
   const categories = Array.from(new Set(posts.map(p => p.category).filter(Boolean)));
+  const allTags = Array.from(new Set(posts.flatMap(p => (p.tags || '').split(',').map(t => t.trim())).filter(Boolean)));
   const years = ['All', ...Array.from(new Set(posts.map(p => new Date(p.date || Date.now()).getFullYear().toString())))].sort((a, b) => b.localeCompare(a));
   
   const filterGroups = [
     { label: language === 'vi' ? 'Danh mục' : 'Categories', options: categories },
+    { label: language === 'vi' ? 'Thẻ' : 'Tags', options: allTags },
     { label: language === 'vi' ? 'Năm' : 'Year', options: years.filter(y => y !== 'All') }
   ];
 
@@ -75,6 +100,11 @@ const Blog = () => {
     // Check if category passes
     const hasCategorySelected = categories.some(c => selectedFilters.includes(c));
     const passCategory = hasCategorySelected ? selectedFilters.includes(p.category) : true;
+
+    // Check if tag passes
+    const hasTagSelected = allTags.some(t => selectedFilters.includes(t));
+    const postTags = (p.tags || '').split(',').map(t => t.trim());
+    const passTag = hasTagSelected ? postTags.some(t => selectedFilters.includes(t)) : true;
     
     // Check if year passes
     const hasYearSelected = years.some(y => selectedFilters.includes(y));
@@ -83,7 +113,7 @@ const Blog = () => {
     const matchesSearch = (p.title || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
                           (p.excerpt || '').toLowerCase().includes(searchQuery.toLowerCase());
     
-    return passCategory && passYear && matchesSearch;
+    return passCategory && passTag && passYear && matchesSearch;
   }).sort((a, b) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
@@ -127,8 +157,11 @@ const Blog = () => {
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, index) => (
             <div className="blog-card" key={index} style={post.color ? { borderLeft: `12px solid ${post.color.replace('var(', '').replace(')', '')}` } : {}}>
-              <div className="blog-meta" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+              <div className="blog-meta" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
                 <span className="project-tag" style={{ margin: 0 }}>{post.category}</span>
+                {post.tags && post.tags.split(',').map((t, i) => (
+                  <span key={i} className="project-tag" style={{ margin: 0, backgroundColor: 'transparent', border: '2px solid var(--text-primary)', color: 'var(--text-primary)' }}>{t.trim()}</span>
+                ))}
                 <span className="text-secondary" style={{ fontSize: '0.85rem', fontWeight: 600 }}>{post.date}</span>
               </div>
               <h2 className="blog-title" style={{ marginTop: '0' }}>{post.title}</h2>
@@ -139,7 +172,7 @@ const Blog = () => {
         ) : (
           <div className="blog-empty">
             <p>{language === 'vi' ? 'Không tìm thấy bài viết nào phù hợp.' : 'No articles found matching your criteria.'}</p>
-            <button onClick={() => { setSearchQuery(''); setSelectedFilters([]); setSortOrder('newest'); }} className="clear-filters-btn">
+            <button onClick={() => setSearchParams({}, { replace: true })} className="clear-filters-btn">
               {language === 'vi' ? 'Xóa bộ lọc' : 'Clear Filters'}
             </button>
           </div>
