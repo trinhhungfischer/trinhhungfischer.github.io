@@ -67,9 +67,16 @@ button {
 
 /* Utilities */
 .container {
-  max-width: 1000px;
+  width: 100%;
+  max-width: 1280px; /* Tăng kích thước tối đa từ 1000px lên 1280px cho màn hình lớn */
   margin: 0 auto;
   padding: 0 24px;
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px; /* Thêm một mốc cho các màn hình siêu rộng */
+  }
 }
 
 .text-gradient {
