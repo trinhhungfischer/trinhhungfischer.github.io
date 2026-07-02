@@ -21,6 +21,7 @@ interface Project {
   colorClass?: string;
   imagePlaceholder?: string;
   imageUrl?: string;
+  productUrl?: string;
   content?: string;
 }
 
@@ -58,9 +59,17 @@ const ProjectDetail = () => {
         <p style={{ fontSize: '1.25rem', fontWeight: 600 }}>{project.description}</p>
         
         {project.startDate && project.endDate && (
-          <p className="text-secondary" style={{ marginBottom: '24px' }}>
+          <p className="text-secondary" style={{ marginBottom: '16px' }}>
             <strong>Timeline:</strong> {project.startDate} — {project.endDate}
           </p>
+        )}
+        
+        {project.productUrl && (
+          <div style={{ marginBottom: '24px' }}>
+            <a href={project.productUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '8px 16px', textDecoration: 'none', display: 'inline-block' }}>
+              {language === 'vi' ? 'Xem Sản Phẩm' : 'View Product'}
+            </a>
+          </div>
         )}
         
         <h2>{language === 'vi' ? 'Dòng game & Thể loại' : 'Genres'}</h2>

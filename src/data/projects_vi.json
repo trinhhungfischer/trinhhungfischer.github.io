@@ -11,49 +11,53 @@
     "tools": ["Mobile", "Unity"],
     "colorClass": "color-block-1",
     "imagePlaceholder": "STICKMAN",
-    "imageUrl": "/images/projects/stickman-defense.png"
+    "imageUrl": "/images/projects/stickman-defense.png",
+    "productUrl": "https://play.google.com/store/apps/details?id=com.thp020.stickman.casual.war.game&hl=en"
   },
   {
     "title": "Guardian War: RPG Pixel Hero",
     "slug": "guardian-war",
     "type": "company",
-    "startDate": "2023-08",
-    "endDate": "2025-12",
+    "startDate": "2023-02",
+    "endDate": "2024-02",
     "pinned": false,
     "description": "Xây dựng core metrics framework và user progression system. Thiết kế và cân bằng các hệ thống hero stats, economy, PvP/PvE và sự kiện. 1M+ downloads, 29K DAU, Rating 4.6★.",
     "genres": ["Midcore Strategy", "RPG"],
     "tools": ["Mobile", "Unity"],
     "colorClass": "color-block-2",
     "imagePlaceholder": "GUARDIAN",
-    "imageUrl": "/images/projects/guardian-war.png"
+    "imageUrl": "/images/projects/guardian-war.png",
+    "productUrl": "https://play.google.com/store/apps/details?id=com.fansipan.pixel.hero.action.rpg.adventure.games&hl=en&gl=US"
   },
   {
     "title": "Block Jam Away: Color Slide",
     "slug": "block-jam",
     "type": "company",
-    "startDate": "2022-12",
-    "endDate": "2023-07",
+    "startDate": "2025-06",
+    "endDate": "2025-08",
     "pinned": false,
     "description": "Lead Game Designer. Thiết kế hệ thống progression, level design và economy. Tự động hóa quy trình thiết kế màn chơi và xây dựng công cụ kiểm thử độ khó tự động. 100K+ downloads, Rating 4.4★.",
     "genres": ["Casual Puzzle"],
     "tools": ["Mobile", "Unity"],
     "colorClass": "color-block-3",
     "imagePlaceholder": "JAM",
-    "imageUrl": "/images/projects/block-jam.png"
+    "imageUrl": "/images/projects/block-jam.png",
+    "productUrl": "https://apkpure.com/color-slide-block-jam-puzzle/com.thp017.block.jam.puzzle.game/download"
   },
   {
     "title": "Sinh Tử Môn ZingPlay",
     "slug": "sinh-tu-mon",
     "type": "company",
-    "startDate": "2021-01",
-    "endDate": "2022-11",
+    "startDate": "2022-05",
+    "endDate": "2022-08",
     "pinned": false,
     "description": "Lập trình giao diện client, các cơ chế gameplay và một số hệ thống server đồng bộ với client.",
     "genres": ["Casual Tower Defense"],
     "tools": ["Mobile", "Cocos2D"],
     "colorClass": "color-block-4",
     "imagePlaceholder": "ZING",
-    "imageUrl": "/images/projects/sinh-tu-mon.png"
+    "imageUrl": "/images/projects/sinh-tu-mon.png",
+    "productUrl": "https://play.google.com/store/apps/details/Sinh_T%E1%BB%AD_M%C3%B4n_ZingPlay?id=gsn.tdf.vn&hl=vi"
   },
   {
     "title": "Dự án cá nhân: Gamification Framework",
