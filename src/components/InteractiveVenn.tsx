@@ -26,6 +26,29 @@ const InteractiveVenn = () => {
   const pAUB = (pA + pB - pAB).toFixed(2);
   const maxPAB = Math.min(pA, pB);
 
+  // --- DYNAMIC VENN CALCULATIONS ---
+  // Max radius when probability is 1.0
+  const BASE_R = 80; 
+  // Area is proportional to probability => r = BASE_R * sqrt(P)
+  const rA = BASE_R * Math.sqrt(pA);
+  const rB = BASE_R * Math.sqrt(pB);
+
+  // Distance between centers
+  // When intersection is 0, they should be separated: distance = rA + rB + 10
+  // When intersection is max (one fully inside another), they should be concentric: distance = 0
+  const dMax = rA + rB + 10;
+  const dMin = 0;
+  
+  let d = dMax;
+  if (maxPAB > 0) {
+    d = dMax - (dMax - dMin) * (pAB / maxPAB);
+  }
+
+  // Calculate center coordinates
+  const centerX = 150;
+  const cxA = centerX - d / 2;
+  const cxB = centerX + d / 2;
+
   return (
     <div className="interactive-venn-container">
       <div className="iv-left">
@@ -59,11 +82,13 @@ const InteractiveVenn = () => {
 
       <div className="iv-right">
         <svg viewBox="0 0 300 200" width="100%" height="100%">
-          <circle cx="110" cy="100" r="70" className="iv-circle-a" />
-          <circle cx="190" cy="100" r="70" className="iv-circle-b" />
-          <text x="70" y="105" className="iv-text-large">A</text>
-          <text x="230" y="105" className="iv-text-large">B</text>
-          <text x="150" y="105" className="iv-text-small">{pAB.toFixed(2)}</text>
+          <circle cx={cxA} cy="100" r={rA} className="iv-circle-a" />
+          <circle cx={cxB} cy="100" r={rB} className="iv-circle-b" />
+          
+          {/* Labels */}
+          {pA > 0 && <text x={cxA - rA/2} y="105" className="iv-text-large">A</text>}
+          {pB > 0 && <text x={cxB + rB/2} y="105" className="iv-text-large">B</text>}
+          {pAB > 0 && <text x={centerX} y="105" className="iv-text-small">{pAB.toFixed(2)}</text>}
         </svg>
       </div>
     </div>
