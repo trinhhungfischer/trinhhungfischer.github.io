@@ -57,15 +57,20 @@
 }
 
 .markdown-content blockquote {
-  border-left: 6px solid var(--text-primary);
-  padding-left: 24px;
-  margin-left: 0;
-  font-style: italic;
-  color: var(--text-secondary);
-  background: white;
-  padding: 24px;
+  margin: 32px 0;
+  padding: 24px 24px 24px 32px;
   border: var(--border-width) solid var(--border-color);
+  border-left: 8px solid var(--text-primary);
+  background: var(--pale-yellow, #fff9c4);
+  color: var(--text-primary);
+  font-style: italic;
+  font-size: 1.15rem;
+  font-weight: 500;
   box-shadow: 4px 4px 0px rgba(17,17,17,1);
+}
+
+.markdown-content blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 .markdown-content img {

@@ -86,9 +86,9 @@ const InteractiveVenn = () => {
           <circle cx={cxB} cy="100" r={rB} className="iv-circle-b" />
           
           {/* Labels */}
-          {pA > 0 && <text x={cxA - rA/2} y="105" className="iv-text-large">A</text>}
-          {pB > 0 && <text x={cxB + rB/2} y="105" className="iv-text-large">B</text>}
-          {pAB > 0 && <text x={centerX} y="105" className="iv-text-small">{pAB.toFixed(2)}</text>}
+          {pA > 0 && <text x={cxA} y="100" className="iv-text-large">A</text>}
+          {pB > 0 && <text x={cxB} y="100" className="iv-text-large">B</text>}
+          {pAB > 0 && <text x={centerX} y="100" className="iv-text-small">{pAB.toFixed(2)}</text>}
         </svg>
       </div>
     </div>

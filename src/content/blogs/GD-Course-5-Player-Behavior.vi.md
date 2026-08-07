@@ -1,7 +1,8 @@
 ---
 title: "[GD Course] Bài 5: Hành vi Người chơi (Player Behavior)"
 date: "2026-07-03"
-category: "Course"
+category: "Game Design"
+tags: "Course"
 excerpt: "Hệ thống vĩ mô và vi mô đã có, nhưng chúng ta còn thiếu một biến số quan trọng nhất: Con người. Cùng khám phá tâm lý học hành vi đằng sau những cú click chuột."
 color: "var(--pale-blue)"
 draft: false
@@ -40,25 +41,30 @@ Từ đây, nhóm nghiên cứu đã đẻ ra khái niệm **Schedules of Reinfo
 Có 4 kiểu lịch trình đáng chú ý:
 
 ## A. Tỷ lệ cố định (Fixed Ratio)
+
 Chuột phải bấm đúng N lần mới rớt đồ ăn.
-- *Trong Game*: Dòng game Clicker (bấm mỏi tay mới nổ tiền), hoặc game MMORPG (Giết đúng 10 con quái để lên 1 Level). Lịch trình này dễ đoán, ổn định.
+
+- _Trong Game_: Dòng game Clicker (bấm mỏi tay mới nổ tiền), hoặc game MMORPG (Giết đúng 10 con quái để lên 1 Level). Lịch trình này dễ đoán, ổn định.
 
 ![Earth Clicker](/images/blogs/GD-Course-5/Untitled%206.png)
 
 ## B. Tỷ lệ thay đổi (Variable Ratio)
+
 Số lần bấm để rớt đồ ăn là ngẫu nhiên, nhưng trung bình lại thì vẫn bằng Fixed Ratio (Kỳ vọng toán học không đổi).
-- *Thực tế*: Xin chào cờ bạc, **Slot Machine** và **Gacha**! Thỉnh thoảng người chơi sẽ trúng quả đậm (SSR). Việc không biết trước khi nào trúng thưởng khiến não tiết ra dopamine cực mạnh.
+
+- _Thực tế_: Xin chào cờ bạc, **Slot Machine** và **Gacha**! Thỉnh thoảng người chơi sẽ trúng quả đậm (SSR). Việc không biết trước khi nào trúng thưởng khiến não tiết ra dopamine cực mạnh.
 
 ![Slot Machine](/images/blogs/GD-Course-5/download.jpg)
 
-- *Ngoài lề*: App hẹn hò **Tinder** cũng dùng cơ chế này. Việc quẹt trái quẹt phải rất dễ, bạn quẹt liên tục vì không biết profile thú vị (người match) tiếp theo khi nào sẽ xuất hiện. Cực kỳ gây nghiện!
+- _Ngoài lề_: App hẹn hò **Tinder** cũng dùng cơ chế này. Việc quẹt trái quẹt phải rất dễ, bạn quẹt liên tục vì không biết profile thú vị (người match) tiếp theo khi nào sẽ xuất hiện. Cực kỳ gây nghiện!
 
 ![Tinder](/images/blogs/GD-Course-5/download%201.jpg)
 
 ## C. Thời gian cố định (Fixed Interval) & Thay đổi (Variable Interval)
+
 Phần thưởng không phụ thuộc vào số lần bấm, mà phụ thuộc vào khoảng nghỉ thời gian (đợi 5 phút mới được bấm nút tiếp). Thường áp dụng trong các cơ chế chờ hồi thể lực, thu hoạch nông sản. (Lưu ý là con người hay con vật đều không có đồng hồ chính xác trong não, thói quen hình thành nhờ cảm giác về thời gian).
 
-*Việc lạm dụng Skinner Box trong game có thể khiến người chơi bị phụ thuộc vào phần thưởng ảo (Extrinsic), làm mất đi niềm vui thuần túy (Intrinsic).*
+_Việc lạm dụng Skinner Box trong game có thể khiến người chơi bị phụ thuộc vào phần thưởng ảo (Extrinsic), làm mất đi niềm vui thuần túy (Intrinsic)._
 
 # 3. Động lực của người chơi (Player Motivation)
 
@@ -74,22 +80,24 @@ Tại sao người ta lại chơi game? Dựa trên nền tảng MUD (Multi User
 Ngoài Bartle (vốn có điểm yếu là không áp dụng được cho game Single Player), chúng ta còn có các mô hình khác:
 
 - **Quantic Foundation**:
-![Quantic](/images/blogs/GD-Course-5/Untitled%208.png)
+  ![Quantic](/images/blogs/GD-Course-5/Untitled%208.png)
 
 - **Big 5 OCEAN (CANOE)**: Xếp người chơi trên một phân bố xác suất chứ không phân cực rõ ràng.
-![Big 5 OCEAN](/images/blogs/GD-Course-5/Untitled%209.png)
+  ![Big 5 OCEAN](/images/blogs/GD-Course-5/Untitled%209.png)
 
 # 4. Thuyết Tự Quyết (Self Determination Theory - SDT)
 
 ![SDT](/images/blogs/GD-Course-5/maxresdefault.jpg)
 
 Đây là thuyết giải thích động lực mạnh mẽ nhất khiến con người đưa ra quyết định. Thuyết này chia giá trị hành động làm 2 loại:
+
 - **Intrinsic (Giá trị nội tại)**: Tự nguyện làm vì thấy vui, thỏa mãn, làm chủ.
 - **Extrinsic (Giá trị bên ngoài)**: Bị ép làm vì có thưởng hoặc sợ bị phạt.
 
 Trong game, mục tiêu của Game Designer là dùng một chút Extrinsic ban đầu (nhử mồi bằng phần thưởng) để mồi chài, rồi dần dần chuyển hóa hành động đó thành Intrinsic. Khi đó hành động chơi game sẽ bền vững hơn rất nhiều!
 
 Để kích hoạt Intrinsic, game cần đáp ứng đủ 3 yếu tố:
+
 - **Autonomy (Quyền tự quyết)**: Người chơi cảm thấy họ làm chủ quyết định của mình và quyết định đó ảnh hưởng lớn tới kết quả (Meaningful Choice ở Bài 1).
 - **Competence (Năng lực)**: Người chơi cảm thấy mình đang học được kỹ năng mới (không chỉ là thông số nhân vật tăng lên, mà là kỹ năng timing, phản xạ ngoài đời thực của họ cũng tốt lên). Game phải ghi nhận điều đó.
 - **Relatedness (Sự kết nối)**: Quyết định phải có tác động rõ rệt tới thế giới game và tiến trình của bản thân họ.
@@ -99,3 +107,11 @@ Trong game, mục tiêu của Game Designer là dùng một chút Extrinsic ban 
 Làm game thực chất là làm tâm lý học. Hiểu được lúc nào nên "nhử mồi" bằng phần thưởng, lúc nào nên trao "quyền tự quyết" sẽ giúp bạn tạo ra một tựa game sống mãi trong lòng người chơi. 
 
 Và sau khi làm xong một hệ thống hoàn hảo (trong suy nghĩ của bạn), bạn phải mang nó đi cho người khác chơi thử để kiểm chứng... Hẹn gặp lại ở bài sau - cơn ác mộng mang tên: Playtest!
+
+---
+# 📚 Phụ lục & Nguồn tham khảo
+- Toàn bộ nội dung cốt lõi được đúc kết từ khóa học **Zitga Game Design Course** nội bộ do **Mr. Nhật** đứng lớp.
+- Trình bày và tinh chỉnh bởi **HungTQ** dựa trên góc nhìn thực chiến cá nhân.
+- Thí nghiệm hành vi: **Skinner Box** (B.F. Skinner).
+- Phân loại người chơi: **Bartle Taxonomy of Player Types** (Richard Bartle).
+- Thuyết tự quyết: **Self-Determination Theory - SDT** (Deci & Ryan).

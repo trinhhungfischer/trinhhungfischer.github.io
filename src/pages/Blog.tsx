@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { GroupedMultiSelectDropdown, SingleSelectDropdown } from '../components/Dropdowns';
+import { LayoutList, LayoutGrid } from 'lucide-react';
 import './Blog.css';
 import './Projects.css'; // Reuse page-header
 
@@ -62,6 +63,7 @@ const Blog = () => {
   const searchQuery = searchParams.get('q') || '';
   const selectedFilters = searchParams.get('filters')?.split(',').filter(Boolean) || [];
   const sortOrder = (searchParams.get('sort') as 'newest' | 'oldest') || 'newest';
+  const viewMode = (searchParams.get('view') as 'list' | 'grid') || 'list';
 
   const setSearchQuery = (q: string) => {
     const newParams = new URLSearchParams(searchParams);
@@ -81,6 +83,13 @@ const Blog = () => {
     const newParams = new URLSearchParams(searchParams);
     if (sort === 'newest') newParams.delete('sort');
     else newParams.set('sort', sort);
+    setSearchParams(newParams, { replace: true });
+  };
+
+  const setViewMode = (mode: 'list' | 'grid') => {
+    const newParams = new URLSearchParams(searchParams);
+    if (mode === 'list') newParams.delete('view');
+    else newParams.set('view', mode);
     setSearchParams(newParams, { replace: true });
   };
 
@@ -150,10 +159,26 @@ const Blog = () => {
             onChange={(val: string) => setSortOrder((val === 'Newest First' || val === 'Mới nhất') ? 'newest' : 'oldest')} 
             placeholder={language === 'vi' ? 'Sắp xếp' : 'Sort'}
           />
+          <div className="view-toggle">
+            <button 
+              className={`view-toggle-btn ${viewMode === 'list' ? 'active' : ''}`}
+              onClick={() => setViewMode('list')}
+              title={language === 'vi' ? 'Chế độ danh sách' : 'List View'}
+            >
+              <LayoutList size={20} />
+            </button>
+            <button 
+              className={`view-toggle-btn ${viewMode === 'grid' ? 'active' : ''}`}
+              onClick={() => setViewMode('grid')}
+              title={language === 'vi' ? 'Chế độ lưới' : 'Grid View'}
+            >
+              <LayoutGrid size={20} />
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="blog-list">
+      <div className={`blog-list ${viewMode === 'grid' ? 'grid-view' : ''}`}>
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, index) => (
             <div className="blog-card" key={index} style={post.color ? { borderLeft: `12px solid ${post.color.replace('var(', '').replace(')', '')}` } : {}}>

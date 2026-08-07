@@ -157,9 +157,9 @@ const Projects = () => {
                 <p className="text-secondary">{project.description}</p>
                 
                 <div className="card-footer" style={{ display: 'flex', gap: '8px' }}>
-                  <Link to={`/projects/${project.slug}`} className="btn-primary" style={{ display: 'block', textAlign: 'center', padding: '10px 20px', flex: 1, textDecoration: 'none' }}>{t('projects.view_details')}</Link>
+                  <Link to={`/projects/${project.slug}`} className="btn-primary" style={{ flex: 1, padding: '10px 20px' }}>{t('projects.view_details')}</Link>
                   {project.productUrl && (
-                    <a href={project.productUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ display: 'block', textAlign: 'center', padding: '10px 20px', flex: 1, textDecoration: 'none', border: '2px solid var(--border-color)', color: 'var(--text-primary)', fontWeight: 600 }}>
+                    <a href={project.productUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ flex: 1, padding: '10px 20px' }}>
                       {language === 'vi' ? 'Sản phẩm' : 'Product'}
                     </a>
                   )}

@@ -1,0 +1,126 @@
+.tic-tac-toe-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tictactoe-container {
+  background: var(--surface-2, #ffffff);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--border-color, #eaeaea);
+}
+
+.tictactoe-header {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color, #333);
+  margin-bottom: 20px;
+  min-height: 24px;
+}
+
+.tictactoe-board {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  gap: 0;
+  /* Add border lines between cells */
+  border-collapse: collapse;
+}
+
+.tictactoe-cell {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid var(--border-color, #eaeaea);
+  transition: background-color 0.2s;
+}
+
+/* Remove outer borders */
+.tictactoe-cell:nth-child(1),
+.tictactoe-cell:nth-child(2),
+.tictactoe-cell:nth-child(3) {
+  border-top: none;
+}
+.tictactoe-cell:nth-child(7),
+.tictactoe-cell:nth-child(8),
+.tictactoe-cell:nth-child(9) {
+  border-bottom: none;
+}
+.tictactoe-cell:nth-child(3n+1) {
+  border-left: none;
+}
+.tictactoe-cell:nth-child(3n) {
+  border-right: none;
+}
+
+.tictactoe-cell:hover:not(.cell-x):not(.cell-o) {
+  background-color: var(--hover-bg, rgba(0,0,0,0.05));
+}
+
+.icon-x {
+  width: 50px;
+  height: 50px;
+  color: #54b2a9; /* Google Turquoise for X */
+  animation: drawLine 0.2s ease-out;
+}
+
+.icon-o {
+  width: 50px;
+  height: 50px;
+  color: #e5b35c; /* Google Yellow for O */
+  animation: drawCircle 0.2s ease-out;
+}
+
+@keyframes drawLine {
+  from { stroke-dasharray: 100; stroke-dashoffset: 100; }
+  to { stroke-dasharray: 100; stroke-dashoffset: 0; }
+}
+
+@keyframes drawCircle {
+  from { stroke-dasharray: 250; stroke-dashoffset: 250; }
+  to { stroke-dasharray: 250; stroke-dashoffset: 0; }
+}
+
+.tictactoe-reset {
+  margin-top: 24px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  background: var(--primary-color, #0070f3);
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.tictactoe-reset:hover {
+  opacity: 0.8;
+}
+
+/* Dark mode adjustments if the blog uses dark mode */
+@media (prefers-color-scheme: dark) {
+  .tictactoe-container {
+    background: var(--surface-2, #1a1a1a);
+    border-color: var(--border-color, #333);
+  }
+  .tictactoe-cell {
+    border-color: var(--border-color, #333);
+  }
+  .tictactoe-cell:hover:not(.cell-x):not(.cell-o) {
+    background-color: var(--hover-bg, rgba(255,255,255,0.05));
+  }
+  .tictactoe-header {
+    color: var(--text-color, #f0f0f0);
+  }
+}

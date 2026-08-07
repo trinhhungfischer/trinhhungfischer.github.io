@@ -1,7 +1,8 @@
 ---
 title: "[GD Course] Bài 3: Macro System Design - Xây dựng Chuỗi giá trị"
 date: "2026-07-03"
-category: "Course"
+category: "Game Design"
+tags: "Course"
 excerpt: "Khi nhắc tới Balance Game, chúng ta cần nghĩ ngay tới những con số. Bài này sẽ hướng dẫn cách thiết kế một nền kinh tế vĩ mô trong game thông qua Chuỗi giá trị."
 color: "var(--pale-blue)"
 draft: false
@@ -96,3 +97,9 @@ Tài nguyên của chuỗi này là đầu vào của chuỗi kia và ngược l
 # Kết luận
 
 Cân bằng vĩ mô là vẽ ra một bản đồ lưu thông dòng chảy tài nguyên. Khi dòng chảy mượt mà, không bị ứ đọng hay cạn kiệt, người chơi sẽ có lý do để tiếp tục "cày". Bài sau chúng ta sẽ đi sâu vào Micro System Design - nơi những con số khô khan biến thành cảm xúc!
+
+---
+# 📚 Phụ lục & Nguồn tham khảo
+- Toàn bộ nội dung cốt lõi được đúc kết từ khóa học **Zitga Game Design Course** nội bộ do **Mr. Nhật** đứng lớp.
+- Trình bày và tinh chỉnh bởi **HungTQ** dựa trên góc nhìn thực chiến cá nhân.
+- Mô hình Machinations: **Machinations Framework** (Joris Dormans).

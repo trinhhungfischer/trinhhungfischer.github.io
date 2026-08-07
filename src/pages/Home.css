@@ -146,24 +146,6 @@
   line-height: 1.6;
 }
 
-.btn-primary {
-  padding: 14px 28px;
-  background-color: var(--text-primary);
-  color: var(--bg-primary);
-  border: var(--border-width) solid var(--border-color);
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  font-size: 1rem;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-}
-
-.btn-primary:hover {
-  background-color: #000;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px rgba(17, 17, 17, 1);
-}
-
 .project-tag {
   display: inline-block;
   padding: 4px 12px;

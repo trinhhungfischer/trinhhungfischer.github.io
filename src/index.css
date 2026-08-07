@@ -131,3 +131,53 @@ button {
 .hover-lift:hover {
   transform: translateY(-2px);
 }
+
+/* Global Buttons */
+.btn-primary {
+  display: inline-block;
+  padding: 14px 28px;
+  background-color: var(--text-primary);
+  color: var(--bg-primary) !important;
+  text-decoration: none !important;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #000;
+  color: var(--bg-primary) !important; /* Fix completely black text on hover */
+  text-decoration: none !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(17, 17, 17, 1);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 28px;
+  background-color: transparent;
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(17, 17, 17, 1);
+}
+

@@ -66,7 +66,7 @@ const ProjectDetail = () => {
         
         {project.productUrl && (
           <div style={{ marginBottom: '24px' }}>
-            <a href={project.productUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '8px 16px', textDecoration: 'none', display: 'inline-block' }}>
+            <a href={project.productUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '8px 16px' }}>
               {language === 'vi' ? 'Xem Sản Phẩm' : 'View Product'}
             </a>
           </div>

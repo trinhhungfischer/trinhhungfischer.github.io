@@ -8,6 +8,7 @@ import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
 import { useLanguage } from '../contexts/LanguageContext';
 import InteractiveVenn from '../components/InteractiveVenn';
+import TicTacToe from '../components/TicTacToe';
 import './BlogPost.css';
 import './Projects.css'; // For page-header
 
@@ -102,7 +103,8 @@ const BlogPost = () => {
             remarkPlugins={[remarkGfm, remarkMath]} 
             rehypePlugins={[rehypeRaw, rehypeKatex, rehypeSlug]}
             components={{
-              'interactive-venn': InteractiveVenn
+              'interactive-venn': InteractiveVenn,
+              'tic-tac-toe': TicTacToe
             } as any}
           >
             {post.body}

@@ -1,7 +1,8 @@
 ---
 title: "[GD Course] Bài 1: Nhập môn Game Design - Thế nào là một quyết định thú vị?"
 date: "2026-07-03"
-category: "Course"
+category: "Game Design"
+tags: "Course"
 excerpt: "Khởi đầu chuỗi bài học Game Design, chúng ta cùng bàn về câu hỏi cốt lõi: Game là gì? Và làm thế nào để tạo ra một 'Meaningful Choice' cho người chơi."
 color: "var(--pale-blue)"
 draft: false
@@ -87,11 +88,9 @@ Cũng khó để định nghĩa chính xác thế nào là một lựa chọn th
 ### 1. Obvious Decision (Lựa chọn hiển nhiên)
 Lựa chọn hiển nhiên là những lựa chọn mà người chơi buộc phải thực hiện nếu không muốn một kết quả tồi tệ. 
 
-![Tic Tac Toe](/images/blogs/GD-Course-1/Untitled%201.png)
+<tic-tac-toe></tic-tac-toe>
 
 Ví dụ trong Game Tic Tac Toe, tôi là người chơi X và đi trước. 
-
-![Nước đi chính giữa là lựa chọn hiển nhiên](/images/blogs/GD-Course-1/Untitled%202.png)
 
 Ở nước đi đầu tiên, đi X tại chính giữa là cách duy nhất giúp Game không đi đến kết quả hòa (Có thể thắng nhờ đi trước). Quyết định này tưởng gồm 9 lựa chọn (Không gian lựa chọn là 9) nhưng thật sự chỉ có nước đi chính giữa là tối ưu. Hiển nhiên người đi trước sẽ luôn chọn nước đi này. Điều đó dẫn tới một lựa chọn không thú vị.
 
@@ -162,3 +161,9 @@ Làm sao để đưa người chơi vào Flow?
 Chúng ta làm Game luôn mong muốn thả được con lắc thăng bằng tại điểm gần chính giữa nhất nhằm cân bằng giữa yếu tố ngẫu nhiên (Random) và Kỹ năng (Skill) trong Game.
 
 Hy vọng bài viết đầu tiên này đã giúp bạn hình dung được giá trị của một quyết định trong việc thiết kế trải nghiệm. Hẹn gặp lại ở bài viết sau, chúng ta sẽ phân tích game qua lăng kính của mô hình MDA nhé!
+
+---
+# 📚 Phụ lục & Nguồn tham khảo
+- Toàn bộ nội dung cốt lõi được đúc kết từ khóa học **Zitga Game Design Course** nội bộ do **Mr. Nhật** đứng lớp.
+- Trình bày và tinh chỉnh bởi **HungTQ** dựa trên góc nhìn thực chiến cá nhân.
+- Khái niệm niềm vui và quyết định thú vị: **Theory of Fun for Game Design** (Raph Koster) & **Sid Meier** (Cha đẻ Civilization).
