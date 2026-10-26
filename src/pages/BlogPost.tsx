@@ -56,7 +56,8 @@ const BlogPost = () => {
   
   // Lọc bài theo slug và ngôn ngữ
   const post = allPosts.find(b => b.slug === slug && b.lang === language) 
-            || allPosts.find(b => b.slug === slug && b.lang === 'en'); // fallback tiếng anh nếu chưa có bản dịch
+            || allPosts.find(b => b.slug === slug && b.lang === 'en') // fallback tiếng anh nếu chưa có bản dịch
+            || allPosts.find(b => b.slug === slug); // fallback bất kỳ ngôn ngữ nào (vd: bài chỉ có bản .vi)
 
   if (!post) {
     return (
