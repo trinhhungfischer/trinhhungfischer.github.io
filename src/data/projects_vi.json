@@ -81,7 +81,7 @@
     "type": "personal",
     "startDate": "2026-08",
     "endDate": "present",
-    "pinned": false,
+    "pinned": true,
     "description": "Dự án cá nhân nơi tôi thử nghiệm các gameplay puzzle mới, chơi thử ngay trên trình duyệt. Gồm Flood (kèm level editor), Nesting Blocks, Nesting Boxes 3D, Sunroot Directives, Daily Auction và nhiều concept đang phát triển.",
     "genres": ["Casual Puzzle", "Prototyping"],
     "tools": ["HTML5", "JavaScript", "Three.js"],
