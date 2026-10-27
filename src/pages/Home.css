@@ -223,4 +223,33 @@
   .bento-item {
     padding: 24px;
   }
+  .detail-row {
+    flex-direction: column;
+    gap: 2px;
+    font-size: 1rem;
+  }
+  .detail-value {
+    overflow-wrap: anywhere; /* email dài không tràn khỏi khung */
+  }
+}
+
+/* Chấm chuyển dự án nổi bật (khi ghim nhiều dự án) */
+.featured-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.featured-dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  color: inherit;
+  border: 2px solid currentColor;
+  background: transparent;
+  cursor: pointer;
+}
+
+.featured-dot.active {
+  background: currentColor;
 }

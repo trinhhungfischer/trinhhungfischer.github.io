@@ -79,11 +79,9 @@ button {
   }
 }
 
+/* --accent-gradient chưa được định nghĩa => chữ bị trong suốt; dùng màu chữ chính cho hợp phong cách gallery */
 .text-gradient {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
   display: inline-block;
 }
 
@@ -181,3 +179,13 @@ button {
   box-shadow: 6px 6px 0px rgba(17, 17, 17, 1);
 }
 
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .main-content {
+    padding-top: 80px; /* header mobile cao 64px */
+  }
+}

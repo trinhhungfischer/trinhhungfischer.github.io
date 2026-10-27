@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import projectsEn from '../data/projects_en.json';
@@ -8,7 +9,17 @@ const Home = () => {
   const { t, language } = useLanguage();
   const cvPath = language === 'vi' ? '/cv/Trinh_Quang_Hung_CV_VI.pdf' : '/cv/Trinh_Quang_Hung_CV_EN.pdf';
   const projectsData = language === 'vi' ? projectsVi : projectsEn;
-  const featuredProject = projectsData[0];
+  // Ô Featured xoay vòng qua tất cả dự án được ghim; không ghim dự án nào thì lấy dự án đầu tiên
+  const pinnedProjects = projectsData.filter(p => p.pinned);
+  const featuredList = pinnedProjects.length > 0 ? pinnedProjects : projectsData.slice(0, 1);
+  const [featuredIndex, setFeaturedIndex] = useState(0);
+  const featuredProject = featuredList[featuredIndex % featuredList.length];
+
+  useEffect(() => {
+    if (featuredList.length < 2) return;
+    const timer = setInterval(() => setFeaturedIndex(i => (i + 1) % featuredList.length), 5000);
+    return () => clearInterval(timer);
+  }, [featuredList.length, featuredIndex]);
 
   return (
     <div className="home-page animate-fade-up">
@@ -86,6 +97,19 @@ const Home = () => {
               WebkitBoxOrient: 'vertical',
               overflow: 'hidden'
             }}>{featuredProject.description}</p>
+            {featuredList.length > 1 && (
+              <div className="featured-dots">
+                {featuredList.map((p, i) => (
+                  <button
+                    key={p.slug}
+                    type="button"
+                    aria-label={p.title}
+                    className={`featured-dot ${i === featuredIndex % featuredList.length ? 'active' : ''}`}
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFeaturedIndex(i); }}
+                  />
+                ))}
+              </div>
+            )}
           </Link>
 
           {/* Download CV Block */}

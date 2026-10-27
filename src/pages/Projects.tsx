@@ -92,7 +92,7 @@ const Projects = () => {
         </p>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '32px', gap: '16px', flexWrap: 'wrap' }}>
+      <div className="project-controls">
         <SingleSelectDropdown 
           options={sortOptions} 
           selected={currentSortOption} 

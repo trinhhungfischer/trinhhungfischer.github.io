@@ -1,5 +1,21 @@
 [
   {
+    "title": "Hungry Bees™: Color Sort Puzzle",
+    "slug": "hungry-bees",
+    "type": "company",
+    "startDate": "2026-08",
+    "endDate": "present",
+    "pinned": true,
+    "description": "Lead designer of the in-game economy and live events. Designed the level blocker system. A 3D color-sort puzzle game with 100K+ downloads, Rating 4.9★.",
+    "genres": ["Casual Puzzle"],
+    "tools": ["Mobile", "Unity"],
+    "colorClass": "color-block-2",
+    "imagePlaceholder": "BEES",
+    "imageUrl": "/images/projects/hungry-bees.png",
+    "productUrl": "https://play.google.com/store/apps/details?id=com.fc.bee.flow.pixel.puzzle&hl=en",
+    "iosUrl": "https://apps.apple.com/vn/app/hungry-bees/id6802910325"
+  },
+  {
     "title": "Stickman Defense: Survival TD",
     "slug": "stickman-defense",
     "type": "company",
@@ -58,6 +74,21 @@
     "imagePlaceholder": "ZING",
     "imageUrl": "/images/projects/sinh-tu-mon.png",
     "productUrl": "https://play.google.com/store/apps/details/Sinh_T%E1%BB%AD_M%C3%B4n_ZingPlay?id=gsn.tdf.vn&hl=vi"
+  },
+  {
+    "title": "Mini Puzzle Lab",
+    "slug": "mini-puzzle",
+    "type": "personal",
+    "startDate": "2026-08",
+    "endDate": "present",
+    "pinned": false,
+    "description": "A personal playground where I prototype new puzzle gameplay ideas, playable right in the browser. Includes Flood (with a level editor), Nesting Blocks, Nesting Boxes 3D, Sunroot Directives and Daily Auction, plus more concepts in progress.",
+    "genres": ["Casual Puzzle", "Prototyping"],
+    "tools": ["HTML5", "JavaScript", "Three.js"],
+    "colorClass": "color-block-3",
+    "imagePlaceholder": "PUZZLE",
+    "imageUrl": "/images/projects/mini-puzzle.png",
+    "productUrl": "https://mini-puzzle-sigma.vercel.app/"
   },
   {
     "title": "Personal Prototype: Gamification Framework",

@@ -22,6 +22,7 @@ interface Project {
   imagePlaceholder?: string;
   imageUrl?: string;
   productUrl?: string;
+  iosUrl?: string;
   content?: string;
 }
 
@@ -64,11 +65,18 @@ const ProjectDetail = () => {
           </p>
         )}
         
-        {project.productUrl && (
-          <div style={{ marginBottom: '24px' }}>
-            <a href={project.productUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '8px 16px' }}>
-              {language === 'vi' ? 'Xem Sản Phẩm' : 'View Product'}
-            </a>
+        {(project.productUrl || project.iosUrl) && (
+          <div style={{ marginBottom: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            {project.productUrl && (
+              <a href={project.productUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '8px 16px' }}>
+                {project.iosUrl ? 'Google Play' : (language === 'vi' ? 'Xem Sản Phẩm' : 'View Product')}
+              </a>
+            )}
+            {project.iosUrl && (
+              <a href={project.iosUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '8px 16px' }}>
+                App Store
+              </a>
+            )}
           </div>
         )}
         
