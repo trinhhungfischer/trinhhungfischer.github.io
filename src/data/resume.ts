@@ -41,7 +41,7 @@ export interface ResumeData {
 
 const resumeEn: ResumeData = {
   name: 'Trinh Quang Hung',
-  headline: 'Game Designer · Hanoi, Vietnam',
+  headline: 'Senior Game Designer · Hanoi, Vietnam',
   summary:
     'Game Designer with 4 years of experience designing Midcore and Casual mobile games. Core strengths in core loop design, meta-game systems, progression and balance for products serving millions of players. Strong technical foundation with effective application of AI tools in the design workflow.',
   highlights: [
@@ -62,10 +62,20 @@ const resumeEn: ResumeData = {
   },
   experience: [
     {
+      role: 'Senior Game Designer',
+      org: 'Falcon Games',
+      location: 'Hanoi, Vietnam',
+      period: 'Aug 2026 – present',
+      bullets: [
+        'Lead designer of the in-game economy and live events for Hungry Bees™ (3D color-sort puzzle)',
+        'Designed the level blocker system that drives puzzle variety and difficulty',
+      ],
+    },
+    {
       role: 'Game Designer',
       org: 'Zitga',
       location: 'Hanoi, Vietnam',
-      period: 'Feb 2023 – present',
+      period: 'Feb 2023 – Aug 2026',
       bullets: [
         'Led design of midcore game Guardian War (Squad RPG) and served as Lead Designer for Stickman Defense: Survival TD, Pixel Squad, and several Puzzle titles',
         'Built and maintained comprehensive Game Design Documents: core loop, meta-game, progression system, and economy',
@@ -96,10 +106,23 @@ const resumeEn: ResumeData = {
   ],
   projects: [
     {
+      title: 'Hungry Bees™: Color Sort Puzzle',
+      slug: 'hungry-bees',
+      org: 'Falcon Games',
+      period: 'Aug 2026 – present',
+      meta: 'Casual Puzzle · Mobile · Unity',
+      bullets: [
+        'Core loop: tap to send pixel bees to matching colored blocks and clear the board',
+        'Lead designer of the in-game economy and live events',
+        'Designed the level blocker system',
+      ],
+      stats: '100K+ downloads · Rating 4.9★',
+    },
+    {
       title: 'Stickman Defense: Survival TD',
       slug: 'stickman-defense',
       org: 'Zitga',
-      period: 'Jan 2026 – present',
+      period: 'Jan 2026 – Aug 2026',
       meta: 'Midcore Strategy/RPG · Mobile · Unity',
       bullets: [
         'Core loop: defend the base, eliminate attacking monsters, take rogue-like upgrades and defeat Bosses for rewards; strengthen characters via equipment, pets and meta systems',
@@ -193,7 +216,7 @@ const resumeEn: ResumeData = {
 
 const resumeVi: ResumeData = {
   name: 'Trịnh Quang Hùng',
-  headline: 'Game Designer · Hà Nội, Việt Nam',
+  headline: 'Senior Game Designer · Hà Nội, Việt Nam',
   summary:
     'Game Designer với 4 năm kinh nghiệm thiết kế game mobile Midcore và Casual. Thế mạnh về core loop design, meta-game system, progression và balance cho sản phẩm quy mô hàng triệu người chơi. Có nền tảng kỹ thuật vững chắc và ứng dụng AI hiệu quả trong quy trình thiết kế.',
   highlights: [
@@ -214,10 +237,20 @@ const resumeVi: ResumeData = {
   },
   experience: [
     {
+      role: 'Senior Game Designer',
+      org: 'Falcon Games',
+      location: 'Hà Nội',
+      period: '08/2026 – nay',
+      bullets: [
+        'Thiết kế chính hệ thống kinh tế (economy) và các sự kiện (live events) cho Hungry Bees™ (puzzle xếp màu 3D)',
+        'Thiết kế hệ thống blocker cho level, tạo sự đa dạng và kiểm soát độ khó của màn chơi',
+      ],
+    },
+    {
       role: 'Game Designer',
       org: 'Zitga',
       location: 'Hà Nội',
-      period: '02/2023 – nay',
+      period: '02/2023 – 08/2026',
       bullets: [
         'Phụ trách thiết kế game midcore Guardian War và Lead Designer cho Stickman Defense: Survival TD, Pixel Squad và một số game Puzzle',
         'Xây dựng và duy trì Game Design Document toàn diện: core loop, meta-game, progression system và economy',
@@ -248,10 +281,23 @@ const resumeVi: ResumeData = {
   ],
   projects: [
     {
+      title: 'Hungry Bees™: Color Sort Puzzle',
+      slug: 'hungry-bees',
+      org: 'Falcon Games',
+      period: '08/2026 – nay',
+      meta: 'Casual Puzzle · Mobile · Unity',
+      bullets: [
+        'Core loop: chạm để đưa đàn ong pixel tới đúng khối cùng màu và dọn sạch màn chơi',
+        'Thiết kế chính hệ thống kinh tế (economy) và các sự kiện (live events)',
+        'Thiết kế hệ thống blocker cho level',
+      ],
+      stats: '100K+ lượt tải · Rating 4.9★',
+    },
+    {
       title: 'Stickman Defense: Survival TD',
       slug: 'stickman-defense',
       org: 'Zitga',
-      period: '01/2026 – nay',
+      period: '01/2026 – 08/2026',
       meta: 'Midcore Strategy/RPG · Mobile · Unity',
       bullets: [
         'Core loop: phòng thủ căn cứ, tiêu diệt quái vật, nhận nâng cấp rogue-like và hạ Boss để nhận thưởng; nâng sức mạnh qua trang bị, pet và nhiều hệ thống meta',
