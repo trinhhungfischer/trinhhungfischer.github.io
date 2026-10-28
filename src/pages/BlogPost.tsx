@@ -9,6 +9,8 @@ import GithubSlugger from 'github-slugger';
 import { useLanguage } from '../contexts/LanguageContext';
 import InteractiveVenn from '../components/InteractiveVenn';
 import TicTacToe from '../components/TicTacToe';
+import BertrandChords from '../components/BertrandChords';
+import CircleSpawn from '../components/CircleSpawn';
 import './BlogPost.css';
 import './Projects.css'; // For page-header
 
@@ -105,7 +107,9 @@ const BlogPost = () => {
             rehypePlugins={[rehypeRaw, rehypeKatex, rehypeSlug]}
             components={{
               'interactive-venn': InteractiveVenn,
-              'tic-tac-toe': TicTacToe
+              'tic-tac-toe': TicTacToe,
+              'bertrand-chords': BertrandChords,
+              'circle-spawn': CircleSpawn
             } as any}
           >
             {post.body}
