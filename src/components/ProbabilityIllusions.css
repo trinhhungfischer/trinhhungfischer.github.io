@@ -1,0 +1,194 @@
+/* Shared pieces for CoinFaker and BenfordLaw; base layout comes from BertrandParadox.css */
+
+.pl-column {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pl-axis {
+  fill: #999;
+  font-size: 7px;
+  font-family: monospace;
+}
+
+.pl-center {
+  text-anchor: middle;
+}
+
+.pl-muted {
+  color: #888;
+}
+
+/* Coin faker */
+.pl-stack {
+  flex-direction: column;
+  padding: 24px;
+  gap: 18px;
+}
+
+.pl-coin-top {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pl-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.pl-input:focus {
+  outline: none;
+  border-color: #f59e0b;
+}
+
+.pl-count {
+  margin-left: auto;
+  align-self: center;
+}
+
+.pl-strip {
+  display: grid;
+  grid-template-columns: repeat(25, 1fr);
+  gap: 3px;
+}
+
+.pl-flip {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.pl-flip-S {
+  background: #e5e7eb;
+}
+
+.pl-flip-N {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.pl-flip-run {
+  outline: 2px solid #f59e0b;
+  outline-offset: 1px;
+}
+
+.pl-coin-bottom {
+  display: flex;
+  gap: 24px;
+}
+
+.pl-coin-stats {
+  flex: 1;
+}
+
+.pl-verdict {
+  flex: 1;
+  background: #2a2a2a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  border-left: 4px solid #555;
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.pl-verdict p,
+.pl-verdict ul {
+  margin: 6px 0 0;
+}
+
+.pl-verdict ul {
+  padding-left: 18px;
+}
+
+.pl-verdict-real {
+  border-left-color: #22c55e;
+}
+
+.pl-verdict-mild {
+  border-left-color: #f59e0b;
+}
+
+.pl-verdict-fake {
+  border-left-color: #ef4444;
+}
+
+.pl-verdict-real strong { color: #22c55e; }
+.pl-verdict-mild strong { color: #f59e0b; }
+.pl-verdict-fake strong { color: #ef4444; }
+
+/* Benford */
+.pl-bar {
+  fill: #9ca3af;
+}
+
+.pl-theory-line {
+  fill: none;
+  stroke: #f59e0b;
+  stroke-width: 2;
+}
+
+.pl-theory-dot {
+  fill: #f59e0b;
+}
+
+.pl-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.pl-key {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+.pl-key-bar {
+  background: #9ca3af;
+}
+
+.pl-key-line {
+  height: 3px;
+  background: #f59e0b;
+}
+
+.pl-badge {
+  font-size: 0.85rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.pl-badge-0 { background: #14532d; color: #86efac; }
+.pl-badge-1 { background: #1e3a5f; color: #93c5fd; }
+.pl-badge-2 { background: #713f12; color: #fcd34d; }
+.pl-badge-3 { background: #7f1d1d; color: #fca5a5; }
+
+@media (max-width: 768px) {
+  .pl-coin-bottom {
+    flex-direction: column;
+  }
+  .pl-strip {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
