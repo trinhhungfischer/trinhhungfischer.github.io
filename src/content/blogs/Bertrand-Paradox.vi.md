@@ -5,7 +5,6 @@ category: "Game Design"
 tags: "Math"
 excerpt: "Một bài toán có ba đáp án, một câu hỏi về người ngoài hành tinh và một nhà máy làm khối lập phương. Tất cả cùng hỏi một điều: khi nói “ngẫu nhiên”, ta đang ngẫu nhiên trên cái gì?"
 color: "var(--pale-blue)"
-draft: true
 ---
 
 ## I. Nghịch lý Bertrand và câu hỏi đằng sau nó
