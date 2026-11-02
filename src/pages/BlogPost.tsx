@@ -54,7 +54,8 @@ const allPosts = Object.entries(modules).map(([path, rawContent]) => {
     slug,
     lang
   } as any;
-}).filter(p => !p.draft || import.meta.env.DEV);
+// Bài thuộc category Archive bị ẩn hẳn, kể cả khi mở link trực tiếp
+}).filter(p => (!p.draft || import.meta.env.DEV) && p.category !== 'Archive');
 
 const BlogPost = () => {
   const { slug } = useParams();
