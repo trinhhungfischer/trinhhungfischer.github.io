@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import { Globe } from 'lucide-react';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -42,10 +43,48 @@ const LanguageToggleButton = () => {
   );
 };
 
+// Giữ URL khớp với ngôn ngữ đang chọn để link copy từ thanh địa chỉ mở đúng ngôn ngữ.
+// Tiếng Anh là mặc định nên không gắn tag; tiếng Việt thêm ?lang=vi.
+const LanguageUrlSync = () => {
+  const { language, setLanguage } = useLanguage();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const navigationType = useNavigationType();
+  const prevLanguage = useRef(language);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const urlLang = params.get('lang') === 'vi' ? 'vi' : 'en';
+    const languageChanged = prevLanguage.current !== language;
+    prevLanguage.current = language;
+
+    // Mở link / back / forward (POP) → ngôn ngữ đi theo URL.
+    // Bấm link nội bộ (PUSH, link không mang lang) → giữ ngôn ngữ hiện tại, chỉ sửa URL bên dưới.
+    if (!languageChanged && navigationType === 'POP' && urlLang !== language) {
+      setLanguage(urlLang);
+      return;
+    }
+    // Đổi ngôn ngữ, link nội bộ thiếu lang, hoặc URL còn ?lang=en cũ → chuẩn hóa URL
+    const hasCanonicalParam = language === 'vi' ? params.get('lang') === 'vi' : !params.has('lang');
+    if (!hasCanonicalParam) {
+      if (language === 'vi') params.set('lang', 'vi');
+      else params.delete('lang');
+      const search = params.toString();
+      navigate(
+        { pathname: location.pathname, search: search ? `?${search}` : '', hash: location.hash },
+        { replace: true }
+      );
+    }
+  }, [location, language, navigationType, navigate, setLanguage]);
+
+  return null;
+};
+
 function App() {
   return (
     <LanguageProvider>
       <Router>
+        <LanguageUrlSync />
         <div className="app">
           <Header />
           <main className="main-content">

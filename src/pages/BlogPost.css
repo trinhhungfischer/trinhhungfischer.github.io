@@ -135,7 +135,6 @@
   gap: 40px;
   align-items: flex-start;
   margin-top: 40px;
-  flex-direction: column-reverse; /* On small screens, TOC will appear above content */
 }
 
 .markdown-content {
@@ -144,9 +143,16 @@
   width: 100%;
 }
 
+/* Heading không bị header cố định che khi nhảy tới từ mục lục */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  scroll-margin-top: 110px;
+}
+
+/* Mobile/tablet: ẩn sidebar, dùng nút nổi + bottom sheet */
 .blog-toc-sidebar {
-  width: 100%;
-  flex-shrink: 0;
+  display: none;
 }
 
 .blog-toc-sticky {
@@ -158,15 +164,23 @@
 }
 
 @media (min-width: 1024px) {
-  .blog-layout {
-    flex-direction: row;
-  }
   .blog-toc-sidebar {
+    display: block;
     width: 250px;
+    flex-shrink: 0;
+    align-self: stretch; /* cột cao bằng bài viết để sticky có chỗ trượt */
   }
   .blog-toc-sticky {
     position: sticky;
     top: 100px;
+    /* Mục lục dài hơn màn hình thì cuộn bên trong, khung vẫn ghim */
+    max-height: calc(100vh - 124px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .blog-toc-mobile {
+    display: none;
   }
 }
 
@@ -202,7 +216,131 @@
   font-weight: 600;
 }
 
+.blog-toc-sticky a.active,
+.blog-toc-sheet a.active {
+  color: var(--text-primary);
+  font-weight: 700;
+  border-left: 3px solid var(--text-primary);
+  padding-left: 8px;
+  margin-left: -11px;
+}
+
 .toc-level-1 { margin-left: 0; font-weight: 600; margin-top: 12px; }
 .toc-level-1:first-child { margin-top: 0; }
 .toc-level-2 { margin-left: 12px; }
 .toc-level-3 { margin-left: 24px; font-size: 0.9rem; }
+
+/* Mobile TOC: nút nổi + bottom sheet */
+.blog-toc-fab {
+  /* Góc trái dưới: góc phải đã có nút đổi ngôn ngữ (App.tsx) */
+  position: fixed;
+  left: 16px;
+  bottom: 24px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 140px);
+  padding: 12px 18px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 4px 4px 0px rgba(17,17,17,0.35);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.blog-toc-fab-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blog-toc-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1010; /* phủ cả nút đổi ngôn ngữ (z-index 1000) */
+  background: rgba(17,17,17,0.45);
+  animation: tocFade 0.2s ease-out;
+}
+
+.blog-toc-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1020;
+  max-height: 75vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 20px 24px calc(24px + env(safe-area-inset-bottom));
+  background: white;
+  border-top: var(--border-width) solid var(--border-color);
+  animation: tocSlideUp 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.blog-toc-sheet-header {
+  position: sticky;
+  top: -20px;
+  margin: -20px -24px 12px;
+  padding: 20px 24px 12px;
+  background: white;
+  border-bottom: var(--border-width) solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-toc-sheet h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.blog-toc-close {
+  width: 36px;
+  height: 36px;
+  background: white;
+  border: var(--border-width) solid var(--border-color);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.blog-toc-sheet ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-toc-sheet li {
+  line-height: 1.4;
+}
+
+.blog-toc-sheet a {
+  display: block;
+  padding: 10px 0; /* vùng chạm đủ lớn trên điện thoại */
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+@keyframes tocSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes tocFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3 {
+    scroll-margin-top: 84px;
+  }
+}

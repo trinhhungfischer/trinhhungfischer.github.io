@@ -1,3 +1,5 @@
+import { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -63,6 +65,62 @@ const BlogPost = () => {
             || allPosts.find(b => b.slug === slug && b.lang === 'en') // fallback tiếng anh nếu chưa có bản dịch
             || allPosts.find(b => b.slug === slug); // fallback bất kỳ ngôn ngữ nào (vd: bài chỉ có bản .vi)
 
+  // Generate Table of Contents
+  const headings = useMemo(() => {
+    const slugger = new GithubSlugger();
+    const result: { level: number; text: string; id: string }[] = [];
+    const headingRegex = /^(#{1,3})\s+(.+)$/gm;
+    let match;
+    while (post && (match = headingRegex.exec(post.body)) !== null) {
+      const level = match[1].length;
+      const rawText = match[2].trim();
+      // Xóa các ký tự markdown cho text hiển thị (giữ nguyên cho ID)
+      const text = rawText.replace(/\[(.*?)\]\(.*?\)/g, '$1').replace(/[*`_]/g, '');
+      result.push({ level, text, id: slugger.slug(rawText) });
+    }
+    return result;
+  }, [post]);
+
+  const [activeId, setActiveId] = useState('');
+  const [tocOpen, setTocOpen] = useState(false);
+
+  // Scroll-spy: heading cuối cùng đã đi qua mép trên viewport là mục đang đọc
+  useEffect(() => {
+    if (headings.length === 0) return;
+    const onScroll = () => {
+      let current = headings[0].id;
+      for (const h of headings) {
+        const el = document.getElementById(h.id);
+        if (el && el.getBoundingClientRect().top <= 140) current = h.id;
+        else if (el) break;
+      }
+      setActiveId(current);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [headings]);
+
+  // Giữ mục đang đọc luôn nằm trong vùng nhìn thấy của TOC desktop khi TOC dài hơn viewport
+  useEffect(() => {
+    if (!activeId) return;
+    document
+      .querySelector(`.blog-toc-sticky a[href="#${CSS.escape(activeId)}"]`)
+      ?.scrollIntoView({ block: 'nearest' });
+  }, [activeId]);
+
+  // Bottom sheet mobile: khóa cuộn trang nền và đóng bằng Esc
+  useEffect(() => {
+    if (!tocOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setTocOpen(false);
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [tocOpen]);
+
   if (!post) {
     return (
       <div className="container" style={{ padding: '60px 24px' }}>
@@ -72,22 +130,21 @@ const BlogPost = () => {
     );
   }
 
-  // Generate Table of Contents
-  const slugger = new GithubSlugger();
-  const headings: { level: number; text: string; id: string }[] = [];
-  const headingRegex = /^(#{1,3})\s+(.+)$/gm;
-  let match;
-  while ((match = headingRegex.exec(post.body)) !== null) {
-    const level = match[1].length;
-    const rawText = match[2].trim();
-    // Xóa các ký tự markdown cho text hiển thị (giữ nguyên cho ID)
-    const text = rawText.replace(/\[(.*?)\]\(.*?\)/g, '$1').replace(/[*`_]/g, '');
-    headings.push({
-      level,
-      text,
-      id: slugger.slug(rawText)
-    });
-  }
+  const tocList = (
+    <ul>
+      {headings.map((h, i) => (
+        <li key={i} className={`toc-level-${h.level}`}>
+          <a
+            href={`#${h.id}`}
+            className={h.id === activeId ? 'active' : undefined}
+            onClick={() => setTocOpen(false)}
+          >
+            {h.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
     <div className="container animate-fade-up" style={{ padding: '60px 24px' }}>
@@ -124,17 +181,49 @@ const BlogPost = () => {
           <aside className="blog-toc-sidebar">
             <div className="blog-toc-sticky">
               <h3>{language === 'vi' ? 'Mục lục' : 'Table of Contents'}</h3>
-              <ul>
-                {headings.map((h, i) => (
-                  <li key={i} className={`toc-level-${h.level}`}>
-                    <a href={`#${h.id}`}>{h.text}</a>
-                  </li>
-                ))}
-              </ul>
+              {tocList}
             </div>
           </aside>
         )}
       </div>
+
+      {/* Mobile: render qua portal vì .animate-fade-up giữ transform, làm position: fixed bị lệch */}
+      {headings.length > 0 && createPortal(
+        <div className="blog-toc-mobile">
+          <button
+            type="button"
+            className="blog-toc-fab"
+            aria-expanded={tocOpen}
+            aria-controls="blog-toc-sheet"
+            onClick={() => setTocOpen(true)}
+          >
+            <span aria-hidden="true">☰</span>
+            <span className="blog-toc-fab-label">
+              {headings.find(h => h.id === activeId)?.text ?? (language === 'vi' ? 'Mục lục' : 'Contents')}
+            </span>
+          </button>
+          {tocOpen && (
+            <>
+              <div className="blog-toc-backdrop" onClick={() => setTocOpen(false)} />
+              <div id="blog-toc-sheet" className="blog-toc-sheet" role="dialog" aria-modal="true">
+                <div className="blog-toc-sheet-header">
+                  <h3>{language === 'vi' ? 'Mục lục' : 'Table of Contents'}</h3>
+                  <button
+                    type="button"
+                    className="blog-toc-close"
+                    aria-label={language === 'vi' ? 'Đóng mục lục' : 'Close table of contents'}
+                    onClick={() => setTocOpen(false)}
+                  >
+                    ✕
+                  </button>
+                </div>
+                {tocList}
+              </div>
+            </>
+          )}
+        </div>,
+        document.body
+      )}
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState } from 'react';
 
-type Language = 'en' | 'vi';
+export type Language = 'en' | 'vi';
 
 interface LanguageContextType {
   language: Language;
+  setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
   t: (key: string) => string;
 }
@@ -65,38 +66,22 @@ const getLangFromURL = () => {
   return lang === 'vi' || lang === 'en' ? lang : null;
 };
 
-const getInitialLang = (): Language => {
-  const urlLang = getLangFromURL();
-  if (urlLang) {
-    localStorage.setItem('lang', urlLang);
-    return urlLang as Language;
-  }
-  const saved = localStorage.getItem('lang') as Language;
-  if (saved && (saved === 'en' || saved === 'vi')) {
-    return saved;
-  }
-  return 'en'; // default
-};
+// URL là nguồn duy nhất: không có ?lang nghĩa là tiếng Anh, để link chia sẻ mở đúng ngôn ngữ với mọi người
+const getInitialLang = (): Language => getLangFromURL() ?? 'en';
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>(getInitialLang);
 
-  const toggleLanguage = () => {
-    setLanguage(prev => {
-      const next = prev === 'en' ? 'vi' : 'en';
-      localStorage.setItem('lang', next);
-      return next;
-    });
-  };
+  const toggleLanguage = () => setLanguage(language === 'en' ? 'vi' : 'en');
 
   const t = (key: string) => {
     return translations[language][key] || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
