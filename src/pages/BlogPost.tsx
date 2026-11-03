@@ -17,6 +17,11 @@ import CoinFaker from '../components/CoinFaker';
 import BenfordLaw from '../components/BenfordLaw';
 import GameTheoryPrisoner from '../components/GameTheoryPrisoner';
 import GameTheoryNash from '../components/GameTheoryNash';
+import GameTheoryRps from '../components/GameTheoryRps';
+import GameTheoryPirates from '../components/GameTheoryPirates';
+import GameTheoryAxelrod from '../components/GameTheoryAxelrod';
+import GameTheoryAuction from '../components/GameTheoryAuction';
+import GameTheoryHawkDove from '../components/GameTheoryHawkDove';
 import './BlogPost.css';
 import './Projects.css'; // For page-header
 
@@ -175,7 +180,12 @@ const BlogPost = () => {
               'coin-faker': CoinFaker,
               'benford-law': BenfordLaw,
               'pd-single': GameTheoryPrisoner,
-              'nash-finder': GameTheoryNash
+              'nash-finder': GameTheoryNash,
+              'rps-bot': GameTheoryRps,
+              'pirate-split': GameTheoryPirates,
+              'axelrod-tournament': GameTheoryAxelrod,
+              'auction-sim': GameTheoryAuction,
+              'hawk-dove': GameTheoryHawkDove
             } as any}
           >
             {post.body}

@@ -118,6 +118,13 @@
   padding: 12px 16px;
 }
 
+/* Long display formulas scroll inside their own box instead of widening the page */
+.markdown-content .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}
+
 @media (max-width: 480px) {
   .markdown-content th,
   .markdown-content td {

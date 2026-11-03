@@ -168,3 +168,322 @@
     padding: 0;
   }
 }
+
+/* Rock paper scissors bot */
+.gt-rps-moves {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gt-rps-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: #2a2a2a;
+  color: #eee;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  padding: 14px 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.gt-rps-btn span {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.gt-rps-btn:hover {
+  border-color: #f59e0b;
+}
+
+.gt-rps-btn:active {
+  background: rgba(245, 158, 11, 0.15);
+}
+
+.gt-rps-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.gt-rps-bottom > * {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+.gt-chart {
+  width: 100%;
+  height: auto;
+  background: #2a2a2a;
+  border-radius: 8px;
+}
+
+.gt-chart-zero {
+  stroke: #555;
+  stroke-dasharray: 3 3;
+}
+
+.gt-chart polyline {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.gt-line-you {
+  stroke: #f59e0b;
+}
+
+.gt-line-auto {
+  stroke: #60a5fa;
+}
+
+.gt-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+
+.gt-swatch-you {
+  background: #f59e0b;
+}
+
+.gt-swatch-auto {
+  background: #60a5fa;
+}
+
+/* Pirate split: one row per "n pirates left" stage */
+.gt-pir-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gt-pirates {
+  display: grid;
+  gap: 4px;
+}
+
+.gt-pir {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  padding: 8px 2px;
+  text-align: center;
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+
+.gt-pir-out {
+  background: transparent;
+  border-color: transparent;
+  color: #555;
+}
+
+.gt-pir-prop {
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: 700;
+}
+
+.gt-pir-bought {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.15);
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  .gt-pir {
+    font-size: 0.8rem;
+    padding: 6px 0;
+  }
+}
+
+/* Axelrod tournament leaderboard */
+.gt-ax-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gt-ax-rerun {
+  margin-left: auto;
+}
+
+/* Doubled class beats the article's `.markdown-content ol` padding */
+.gt-stack .gt-ax-board {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gt-stack .gt-ax-board li {
+  margin: 0;
+}
+
+.gt-ax-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.5em minmax(0, 11em) 1fr 3.2em;
+  gap: 10px;
+  align-items: center;
+  background: #2a2a2a;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #ddd;
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.gt-ax-row-focus {
+  border-color: #f59e0b;
+}
+
+.gt-ax-rank {
+  color: #888;
+  font-family: monospace;
+}
+
+.gt-ax-bar {
+  height: 10px;
+  background: #1a1a1a;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.gt-ax-bar span {
+  display: block;
+  height: 100%;
+  background: #f59e0b;
+  border-radius: 5px;
+  transition: width 0.3s;
+}
+
+@media (max-width: 480px) {
+  .gt-ax-row {
+    grid-template-columns: 1.2em minmax(0, 1fr) 3em;
+    row-gap: 6px;
+  }
+  .gt-ax-bar {
+    grid-column: 2 / 4;
+    grid-row: 2;
+  }
+}
+
+.gt-ax-modes {
+  margin-top: 6px;
+}
+
+/* Auction simulator */
+.gt-au-bid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #2a2a2a;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.gt-au-value {
+  font-size: 1.4rem;
+}
+
+.gt-au-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.gt-au-slider input {
+  width: 100%;
+  accent-color: #f59e0b;
+}
+
+.gt-au-last {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gt-stack .gt-au-last ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 6px;
+}
+
+.gt-stack .gt-au-last li {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  background: #2a2a2a;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.gt-au-last small {
+  color: #888;
+}
+
+.gt-stack .gt-au-last .gt-au-winner {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.15);
+}
+
+/* Hawk-dove replicator chart */
+.gt-hd-sliders {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.gt-hd-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gt-hd-axis-x {
+  align-self: flex-end;
+}
+
+.gt-hd-grid {
+  stroke: #333;
+}
+
+.gt-hd-tick {
+  fill: #777;
+  font-size: 8px;
+  font-family: monospace;
+}
+
+.gt-hd-target {
+  stroke: #60a5fa;
+}
+
+.gt-hd-chart polyline {
+  stroke-opacity: 0.85;
+}

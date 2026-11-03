@@ -89,7 +89,7 @@ Có một cách nghĩ khác cũng hữu ích: cân bằng Nash là một trạng
 
 ### 2. Một trang giấy đổi cả ngành kinh tế
 
-Khái niệm này mang tên John Nash, người viết về nó trong luận án tiến sĩ năm 1950 ở Princeton, lúc mới 21 tuổi. Bài báo công bố kết quả chính dài **chưa đầy một trang**, trên tạp chí *PNAS*. Trong đó, Nash chứng minh rằng mọi trò chơi với hữu hạn người chơi và hữu hạn chiến lược đều có ít nhất một cân bằng, miễn là ta cho phép người chơi chọn ngẫu nhiên. Vế "chọn ngẫu nhiên" này sẽ là chủ đề của Tập 3.
+Khái niệm này mang tên John Nash, người viết về nó trong luận án tiến sĩ năm 1950 ở Princeton, lúc mới 21 tuổi. Bài báo công bố kết quả chính dài **chưa đầy một trang**, trên tạp chí *PNAS*. Trong đó, Nash chứng minh rằng mọi trò chơi với hữu hạn người chơi và hữu hạn chiến lược đều có ít nhất một cân bằng, miễn là ta cho phép người chơi chọn ngẫu nhiên. Vế "chọn ngẫu nhiên" này sẽ là chủ đề của [Tập 3](/blog/Game-Theory-3-Chien-Luoc-Hon-Hop).
 
 Năm 1994, Nash nhận giải Nobel Kinh tế. Cuộc đời ông, bao gồm cả quãng thời gian dài vật lộn với bệnh tâm thần phân liệt, được kể lại trong bộ phim *A Beautiful Mind* (2001).
 
@@ -221,7 +221,7 @@ Trong ô tương tác ở trên, hãy chọn trò **"Chẵn lẻ"**: bạn và H
 
 Bạn sẽ thấy **không có ô nào** viền cam. Ở mọi ô, luôn có một người muốn đổi ý. Oẳn tù tì cũng y như vậy.
 
-Thế nhưng Nash đã chứng minh rằng mọi trò chơi đều có cân bằng. Vậy cân bằng của trò Chẵn lẻ nằm ở đâu? Và nếu bạn phải chơi oẳn tù tì 100 ván với một người rất giỏi đoán, bạn sẽ chơi thế nào?
+Thế nhưng Nash đã chứng minh rằng mọi trò chơi đều có cân bằng. Vậy cân bằng của trò Chẵn lẻ nằm ở đâu? Và nếu bạn phải chơi oẳn tù tì 100 ván với một người rất giỏi đoán, bạn sẽ chơi thế nào? Đáp án ở [Tập 3](/blog/Game-Theory-3-Chien-Luoc-Hon-Hop).
 
 ## Tài liệu tham khảo
 
