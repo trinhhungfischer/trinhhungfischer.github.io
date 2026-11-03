@@ -15,6 +15,13 @@ import BertrandChords from '../components/BertrandChords';
 import CircleSpawn from '../components/CircleSpawn';
 import CoinFaker from '../components/CoinFaker';
 import BenfordLaw from '../components/BenfordLaw';
+import GameTheoryPrisoner from '../components/GameTheoryPrisoner';
+import GameTheoryNash from '../components/GameTheoryNash';
+import GameTheoryRps from '../components/GameTheoryRps';
+import GameTheoryPirates from '../components/GameTheoryPirates';
+import GameTheoryAxelrod from '../components/GameTheoryAxelrod';
+import GameTheoryAuction from '../components/GameTheoryAuction';
+import GameTheoryHawkDove from '../components/GameTheoryHawkDove';
 import './BlogPost.css';
 import './Projects.css'; // For page-header
 
@@ -54,7 +61,8 @@ const allPosts = Object.entries(modules).map(([path, rawContent]) => {
     slug,
     lang
   } as any;
-}).filter(p => !p.draft || import.meta.env.DEV);
+// Bài thuộc category Archive bị ẩn hẳn, kể cả khi mở link trực tiếp
+}).filter(p => (!p.draft || import.meta.env.DEV) && p.category !== 'Archive');
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -170,7 +178,14 @@ const BlogPost = () => {
               'bertrand-chords': BertrandChords,
               'circle-spawn': CircleSpawn,
               'coin-faker': CoinFaker,
-              'benford-law': BenfordLaw
+              'benford-law': BenfordLaw,
+              'pd-single': GameTheoryPrisoner,
+              'nash-finder': GameTheoryNash,
+              'rps-bot': GameTheoryRps,
+              'pirate-split': GameTheoryPirates,
+              'axelrod-tournament': GameTheoryAxelrod,
+              'auction-sim': GameTheoryAuction,
+              'hawk-dove': GameTheoryHawkDove
             } as any}
           >
             {post.body}

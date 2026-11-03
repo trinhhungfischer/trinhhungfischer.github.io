@@ -51,7 +51,8 @@ const allPosts: BlogMeta[] = Object.entries(modules).map(([path, rawContent]) =>
     slug,
     lang
   } as BlogMeta;
-}).filter(p => !p.draft || import.meta.env.DEV).sort((a, b) => new Date(b.date || Date.now()).getTime() - new Date(a.date || Date.now()).getTime());
+// Bài thuộc category Archive bị ẩn hẳn, kể cả khi mở link trực tiếp
+}).filter(p => (!p.draft || import.meta.env.DEV) && p.category !== 'Archive').sort((a, b) => new Date(b.date || Date.now()).getTime() - new Date(a.date || Date.now()).getTime());
 
 
 const Blog = () => {
