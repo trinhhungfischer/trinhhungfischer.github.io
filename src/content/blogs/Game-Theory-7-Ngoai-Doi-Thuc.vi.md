@@ -5,7 +5,7 @@ category: "Game Design"
 tags: "Game Theory"
 excerpt: "Tập cuối của series: con người suy luận được mấy tầng, vì sao diều hâu và bồ câu cùng tồn tại, làm sao cộng đồng tự quản được tài nguyên chung, và vì sao game designer chính là người thiết kế cơ chế."
 color: "var(--pale-green)"
-draft: true
+draft: false
 ---
 
 # Giải câu đố Tập 6

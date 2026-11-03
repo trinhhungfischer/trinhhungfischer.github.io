@@ -5,7 +5,7 @@ category: "Game Design"
 tags: "Game Theory"
 excerpt: "Song đề tù nhân chơi một lần thì ai cũng phản bội. Chơi mãi thì sao? Một giải đấu giữa các chương trình máy tính năm 1980 cho thấy chiến lược đơn giản nhất lại thắng: ăn miếng trả miếng."
 color: "var(--pale-green)"
-draft: true
+draft: false
 ---
 
 # Giải câu đố Tập 4

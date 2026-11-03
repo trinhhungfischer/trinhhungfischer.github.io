@@ -5,7 +5,7 @@ category: "Game Design"
 tags: "Game Theory"
 excerpt: "Vì sao xe gần như mới bán lại bị mất giá, vì sao tấm bằng đại học có giá trị kể cả khi bạn quên hết kiến thức, và vì sao trong một kiểu đấu giá, trả đúng giá trị thật luôn là lựa chọn tốt nhất."
 color: "var(--pale-green)"
-draft: true
+draft: false
 ---
 
 # Giải câu đố Tập 5

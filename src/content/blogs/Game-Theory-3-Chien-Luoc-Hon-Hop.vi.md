@@ -5,7 +5,7 @@ category: "Game Design"
 tags: "Game Theory"
 excerpt: "Có những trò chơi mà lựa chọn nào cũng có thể bị bắt bài. Lời giải của Nash: đừng chọn, hãy tung đồng xu. Nhưng tung với tỉ lệ bao nhiêu, và vì sao tỉ lệ đó lại do đối thủ quyết định?"
 color: "var(--pale-green)"
-draft: true
+draft: false
 ---
 
 # Giải câu đố Tập 2

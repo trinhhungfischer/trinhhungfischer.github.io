@@ -5,7 +5,7 @@ category: "Game Design"
 tags: "Game Theory"
 excerpt: "Hai người quên hẹn chỗ gặp mà vẫn tìm được nhau. Từ đó đi tới khái niệm trung tâm của lý thuyết trò chơi: cân bằng Nash, và vì sao một trò chơi có thể có nhiều cân bằng, mà không cái nào là tốt nhất."
 color: "var(--pale-green)"
-draft: true
+draft: false
 ---
 
 # Giải câu đố Tập 1

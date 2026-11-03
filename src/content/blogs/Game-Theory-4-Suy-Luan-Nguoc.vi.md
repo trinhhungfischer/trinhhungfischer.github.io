@@ -5,7 +5,7 @@ category: "Game Design"
 tags: "Game Theory"
 excerpt: "Năm tên cướp biển chia 100 đồng vàng, và tên đầu đàn giữ được 98 đồng. Tập này về những trò chơi đi lần lượt: cách giải chúng từ cuối lên đầu, vì sao lời đe dọa thường vô giá trị, và vì sao con người không chơi như lý thuyết."
 color: "var(--pale-green)"
-draft: true
+draft: false
 ---
 
 # Câu đố năm tên cướp biển
