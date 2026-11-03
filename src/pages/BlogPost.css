@@ -118,6 +118,13 @@
   padding: 12px 16px;
 }
 
+@media (max-width: 480px) {
+  .markdown-content th,
+  .markdown-content td {
+    padding: 8px 6px;
+  }
+}
+
 .markdown-content th {
   background-color: var(--text-primary);
   color: white;

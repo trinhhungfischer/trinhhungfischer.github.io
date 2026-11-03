@@ -15,6 +15,8 @@ import BertrandChords from '../components/BertrandChords';
 import CircleSpawn from '../components/CircleSpawn';
 import CoinFaker from '../components/CoinFaker';
 import BenfordLaw from '../components/BenfordLaw';
+import GameTheoryPrisoner from '../components/GameTheoryPrisoner';
+import GameTheoryNash from '../components/GameTheoryNash';
 import './BlogPost.css';
 import './Projects.css'; // For page-header
 
@@ -171,7 +173,9 @@ const BlogPost = () => {
               'bertrand-chords': BertrandChords,
               'circle-spawn': CircleSpawn,
               'coin-faker': CoinFaker,
-              'benford-law': BenfordLaw
+              'benford-law': BenfordLaw,
+              'pd-single': GameTheoryPrisoner,
+              'nash-finder': GameTheoryNash
             } as any}
           >
             {post.body}

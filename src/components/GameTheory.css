@@ -1,0 +1,170 @@
+/* Shared pieces for the game theory series; base layout comes from BertrandParadox.css */
+
+.gt-stack {
+  padding: 24px;
+  gap: 28px;
+  align-items: center;
+  /* Wraps by its own width, so it overrides the column switch in BertrandParadox.css */
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Payoff matrix: header row, then one row per strategy of the row player */
+.gt-matrix {
+  flex: 1 1 280px;
+  display: grid;
+  grid-template-columns: minmax(90px, auto) 1fr 1fr;
+  gap: 6px;
+  min-width: 0;
+}
+
+.gt-corner {
+  color: #888;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  align-self: end;
+}
+
+.gt-head {
+  color: #ccc;
+  font-size: 0.85rem;
+  text-align: center;
+  align-self: end;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.gt-head-row {
+  text-align: left;
+  align-self: center;
+}
+
+.gt-head-hit {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.gt-cell {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 18px 6px;
+  text-align: center;
+  white-space: nowrap;
+  font-family: monospace;
+  font-size: 1.1rem;
+  color: #ddd;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.gt-cell-hit {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: #f59e0b;
+  color: #fff;
+}
+
+.gt-controls {
+  flex: 1 1 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.gt-stack .bp-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.gt-result {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 3em;
+  color: #aaa;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.gt-result strong {
+  color: #fff;
+}
+
+.gt-better {
+  color: #4ade80;
+}
+
+.gt-worse {
+  color: #f87171;
+}
+
+/* Nash finder: tabs, matrix and result stacked vertically */
+.gt-column {
+  flex-direction: column;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+
+.gt-matrix-wide {
+  flex: none;
+}
+
+.gt-cell-edit {
+  padding: 14px 4px;
+}
+
+.gt-num {
+  width: 3.2ch;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  padding: 0 2px;
+  user-select: text;
+  -moz-appearance: textfield;
+}
+
+.gt-num::-webkit-outer-spin-button,
+.gt-num::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.gt-num:focus {
+  outline: none;
+  background: #333;
+  border-radius: 3px;
+}
+
+.gt-num-best {
+  border-bottom-color: #f59e0b;
+  color: #fff;
+  font-weight: 700;
+}
+
+.gt-legend {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 480px) {
+  .gt-stack {
+    padding: 16px;
+  }
+  .gt-matrix {
+    grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .gt-head {
+    font-size: 0.75rem;
+  }
+  .gt-cell-edit {
+    font-size: 0.9rem;
+    padding: 12px 2px;
+  }
+  .gt-num {
+    width: 3ch;
+    padding: 0;
+  }
+}
