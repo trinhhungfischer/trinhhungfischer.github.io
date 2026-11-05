@@ -91,16 +91,18 @@
     "productUrl": "https://mini-puzzle-sigma.vercel.app/"
   },
   {
-    "title": "Personal Prototype: Gamification Framework",
-    "slug": "personal-gamification",
+    "title": "Game Theory Lab",
+    "slug": "game-theory-lab",
     "type": "personal",
-    "startDate": "2024-01",
+    "startDate": "2026-10",
     "endDate": "present",
-    "pinned": false,
-    "description": "A modular framework for applying game mechanics to non-game contexts. Features user progression, badges, and dynamic leaderboards.",
-    "genres": ["Framework", "Systems Design"],
-    "tools": ["React", "Node.js"],
+    "pinned": true,
+    "description": "A bilingual (Vietnamese/English) collection of interactive game theory experiments written for game makers, in a hand-drawn notebook style. Includes Balance Lab, Fishing Village, Used Bike Market, Bánh Mì Street, Mind-reading Bot, Pirates' Table, Matchmaking and more, each paired with an episode of my game theory blog series.",
+    "genres": ["Game Theory", "Interactive Explainer"],
+    "tools": ["React", "TypeScript", "Vite"],
     "colorClass": "color-block-1",
-    "imagePlaceholder": "PROTO"
+    "imagePlaceholder": "GAME THEORY",
+    "imageUrl": "/images/projects/game-theory-lab.png",
+    "productUrl": "https://game-theory-lab-one.vercel.app/"
   }
 ]

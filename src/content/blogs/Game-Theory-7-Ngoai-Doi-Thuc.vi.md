@@ -91,7 +91,7 @@ Hãy thử chỉnh $V$ và $C$ bên dưới. Năm đường biểu diễn là n�
 <hawk-dove>
 </hawk-dove>
 
-Đây có lẽ là điều đẹp nhất mà lý thuyết trò chơi tiến hóa chỉ ra: **cân bằng Nash không cần ai tính ra nó**. Chọn lọc tự nhiên, thị trường, hay đơn giản là việc con người bắt chước những ai đang thành công, đều có thể đưa một hệ thống tới cân bằng mà không ai trong đó hiểu cân bằng là gì. Các cầu thủ đá penalty ở Tập 3 và các chiến lược trong giải đấu tiến hóa ở [Tập 5](/blog/Game-Theory-5-Tro-Choi-Lap-Lai) cũng hội tụ theo cách y hệt.
+Đây có lẽ là điều đẹp nhất mà lý thuyết trò chơi tiến hóa chỉ ra: **cân bằng Nash không cần ai tính ra nó**. Chọn lọc tự nhiên, thị trường, hay đơn giản là việc con người bắt chước những ai đang thành công, đều có thể đưa một hệ thống tới cân bằng mà không ai trong đó hiểu cân bằng là gì. Các cầu thủ đá penalty ở Tập 3 và các chiến lược trong giải đấu tiến hóa ở [Tập 5](/blog/Game-Theory-5-Tro-Choi-Lap-Lai) cũng hội tụ theo cách y hệt. Nếu muốn tận mắt xem một quần thể chiến lược tiến hóa qua từng thế hệ, phần cuối của [The Evolution of Trust](https://ncase.me/trust/) (Nicky Case) là một minh họa tuyệt vời.
 
 ## III. Bi kịch mảnh đất công
 
