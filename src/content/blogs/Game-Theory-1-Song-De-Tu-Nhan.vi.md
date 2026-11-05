@@ -178,6 +178,8 @@ Giảm giá là chiến lược trội của cả hai, và cả hai cùng kết 
 
 Điểm chung của tất cả: **lợi ích cá nhân và lợi ích tập thể kéo về hai hướng khác nhau**. Khi đó, những cá nhân hoàn toàn lý trí vẫn có thể cùng nhau tạo ra một kết cục mà không ai muốn.
 
+> **Chơi thêm:** [The Evolution of Trust](https://ncase.me/trust/) của Nicky Case là một trò chơi tương tác khoảng 30 phút, bắt đầu đúng từ song đề tù nhân này, với một cỗ máy "bỏ đồng xu" thay cho phòng thẩm vấn. Nếu bạn muốn biết điều gì xảy ra khi trò chơi được lặp lại nhiều lần, hãy chơi nó trước khi đọc [Tập 5](/blog/Game-Theory-5-Tro-Choi-Lap-Lai).
+
 ## V. Góc Game Designer
 
 ### 1. Split or Steal

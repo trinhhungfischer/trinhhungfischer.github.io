@@ -91,16 +91,18 @@
     "productUrl": "https://mini-puzzle-sigma.vercel.app/"
   },
   {
-    "title": "Dự án cá nhân: Gamification Framework",
-    "slug": "personal-gamification",
+    "title": "Game Theory Lab",
+    "slug": "game-theory-lab",
     "type": "personal",
-    "startDate": "2024-01",
+    "startDate": "2026-10",
     "endDate": "present",
-    "pinned": false,
-    "description": "Một framework theo module dùng để áp dụng cơ chế game vào các môi trường phi trò chơi. Bao gồm hệ thống tiến trình, huy hiệu và bảng xếp hạng động.",
-    "genres": ["Framework", "Systems Design"],
-    "tools": ["React", "Node.js"],
+    "pinned": true,
+    "description": "Bộ thí nghiệm tương tác về lý thuyết trò chơi viết cho người làm game, song ngữ Việt/Anh, phong cách sổ nháp vẽ tay. Gồm Balance Lab, Làng chài, Chợ xe cũ, Phố bánh mì, Bot đọc vị, Bàn cướp biển, Ghép đôi và nhiều thí nghiệm khác, mỗi thí nghiệm gắn với một tập trong series Game Theory trên blog.",
+    "genres": ["Game Theory", "Interactive Explainer"],
+    "tools": ["React", "TypeScript", "Vite"],
     "colorClass": "color-block-1",
-    "imagePlaceholder": "PROTO"
+    "imagePlaceholder": "GAME THEORY",
+    "imageUrl": "/images/projects/game-theory-lab.png",
+    "productUrl": "https://game-theory-lab-one.vercel.app/"
   }
 ]

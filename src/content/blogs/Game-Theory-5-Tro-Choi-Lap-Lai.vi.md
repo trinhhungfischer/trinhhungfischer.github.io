@@ -132,6 +132,8 @@ Một năm sau, cũng hai tác giả này giới thiệu một chiến lược k
 
 Bài học của phần này có lẽ quen thuộc với bất kỳ ai từng sống chung với người khác: trong một thế giới có hiểu lầm, **tha thứ không phải là yếu đuối, mà là một chiến lược**.
 
+> **Chơi thêm:** toàn bộ câu chuyện của tập này, từ giải đấu, tiến hóa của quần thể cho tới tác hại của nhiễu, được kể lại rất đẹp trong [The Evolution of Trust](https://ncase.me/trust/) của Nicky Case. Trò chơi đó còn cho bạn tự chỉnh luật payoff, số ván mỗi trận và mức nhiễu, rồi xem quần thể thay đổi ra sao. Đó là một cách rất tốt để kiểm tra lại những gì bạn vừa đọc.
+
 ## IV. Hợp tác ngoài đời
 
 Khi đã biết nhìn, bạn sẽ thấy "cái bóng của tương lai" ở khắp nơi:
