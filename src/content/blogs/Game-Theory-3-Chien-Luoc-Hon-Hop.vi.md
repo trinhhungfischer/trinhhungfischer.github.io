@@ -3,6 +3,8 @@ title: "[Game Theory] Tập 3: Oẳn tù tì và nghệ thuật khó đoán"
 date: "2026-11-03"
 category: "Game Design"
 tags: "Game Theory"
+series: "Học Game Theory cùng Hùng"
+seriesOrder: "3"
 excerpt: "Có những trò chơi mà lựa chọn nào cũng có thể bị bắt bài. Lời giải của Nash: đừng chọn, hãy tung đồng xu. Nhưng tung với tỉ lệ bao nhiêu, và vì sao tỉ lệ đó lại do đối thủ quyết định?"
 color: "var(--pale-green)"
 draft: false

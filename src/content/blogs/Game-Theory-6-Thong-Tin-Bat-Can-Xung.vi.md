@@ -3,6 +3,8 @@ title: "[Game Theory] Tập 6: Khi không ai biết hết, thông tin là vũ kh
 date: "2026-11-03"
 category: "Game Design"
 tags: "Game Theory"
+series: "Học Game Theory cùng Hùng"
+seriesOrder: "6"
 excerpt: "Vì sao xe gần như mới bán lại bị mất giá, vì sao tấm bằng đại học có giá trị kể cả khi bạn quên hết kiến thức, và vì sao trong một kiểu đấu giá, trả đúng giá trị thật luôn là lựa chọn tốt nhất."
 color: "var(--pale-green)"
 draft: false

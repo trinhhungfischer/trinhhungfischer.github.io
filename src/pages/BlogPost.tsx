@@ -22,6 +22,7 @@ import GameTheoryPirates from '../components/GameTheoryPirates';
 import GameTheoryAxelrod from '../components/GameTheoryAxelrod';
 import GameTheoryAuction from '../components/GameTheoryAuction';
 import GameTheoryHawkDove from '../components/GameTheoryHawkDove';
+import { groupBySeries } from '../utils/series';
 import './BlogPost.css';
 import './Projects.css'; // For page-header
 
@@ -138,6 +139,16 @@ const BlogPost = () => {
     );
   }
 
+  const postTags: string[] = (post.tags || '').split(',').map((t: string) => t.trim()).filter(Boolean);
+
+  // Series: lấy các bài cùng series, cùng ngôn ngữ với bài đang xem
+  const series = post.series
+    ? groupBySeries(allPosts.filter(p => p.lang === post.lang)).find(s => s.name === post.series.trim())
+    : undefined;
+  const seriesIndex = series ? series.posts.findIndex((p: any) => p.slug === post.slug) : -1;
+  const prevPost = series && seriesIndex > 0 ? series.posts[seriesIndex - 1] : undefined;
+  const nextPost = series && seriesIndex >= 0 ? series.posts[seriesIndex + 1] : undefined;
+
   const tocList = (
     <ul>
       {headings.map((h, i) => (
@@ -163,9 +174,34 @@ const BlogPost = () => {
           <span>{post.date}</span>
           <span>//</span>
           <span>{post.category}</span>
+          {postTags.map((t: string) => (
+            <Link key={t} to={`/blog?filters=${encodeURIComponent(t)}`} className="post-tag">{t}</Link>
+          ))}
         </div>
         <h1 className="page-title" style={{ fontSize: '3.5rem' }}>{post.title}</h1>
       </div>
+
+      {series && (
+        <details className="series-box">
+          <summary>
+            <span className="series-box-label">Series</span>
+            <span className="series-box-name">{series.name}</span>
+            <span className="series-box-pos">
+              {language === 'vi' ? 'Bài' : 'Part'} {seriesIndex + 1}/{series.posts.length}
+            </span>
+          </summary>
+          <ol>
+            {series.posts.map((p: any, i: number) => (
+              <li key={p.slug} className={i === seriesIndex ? 'current' : undefined}>
+                {i === seriesIndex ? <span>{p.title}</span> : <Link to={`/blog/${p.slug}`}>{p.title}</Link>}
+              </li>
+            ))}
+          </ol>
+          <Link to={`/blog?view=series&filters=${encodeURIComponent(series.name)}`} className="series-box-all">
+            {language === 'vi' ? 'Xem toàn bộ series →' : 'View whole series →'}
+          </Link>
+        </details>
+      )}
 
       <div className="blog-layout">
         <div className="markdown-content">
@@ -190,6 +226,23 @@ const BlogPost = () => {
           >
             {post.body}
           </ReactMarkdown>
+
+          {series && (prevPost || nextPost) && (
+            <nav className="series-nav" aria-label={language === 'vi' ? 'Điều hướng series' : 'Series navigation'}>
+              {prevPost ? (
+                <Link to={`/blog/${prevPost.slug}`} className="series-nav-link prev">
+                  <span className="series-nav-dir">← {language === 'vi' ? 'Bài trước' : 'Previous'}</span>
+                  <span className="series-nav-title">{prevPost.title}</span>
+                </Link>
+              ) : null}
+              {nextPost && (
+                <Link to={`/blog/${nextPost.slug}`} className="series-nav-link next">
+                  <span className="series-nav-dir">{language === 'vi' ? 'Bài tiếp' : 'Next'} →</span>
+                  <span className="series-nav-title">{nextPost.title}</span>
+                </Link>
+              )}
+            </nav>
+          )}
         </div>
         
         {headings.length > 0 && (

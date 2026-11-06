@@ -3,6 +3,8 @@ title: "[GD Course] Bài 6: Nghệ thuật Playtest - Đối mặt với sự th
 date: "2026-07-03"
 category: "Game Design"
 tags: "Course"
+series: "GD Course"
+seriesOrder: "6"
 excerpt: "Đứa con tinh thần bị chê bai không thương tiếc? Cùng tìm hiểu cách vượt qua cú sốc tâm lý mang tên Playtest."
 color: "var(--pale-blue)"
 draft: false

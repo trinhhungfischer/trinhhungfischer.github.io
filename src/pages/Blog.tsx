@@ -1,7 +1,8 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { GroupedMultiSelectDropdown, SingleSelectDropdown } from '../components/Dropdowns';
-import { LayoutList, LayoutGrid } from 'lucide-react';
+import { LayoutList, LayoutGrid, Library } from 'lucide-react';
+import { groupBySeries } from '../utils/series';
 import './Blog.css';
 import './Projects.css'; // Reuse page-header
 
@@ -15,7 +16,11 @@ interface BlogMeta {
   draft?: boolean;
   lang?: string;
   tags?: string;
+  series?: string;
+  seriesOrder?: string;
 }
+
+type ViewMode = 'list' | 'grid' | 'series';
 
 function parseFrontmatter(markdown: string) {
   const match = markdown.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
@@ -64,7 +69,7 @@ const Blog = () => {
   const searchQuery = searchParams.get('q') || '';
   const selectedFilters = searchParams.get('filters')?.split(',').filter(Boolean) || [];
   const sortOrder = (searchParams.get('sort') as 'newest' | 'oldest') || 'newest';
-  const viewMode = (searchParams.get('view') as 'list' | 'grid') || 'list';
+  const viewMode = (searchParams.get('view') as ViewMode) || 'list';
 
   const setSearchQuery = (q: string) => {
     const newParams = new URLSearchParams(searchParams);
@@ -87,7 +92,7 @@ const Blog = () => {
     setSearchParams(newParams, { replace: true });
   };
 
-  const setViewMode = (mode: 'list' | 'grid') => {
+  const setViewMode = (mode: ViewMode) => {
     const newParams = new URLSearchParams(searchParams);
     if (mode === 'list') newParams.delete('view');
     else newParams.set('view', mode);
@@ -97,10 +102,13 @@ const Blog = () => {
   const categories = Array.from(new Set(posts.map(p => p.category).filter(Boolean)));
   const allTags = Array.from(new Set(posts.flatMap(p => (p.tags || '').split(',').map(t => t.trim())).filter(Boolean)));
   const years = ['All', ...Array.from(new Set(posts.map(p => new Date(p.date || Date.now()).getFullYear().toString())))].sort((a, b) => b.localeCompare(a));
-  
+  const seriesGroups = groupBySeries(posts);
+  const allSeries = seriesGroups.map(s => s.name);
+
   const filterGroups = [
     { label: language === 'vi' ? 'Danh mục' : 'Categories', options: categories },
     { label: language === 'vi' ? 'Thẻ' : 'Tags', options: allTags },
+    { label: 'Series', options: allSeries },
     { label: language === 'vi' ? 'Năm' : 'Year', options: years.filter(y => y !== 'All') }
   ];
 
@@ -115,7 +123,11 @@ const Blog = () => {
     const hasTagSelected = allTags.some(t => selectedFilters.includes(t));
     const postTags = (p.tags || '').split(',').map(t => t.trim());
     const passTag = hasTagSelected ? postTags.some(t => selectedFilters.includes(t)) : true;
-    
+
+    // Check if series passes
+    const hasSeriesSelected = allSeries.some(s => selectedFilters.includes(s));
+    const passSeries = hasSeriesSelected ? selectedFilters.includes(p.series?.trim() || '') : true;
+
     // Check if year passes
     const hasYearSelected = years.some(y => selectedFilters.includes(y));
     const passYear = hasYearSelected ? selectedFilters.includes(postYear) : true;
@@ -123,12 +135,14 @@ const Blog = () => {
     const matchesSearch = (p.title || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
                           (p.excerpt || '').toLowerCase().includes(searchQuery.toLowerCase());
     
-    return passCategory && passTag && passYear && matchesSearch;
+    return passCategory && passTag && passSeries && passYear && matchesSearch;
   }).sort((a, b) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
     return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
   });
+  const filteredSeries = groupBySeries(filteredPosts);
+  if (sortOrder === 'oldest') filteredSeries.reverse();
 
   return (
     <div className="container animate-fade-up" style={{ padding: '60px 24px' }}>
@@ -175,10 +189,53 @@ const Blog = () => {
             >
               <LayoutGrid size={20} />
             </button>
+            <button
+              className={`view-toggle-btn ${viewMode === 'series' ? 'active' : ''}`}
+              onClick={() => setViewMode('series')}
+              title={language === 'vi' ? 'Xem theo series' : 'Series View'}
+            >
+              <Library size={20} />
+            </button>
           </div>
         </div>
       </div>
 
+      {viewMode === 'series' ? (
+        <div className="series-list">
+          {filteredSeries.map(s => {
+            const total = seriesGroups.find(g => g.name === s.name)?.posts.length ?? s.posts.length;
+            return (
+              <section className="series-card" key={s.name}>
+                <div className="series-card-header">
+                  <h2 className="series-card-title">{s.name}</h2>
+                  <span className="text-secondary series-card-count">
+                    {total} {language === 'vi' ? 'bài' : (total === 1 ? 'post' : 'posts')} · {language === 'vi' ? 'cập nhật' : 'updated'} {s.latestDate}
+                  </span>
+                </div>
+                <ol className="series-card-posts">
+                  {s.posts.map(p => (
+                    <li key={p.slug}>
+                      <Link to={`/blog/${p.slug}`}>
+                        <span className="series-card-num">{p.seriesOrder || '•'}</span>
+                        <span className="series-card-post-title">{p.title}</span>
+                        <span className="text-secondary series-card-date">{p.date}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            );
+          })}
+          {filteredSeries.length === 0 && (
+            <div className="blog-empty">
+              <p>{language === 'vi' ? 'Không có series nào phù hợp.' : 'No series match your criteria.'}</p>
+              <button onClick={() => setSearchParams({ view: 'series' }, { replace: true })} className="clear-filters-btn">
+                {language === 'vi' ? 'Xóa bộ lọc' : 'Clear Filters'}
+              </button>
+            </div>
+          )}
+        </div>
+      ) : (
       <div className={`blog-list ${viewMode === 'grid' ? 'grid-view' : ''}`}>
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, index) => (
@@ -204,6 +261,7 @@ const Blog = () => {
           </div>
         )}
       </div>
+      )}
     </div>
   );
 };

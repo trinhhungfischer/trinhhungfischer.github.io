@@ -3,6 +3,8 @@ title: "[GD Course] Bài 1: Nhập môn Game Design - Thế nào là một quy�
 date: "2026-07-03"
 category: "Game Design"
 tags: "Course"
+series: "GD Course"
+seriesOrder: "1"
 excerpt: "Khởi đầu chuỗi bài học Game Design, chúng ta cùng bàn về câu hỏi cốt lõi: Game là gì? Và làm thế nào để tạo ra một 'Meaningful Choice' cho người chơi."
 color: "var(--pale-blue)"
 draft: false

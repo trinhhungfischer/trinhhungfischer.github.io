@@ -3,6 +3,8 @@ title: "[Game Theory] Tập 2: Cân bằng Nash, khi không ai muốn đổi ý"
 date: "2026-11-03"
 category: "Game Design"
 tags: "Game Theory"
+series: "Học Game Theory cùng Hùng"
+seriesOrder: "2"
 excerpt: "Hai người quên hẹn chỗ gặp mà vẫn tìm được nhau. Từ đó đi tới khái niệm trung tâm của lý thuyết trò chơi: cân bằng Nash, và vì sao một trò chơi có thể có nhiều cân bằng, mà không cái nào là tốt nhất."
 color: "var(--pale-green)"
 draft: false

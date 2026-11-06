@@ -3,6 +3,8 @@ title: "[GD Course] Bài 5: Hành vi Người chơi (Player Behavior)"
 date: "2026-07-03"
 category: "Game Design"
 tags: "Course"
+series: "GD Course"
+seriesOrder: "5"
 excerpt: "Hệ thống vĩ mô và vi mô đã có, nhưng chúng ta còn thiếu một biến số quan trọng nhất: Con người. Cùng khám phá tâm lý học hành vi đằng sau những cú click chuột."
 color: "var(--pale-blue)"
 draft: false

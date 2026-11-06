@@ -3,6 +3,8 @@ title: "Viên kẹo hồng ở lượt cuối: một bài toán, hai cách tính
 date: "2026-11-05"
 category: "Game Design"
 tags: "Math, Short"
+series: "Chơi số lành mạnh"
+seriesOrder: "1"
 excerpt: "Ba viên kẹo xanh, một viên kẹo hồng, và mình bốc trúng viên hồng ở lượt cuối. Cảm giác thật đặc biệt, cho đến khi mình tính xác suất theo hai cách và cả hai cùng trả về 1/4."
 color: "var(--pale-blue)"
 ---
