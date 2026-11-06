@@ -3,6 +3,8 @@ title: "[Game Theory] Tập 4: Đi trước hay đi sau? Suy luận ngược"
 date: "2026-11-03"
 category: "Game Design"
 tags: "Game Theory"
+series: "Học Game Theory cùng Hùng"
+seriesOrder: "4"
 excerpt: "Năm tên cướp biển chia 100 đồng vàng, và tên đầu đàn giữ được 98 đồng. Tập này về những trò chơi đi lần lượt: cách giải chúng từ cuối lên đầu, vì sao lời đe dọa thường vô giá trị, và vì sao con người không chơi như lý thuyết."
 color: "var(--pale-green)"
 draft: false

@@ -3,6 +3,8 @@ title: "[GD Course] Bài 2: Chơi game như một Game Designer (Mô hình MDA)"
 date: "2026-07-03"
 category: "Game Design"
 tags: "Course"
+series: "GD Course"
+seriesOrder: "2"
 excerpt: "Không chỉ là đánh giá game, MDA là công cụ mạnh mẽ để chúng ta mổ xẻ, phân tích từng yếu tố tạo nên trải nghiệm của một trò chơi."
 color: "var(--pale-blue)"
 draft: false

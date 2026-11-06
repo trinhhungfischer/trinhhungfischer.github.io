@@ -3,6 +3,8 @@ title: "[GD Course] Bài 3: Macro System Design - Xây dựng Chuỗi giá trị
 date: "2026-07-03"
 category: "Game Design"
 tags: "Course"
+series: "GD Course"
+seriesOrder: "3"
 excerpt: "Khi nhắc tới Balance Game, chúng ta cần nghĩ ngay tới những con số. Bài này sẽ hướng dẫn cách thiết kế một nền kinh tế vĩ mô trong game thông qua Chuỗi giá trị."
 color: "var(--pale-blue)"
 draft: false

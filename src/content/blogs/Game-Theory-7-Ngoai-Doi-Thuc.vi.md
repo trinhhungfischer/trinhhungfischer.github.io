@@ -3,6 +3,8 @@ title: "[Game Theory] Tập 7: Game theory ngoài đời, và những giới h�
 date: "2026-11-03"
 category: "Game Design"
 tags: "Game Theory"
+series: "Học Game Theory cùng Hùng"
+seriesOrder: "7"
 excerpt: "Tập cuối của series: con người suy luận được mấy tầng, vì sao diều hâu và bồ câu cùng tồn tại, làm sao cộng đồng tự quản được tài nguyên chung, và vì sao game designer chính là người thiết kế cơ chế."
 color: "var(--pale-green)"
 draft: false

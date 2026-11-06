@@ -3,6 +3,8 @@ title: "[Game Theory] Tập 1: Hai tên tù và một lựa chọn tồi"
 date: "2026-11-03"
 category: "Game Design"
 tags: "Game Theory"
+series: "Học Game Theory cùng Hùng"
+seriesOrder: "1"
 excerpt: "Mở đầu series Học Game Theory cùng Hùng: hai người cùng chọn điều tốt nhất cho bản thân, và cùng nhận về một kết cục tệ hại. Chuyện gì đã xảy ra?"
 color: "var(--pale-green)"
 draft: false

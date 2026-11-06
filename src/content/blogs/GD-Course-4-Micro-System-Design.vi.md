@@ -3,6 +3,8 @@ title: "[GD Course] Bài 4: Micro System Design - Toán học cho Game Designer"
 date: "2026-07-03"
 category: "Game Design"
 tags: "Course"
+series: "GD Course"
+seriesOrder: "4"
 excerpt: "Đằng sau những cảm xúc bùng nổ của người chơi là những hàm số khô khan. Hãy cùng tìm hiểu cách áp dụng toán học vào Micro System Design."
 color: "var(--pale-blue)"
 draft: false

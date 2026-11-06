@@ -3,6 +3,8 @@ title: "[GD Course] Bài 7: Tôi là Game Designer"
 date: "2026-07-03"
 category: "Game Design"
 tags: "Course"
+series: "GD Course"
+seriesOrder: "7"
 excerpt: "Đóng lại series bài học, cùng ngồi xuống nhâm nhi ly cà phê và nhìn lại chặng đường một năm thực chiến với nghề Thiết kế Game."
 color: "var(--pale-blue)"
 draft: false
