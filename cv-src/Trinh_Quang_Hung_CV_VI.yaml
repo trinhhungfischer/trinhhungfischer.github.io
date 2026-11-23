@@ -1,0 +1,145 @@
+# Source of public/cv/Trinh_Quang_Hung_CV_VI.pdf. Build: pip install "rendercv[full]" && rendercv render Trinh_Quang_Hung_CV_VI.yaml
+# then copy rendercv_output/*.pdf over public/cv/Trinh_Quang_Hung_CV_VI.pdf. Keep in sync with src/data/resume.ts.
+cv:
+  name: Trịnh Quang Hùng
+  location: Hà Nội, Việt Nam
+  email: trinhhungfischer@gmail.com
+  phone: +84 377 366 231
+  website: https://trinhhungfischer.github.io/
+  social_networks:
+    - network: GitHub
+      username: trinhhungfischer
+  sections:
+    Tóm Tắt:
+      - Game Designer với 4 năm kinh nghiệm thiết kế game mobile Midcore và Casual. Thế mạnh về core loop design, meta-game system, progression và balance cho sản phẩm quy mô hàng triệu người chơi. Có nền tảng kỹ thuật vững chắc và ứng dụng AI hiệu quả trong quy trình thiết kế.
+    Kinh Nghiệm:
+      - company: Falcon Games
+        position: Senior Game Designer
+        start_date: 2026-08
+        end_date: present
+        location: Hà Nội
+        highlights:
+          - 'Thiết kế chính hệ thống kinh tế (economy) và các sự kiện (live events) cho [Hungry Bees™](https://apps.apple.com/vn/app/hungry-bees/id6802910325) (puzzle xếp màu 3D)'
+          - Thiết kế hệ thống blocker cho level, tạo sự đa dạng và kiểm soát độ khó của màn chơi
+      - company: Zitga
+        position: Game Designer
+        start_date: 2023-02
+        end_date: 2026-08
+        location: Hà Nội
+        highlights:
+          - 'Phụ trách thiết kế game midcore **[Guardian War](https://play.google.com/store/apps/details?id=com.fansipan.pixel.hero.action.rpg.adventure.games&hl=en&gl=US)** và Lead Designer cho [Stickman Defense: Survival TD](https://play.google.com/store/apps/details?id=com.thp020.stickman.casual.war.game&hl=en), [Pixel Squad](https://apps.apple.com/vn/app/pixel-squad-war-of-legends/id6504517662) và một số game Puzzle'
+          - 'Xây dựng và duy trì Game Design Document toàn diện: core loop, meta-game, progression system và economy'
+          - 'Tập trung về Level, Progression, Economy Design và Game Balancing: tăng 30% doanh thu game [Galaxy War](https://play.google.com/store/apps/details?id=com.threehp013.idle.plane.shooting.space.force.game&hl=en) thông qua tái thiết kế balance và tối ưu vòng lặp trải nghiệm người chơi'
+          - Sử dụng thành thạo Figma và Photoshop để thiết kế UX flow và wireframe trong game
+          - Ứng dụng các công cụ AI (Claude, Gemini) vào quy trình thiết kế hệ thống và level, tăng đáng kể tốc độ sản xuất
+          - Chủ trì sprint planning và backlog grooming theo quy trình Agile; phối hợp cross-functional team (Dev, Art, QA) đảm bảo milestone đúng tiến độ
+      - company: Zingplay Studio - VNG
+        position: Game Developer (Thực tập)
+        start_date: 2022-05
+        end_date: 2022-08
+        location: Hà Nội
+        highlights:
+          - 'Phát triển prototype game Casual Tower Defense **[Sinh Tử Môn ZingPlay](https://play.google.com/store/apps/details/Sinh_T%E1%BB%AD_M%C3%B4n_ZingPlay?id=gsn.tdf.vn&hl=vi)** bằng Cocos2D (client) và Bitzero (server)'
+      - company: ToVChain
+        position: Data Scientist (Thực tập)
+        start_date: 2021-11
+        end_date: 2022-05
+        location: Hà Nội
+        highlights:
+          - Phân tích hành vi người dùng và tham gia phát triển tính năng gợi ý đầu tư trên nền tảng [Trava Finance](https://trava.finance/)
+    Dự Án Nổi Bật:
+      - name: '[Hungry Bees™: Color Sort Puzzle](https://apps.apple.com/vn/app/hungry-bees/id6802910325)'
+        start_date: 2026-08
+        end_date: present
+        location: Falcon Games
+        highlights:
+          - '**Thể loại:** Casual Puzzle | **Platform:** Mobile | **Engine:** Unity'
+          - '**Core loop:** Người chơi chạm để đưa đàn ong pixel tới đúng khối cùng màu và dọn sạch màn chơi'
+          - Thiết kế chính hệ thống kinh tế (economy) và các sự kiện (live events)
+          - Thiết kế hệ thống blocker cho level
+          - '**Chỉ số:** 100K+ downloads · Rating 4.9★'
+      - name: '[Stickman Defense: Survival TD](https://play.google.com/store/apps/details?id=com.thp020.stickman.casual.war.game&hl=en)'
+        start_date: 2026-01
+        end_date: 2026-08
+        location: Zitga
+        highlights:
+          - '**Thể loại:** Midcore Strategy/RPG | **Platform:** Mobile | **Engine:** Unity'
+          - '**Core loop:** Người chơi phòng thủ căn cứ, tiêu diệt quái vật tấn công, nhận nâng cấp theo cơ chế rogue-like và tiêu diệt Boss để nhận thưởng; từ đó nâng cấp sức mạnh qua trang bị, pet system và nhiều hệ thống meta'
+          - Xây dựng và sở hữu toàn bộ hệ thống chỉ số game — từ progression curve, balance sheet đến power scaling — làm nền tảng thiết kế cho các hệ thống content và meta
+          - 'Lead Game Designer: thiết kế các hệ thống nhân vật, progression, economy, guild, event và toàn bộ UX flow trong game'
+          - '**Chỉ số:** 300K+ downloads · 7K DAU · Rating 4.7★'
+      - name: '[Guardian War: RPG Pixel Hero](https://play.google.com/store/apps/details?id=com.fansipan.pixel.hero.action.rpg.adventure.games&hl=en&gl=US)'
+        start_date: 2023-02
+        end_date: 2024-02
+        location: Zitga
+        highlights:
+          - '**Thể loại:** Midcore Strategy/RPG | **Platform:** Mobile | **Engine:** Unity'
+          - '**Core loop:** Người chơi sưu tầm và nâng cấp anh hùng để chinh phục dungeon, đánh boss và khám phá vùng đất mới theo từng chương'
+          - Xây dựng core metrics framework và user progression system (early/mid/late game), tạo blueprint chuẩn hóa cho thiết kế các hệ thống gameplay bổ sung
+          - 'Thiết kế và cân bằng các hệ thống: hero stats, progression, economy, PvP/PvE và seasonal event'
+          - Thiết kế world map, nhân vật và enemy scaling theo từng vùng nội dung
+          - '**Chỉ số:** 1M+ downloads · 29K DAU · Rating 4.6★'
+      - name: '[Block Jam Away: Color Slide](https://apkpure.com/color-slide-block-jam-puzzle/com.thp017.block.jam.puzzle.game/download)'
+        start_date: 2025-06
+        end_date: 2025-08
+        location: Zitga
+        highlights:
+          - '**Thể loại:** Casual Puzzle | **Platform:** Mobile | **Engine:** Unity'
+          - '**Core loop:** Người chơi trượt và ghép các khối màu để giải câu đố theo từng màn chơi'
+          - 'Lead Game Designer: thiết kế hệ thống progression, level design và economy'
+          - Tự động hóa quy trình thiết kế màn chơi (100 level / 2 ngày) và xây dựng công cụ kiểm thử độ khó tự động
+          - '**Chỉ số:** 100K+ downloads · 5K DAU · Rating 4.4★'
+      - name: '[Sinh Tử Môn ZingPlay](https://play.google.com/store/apps/details/Sinh_T%E1%BB%AD_M%C3%B4n_ZingPlay?id=gsn.tdf.vn&hl=vi)'
+        start_date: 2022-05
+        end_date: 2022-08
+        location: Zingplay Studio - VNG
+        highlights:
+          - '**Thể loại:** Casual Tower Defense | **Platform:** Mobile | **Engine:** Cocos2D'
+          - Lập trình giao diện client, các cơ chế gameplay và một số hệ thống server đồng bộ với client
+    Kỹ Năng:
+      - label: Game Design
+        details: GDD, Core Loop Design, Meta-game System, Progression & Economy Design, Game Balancing, Level Design, PvP/PvE Design, Event Design, Monetization (IAP/IAA)
+      - label: Phân tích & Tối ưu
+        details: Data-driven Design, A/B Testing, Metrics Analysis (Retention/DAU/Conversion), Player Behavior Analysis
+      - label: Công cụ & AI
+        details: Unity, Cocos2D, Machination, Figma, Photoshop, Claude, Gemini
+      - label: Lập trình
+        details: C#, Python — có khả năng đọc hiểu code và phối hợp hiệu quả với đội Dev
+      - label: Ngoại ngữ
+        details: Tiếng Anh — đọc hiểu tài liệu kỹ thuật và GDD
+    Học Vấn:
+      - institution: Đại Học Bách Khoa Hà Nội
+        area: Khoa Học Máy Tính (Chương trình Tài năng)
+        degree: BS
+        start_date: 2019-08
+        end_date: 2025-02
+        location: Hà Nội
+        highlights:
+          - 'GPA: 3.57 / 4.0'
+    Hoạt Động:
+      - bullet: '**Giải Danh Dự — Axie Game Hackathon 2022:** Đội UDestiny (4 thành viên) đạt Top 4 — Honor Prize. Sản phẩm là game bài dựa trên vũ trụ Axie Infinity với cơ chế lấy cảm hứng từ Oẳn Tù Tì'
+      - bullet: '**Giải Ba — Kỳ thi Olympic Toán học Việt Nam 2019 (VMO):** Đạt giải Ba trong kỳ thi Olympic Toán quốc gia — cuộc thi học sinh giỏi toán cấp quốc gia dành cho học sinh trung học phổ thông'
+design:
+  theme: sb2nov
+  page:
+    show_top_note: false
+  colors:
+    links: rgb(0,79,144)
+  links:
+    underline: true
+  header:
+    connections:
+      show_icons: true
+      separator: ''
+  templates:
+    footer: '*NAME - Page PAGE_NUMBER of TOTAL_PAGES*'
+locale:
+  language: english
+settings:
+  current_date: 2026-11-23
+  pdf_title: Trịnh Quang Hùng's CV
+  render_command:
+    output_folder: rendercv_output
+    dont_generate_markdown: true
+    dont_generate_html: true
+    dont_generate_png: true

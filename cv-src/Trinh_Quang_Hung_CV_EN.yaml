@@ -1,0 +1,145 @@
+# Source of public/cv/Trinh_Quang_Hung_CV_EN.pdf. Build: pip install "rendercv[full]" && rendercv render Trinh_Quang_Hung_CV_EN.yaml
+# then copy rendercv_output/*.pdf over public/cv/Trinh_Quang_Hung_CV_EN.pdf. Keep in sync with src/data/resume.ts.
+cv:
+  name: Trinh Quang Hung
+  location: Hanoi, Vietnam
+  email: trinhhungfischer@gmail.com
+  phone: +84 377 366 231
+  website: https://trinhhungfischer.github.io/
+  social_networks:
+    - network: GitHub
+      username: trinhhungfischer
+  sections:
+    Summary:
+      - Game Designer with 4 years of experience designing Midcore and Casual mobile games. Core strengths in core loop design, meta-game systems, progression and balance for products serving millions of players. Strong technical foundation with effective application of AI tools in the design workflow.
+    Experience:
+      - company: Falcon Games
+        position: Senior Game Designer
+        start_date: 2026-08
+        end_date: present
+        location: Hanoi, Vietnam
+        highlights:
+          - Lead designer of the in-game economy and live events for [Hungry Bees™](https://apps.apple.com/vn/app/hungry-bees/id6802910325) (3D color-sort puzzle)
+          - Designed the level blocker system that drives puzzle variety and difficulty
+      - company: Zitga
+        position: Game Designer
+        start_date: 2023-02
+        end_date: 2026-08
+        location: Hanoi, Vietnam
+        highlights:
+          - 'Led design of midcore game **[Guardian War](https://play.google.com/store/apps/details?id=com.fansipan.pixel.hero.action.rpg.adventure.games&hl=en&gl=US)** (Squad RPG) and served as Lead Designer for [Stickman Defense: Survival TD](https://play.google.com/store/apps/details?id=com.thp020.stickman.casual.war.game&hl=en), [Pixel Squad](https://apps.apple.com/vn/app/pixel-squad-war-of-legends/id6504517662), and several Puzzle titles'
+          - 'Built and maintained comprehensive Game Design Documents: core loop, meta-game, progression system, and economy'
+          - 'Focused on Level, Progression, Economy Design and Game Balancing: increased revenue of [Galaxy War](https://play.google.com/store/apps/details?id=com.threehp013.idle.plane.shooting.space.force.game&hl=en) by 30% through balance redesign and player experience loop optimization'
+          - Proficient in Figma and Photoshop for in-game UX flow design and wireframing
+          - Applied AI tools (Claude, Gemini) to system and level design workflows, significantly boosting production speed
+          - Led sprint planning and backlog grooming under Agile methodology; coordinated cross-functional team (Dev, Art, QA) to ensure on-time milestone delivery
+      - company: Zingplay Studio - VNG
+        position: Game Developer (Internship)
+        start_date: 2022-05
+        end_date: 2022-08
+        location: Hanoi, Vietnam
+        highlights:
+          - Developed a Casual Tower Defense prototype **[Sinh Tu Mon ZingPlay](https://play.google.com/store/apps/details/Sinh_T%E1%BB%AD_M%C3%B4n_ZingPlay?id=gsn.tdf.vn&hl=vi)** using Cocos2D (client) and Bitzero (server)
+      - company: ToVChain
+        position: Data Scientist (Internship)
+        start_date: 2021-11
+        end_date: 2022-05
+        location: Hanoi, Vietnam
+        highlights:
+          - Analyzed user behavior and contributed to developing investment recommendation features on [Trava Finance](https://trava.finance/)
+    Notable Projects:
+      - name: '[Hungry Bees™: Color Sort Puzzle](https://apps.apple.com/vn/app/hungry-bees/id6802910325)'
+        start_date: 2026-08
+        end_date: present
+        location: Falcon Games
+        highlights:
+          - '**Genre:** Casual Puzzle | **Platform:** Mobile | **Engine:** Unity'
+          - '**Core loop:** Players tap to send pixel bees to matching colored blocks and clear the board'
+          - Lead designer of the in-game economy and live events
+          - Designed the level blocker system
+          - '**Stats:** 100K+ downloads · Rating 4.9★'
+      - name: '[Stickman Defense: Survival TD](https://play.google.com/store/apps/details?id=com.thp020.stickman.casual.war.game&hl=en)'
+        start_date: 2026-01
+        end_date: 2026-08
+        location: Zitga
+        highlights:
+          - '**Genre:** Midcore Strategy/RPG | **Platform:** Mobile | **Engine:** Unity'
+          - '**Core loop:** Players defend their base, eliminate attacking monsters, receive rogue-like upgrades, and defeat Bosses for rewards; further strengthen characters via equipment, pet system, and various meta systems'
+          - Built and owned the entire game metrics system — from progression curve and balance sheet to power scaling — as the design foundation for all content and meta systems
+          - 'Lead Game Designer: designed character systems, progression, economy, guild, events, and the full in-game UX flow'
+          - '**Stats:** 300K+ downloads · 7K DAU · Rating 4.7★'
+      - name: '[Guardian War: RPG Pixel Hero](https://play.google.com/store/apps/details?id=com.fansipan.pixel.hero.action.rpg.adventure.games&hl=en&gl=US)'
+        start_date: 2023-02
+        end_date: 2024-02
+        location: Zitga
+        highlights:
+          - '**Genre:** Midcore Strategy/RPG | **Platform:** Mobile | **Engine:** Unity'
+          - '**Core loop:** Players collect and upgrade heroes to conquer dungeons, defeat bosses, and explore new lands chapter by chapter'
+          - Built core metrics framework and user progression system (early/mid/late game), creating a standardized blueprint for supplementary gameplay system design
+          - 'Designed and balanced systems: hero stats, progression, economy, PvP/PvE, and seasonal events'
+          - Designed world map, characters, and enemy scaling across content zones
+          - '**Stats:** 1M+ downloads · 29K DAU · Rating 4.6★'
+      - name: '[Block Jam Away: Color Slide](https://apkpure.com/color-slide-block-jam-puzzle/com.thp017.block.jam.puzzle.game/download)'
+        start_date: 2025-06
+        end_date: 2025-08
+        location: Zitga
+        highlights:
+          - '**Genre:** Casual Puzzle | **Platform:** Mobile | **Engine:** Unity'
+          - '**Core loop:** Players slide and match colored blocks to solve puzzles level by level'
+          - 'Lead Game Designer: designed progression system, level design, and economy'
+          - Automated the level design workflow (100 levels / 2 days) and built an automated difficulty testing tool
+          - '**Stats:** 100K+ downloads · 5K DAU · Rating 4.4★'
+      - name: '[Sinh Tu Mon ZingPlay](https://play.google.com/store/apps/details/Sinh_T%E1%BB%AD_M%C3%B4n_ZingPlay?id=gsn.tdf.vn&hl=vi)'
+        start_date: 2022-05
+        end_date: 2022-08
+        location: Zingplay Studio - VNG
+        highlights:
+          - '**Genre:** Casual Tower Defense | **Platform:** Mobile | **Engine:** Cocos2D'
+          - Programmed client UI, gameplay mechanics, and several server systems synchronized with the client
+    Skills:
+      - label: Game Design
+        details: GDD, Core Loop Design, Meta-game System, Progression & Economy Design, Game Balancing, Level Design, PvP/PvE Design, Event Design, Monetization (IAP/IAA)
+      - label: Analytics & Optimization
+        details: Data-driven Design, A/B Testing, Metrics Analysis (Retention/DAU/Conversion), Player Behavior Analysis
+      - label: Tools & AI
+        details: Unity, Cocos2D, Machination, Figma, Photoshop, Claude, Gemini
+      - label: Programming
+        details: C#, Python — able to read and understand code; collaborate effectively with Dev team
+      - label: Language
+        details: English — proficient in reading technical documentation and GDD
+    Education:
+      - institution: Hanoi University of Science and Technology (HUST)
+        area: Computer Science (Talented Program)
+        degree: BS
+        start_date: 2019-08
+        end_date: 2025-02
+        location: Hanoi, Vietnam
+        highlights:
+          - 'GPA: 3.57 / 4.0'
+    Activities:
+      - bullet: '**Honor Award — Axie Game Hackathon 2022:** Team UDestiny (4 members) achieved Top 4 — Honor Prize. Product was a card game set in the Axie Infinity universe with mechanics inspired by Rock-Paper-Scissors.'
+      - bullet: '**Third Prize — Vietnam Mathematics Olympiad 2019 (VMO):** Awarded Third Prize in the Vietnam National Mathematics Olympiad, a highly competitive national contest for outstanding high school students.'
+design:
+  theme: sb2nov
+  page:
+    show_top_note: false
+  colors:
+    links: rgb(0,79,144)
+  links:
+    underline: true
+  header:
+    connections:
+      show_icons: true
+      separator: ''
+  templates:
+    footer: '*NAME - Page PAGE_NUMBER of TOTAL_PAGES*'
+locale:
+  language: english
+settings:
+  current_date: 2026-11-23
+  pdf_title: Trinh Quang Hung's CV
+  render_command:
+    output_folder: rendercv_output
+    dont_generate_markdown: true
+    dont_generate_html: true
+    dont_generate_png: true
